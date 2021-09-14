@@ -15,6 +15,49 @@ namespace TFCS__FirstWork
         public AuthorizationForm()
         {
             InitializeComponent();
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            CloseButton.BackColor = Color.Transparent;
+            AboutProgram.BackColor = Color.Transparent;
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void CloseButton_MouseEnter(object sender, EventArgs e)
+        {
+            CloseButton.ForeColor = Color.Black;
+        }
+
+        private void CloseButton_MouseLeave(object sender, EventArgs e)
+        {
+            CloseButton.ForeColor = Color.White;
+        }
+
+        Point lastPoint;
+        private void AuthorizationForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void AuthorizationForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void AboutProgram_MouseEnter(object sender, EventArgs e)
+        {
+            AboutProgram.ForeColor = Color.Black;
+        }
+
+        private void AboutProgram_MouseLeave(object sender, EventArgs e)
+        {
+            AboutProgram.ForeColor = Color.White;
         }
     }
 }
