@@ -95,6 +95,7 @@ namespace TFCS__FirstWork
             this.AboutProgram.Size = new System.Drawing.Size(133, 24);
             this.AboutProgram.TabIndex = 5;
             this.AboutProgram.Text = "О программе";
+            this.AboutProgram.Click += new System.EventHandler(this.AboutProgram_Click);
             this.AboutProgram.MouseEnter += new System.EventHandler(this.AboutProgram_MouseEnter);
             this.AboutProgram.MouseLeave += new System.EventHandler(this.AboutProgram_MouseLeave);
             // 

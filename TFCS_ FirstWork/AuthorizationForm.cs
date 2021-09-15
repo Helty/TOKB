@@ -63,8 +63,8 @@ namespace TFCS__FirstWork
 
         private void AuthorizationButton_Click(object sender, EventArgs e)
         {
-            String LoginUser = UserLogin.Text;
-            String PasswordUser = UserPassword.Text;
+            string LoginUser = UserLogin.Text;
+            string PasswordUser = UserPassword.Text;
 
             DataBase DataBase = new DataBase();
 
@@ -82,12 +82,26 @@ namespace TFCS__FirstWork
 
             if (Table.Rows.Count > 0)
             {
-                MessageBox.Show("Вы вошли!!");
+                if (LoginUser.ToLower() == "admin")
+                {
+                    this.Hide();
+                    AdminForm AdminForm = new AdminForm();
+                    AdminForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Не верные данные!");
+                }
             }
             else
             {
                 MessageBox.Show("Не верные данные!");
             }
+        }
+
+        private void AboutProgram_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
