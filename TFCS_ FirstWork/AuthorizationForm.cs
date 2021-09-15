@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -58,6 +59,35 @@ namespace TFCS__FirstWork
         private void AboutProgram_MouseLeave(object sender, EventArgs e)
         {
             AboutProgram.ForeColor = Color.White;
+        }
+
+        private void AuthorizationButton_Click(object sender, EventArgs e)
+        {
+            String LoginUser = UserLogin.Text;
+            String PasswordUser = UserPassword.Text;
+
+            DataBase DataBase = new DataBase();
+
+            DataTable Table = new DataTable();
+
+            SqlDataAdapter Adapter = new SqlDataAdapter();
+
+            SqlCommand Command= new SqlCommand("SELECT * FROM UsersData WHERE UserLogin = @uL AND UserPassword = @uP", DataBase.GetConnection());
+
+            Command.Parameters.Add("@uL", SqlDbType.VarChar).Value = LoginUser;
+            Command.Parameters.Add("@uP", SqlDbType.VarChar).Value = PasswordUser;
+
+            Adapter.SelectCommand = Command;
+            Adapter.Fill(Table);
+
+            if (Table.Rows.Count > 0)
+            {
+                MessageBox.Show("Вы вошли!!");
+            }
+            else
+            {
+                MessageBox.Show("Не верные данные!");
+            }
         }
     }
 }

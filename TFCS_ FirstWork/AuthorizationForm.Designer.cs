@@ -31,7 +31,7 @@ namespace TFCS__FirstWork
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorizationForm));
             this.UserLogin = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.AuthorizationButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Label();
             this.UserPassword = new System.Windows.Forms.TextBox();
             this.AboutProgram = new System.Windows.Forms.Label();
@@ -46,16 +46,17 @@ namespace TFCS__FirstWork
             this.UserLogin.Size = new System.Drawing.Size(208, 53);
             this.UserLogin.TabIndex = 0;
             // 
-            // button1
+            // AuthorizationButton
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Bauhaus 93", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(161, 347);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 36);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Войти";
-            this.button1.UseVisualStyleBackColor = true;
+            this.AuthorizationButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AuthorizationButton.Font = new System.Drawing.Font("Bauhaus 93", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AuthorizationButton.Location = new System.Drawing.Point(161, 347);
+            this.AuthorizationButton.Name = "AuthorizationButton";
+            this.AuthorizationButton.Size = new System.Drawing.Size(95, 36);
+            this.AuthorizationButton.TabIndex = 2;
+            this.AuthorizationButton.Text = "Войти";
+            this.AuthorizationButton.UseVisualStyleBackColor = true;
+            this.AuthorizationButton.Click += new System.EventHandler(this.AuthorizationButton_Click);
             // 
             // CloseButton
             // 
@@ -91,9 +92,9 @@ namespace TFCS__FirstWork
             this.AboutProgram.ForeColor = System.Drawing.SystemColors.Control;
             this.AboutProgram.Location = new System.Drawing.Point(12, 11);
             this.AboutProgram.Name = "AboutProgram";
-            this.AboutProgram.Size = new System.Drawing.Size(122, 24);
+            this.AboutProgram.Size = new System.Drawing.Size(133, 24);
             this.AboutProgram.TabIndex = 5;
-            this.AboutProgram.Text = "О прогрмме";
+            this.AboutProgram.Text = "О программе";
             this.AboutProgram.MouseEnter += new System.EventHandler(this.AboutProgram_MouseEnter);
             this.AboutProgram.MouseLeave += new System.EventHandler(this.AboutProgram_MouseLeave);
             // 
@@ -108,7 +109,7 @@ namespace TFCS__FirstWork
             this.Controls.Add(this.AboutProgram);
             this.Controls.Add(this.UserPassword);
             this.Controls.Add(this.CloseButton);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.AuthorizationButton);
             this.Controls.Add(this.UserLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -124,7 +125,7 @@ namespace TFCS__FirstWork
         #endregion
 
         private System.Windows.Forms.TextBox UserLogin;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button AuthorizationButton;
         private System.Windows.Forms.Label CloseButton;
         private System.Windows.Forms.TextBox UserPassword;
         private System.Windows.Forms.Label AboutProgram;
