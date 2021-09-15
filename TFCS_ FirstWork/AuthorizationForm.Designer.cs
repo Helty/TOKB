@@ -34,7 +34,7 @@ namespace TFCS__FirstWork
             this.AuthorizationButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Label();
             this.UserPassword = new System.Windows.Forms.TextBox();
-            this.AboutProgram = new System.Windows.Forms.Label();
+            this.AboutProgramButton = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // UserLogin
@@ -84,20 +84,20 @@ namespace TFCS__FirstWork
             this.UserPassword.TabIndex = 4;
             this.UserPassword.UseSystemPasswordChar = true;
             // 
-            // AboutProgram
+            // AboutProgramButton
             // 
-            this.AboutProgram.AutoSize = true;
-            this.AboutProgram.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AboutProgram.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AboutProgram.ForeColor = System.Drawing.SystemColors.Control;
-            this.AboutProgram.Location = new System.Drawing.Point(12, 11);
-            this.AboutProgram.Name = "AboutProgram";
-            this.AboutProgram.Size = new System.Drawing.Size(133, 24);
-            this.AboutProgram.TabIndex = 5;
-            this.AboutProgram.Text = "О программе";
-            this.AboutProgram.Click += new System.EventHandler(this.AboutProgram_Click);
-            this.AboutProgram.MouseEnter += new System.EventHandler(this.AboutProgram_MouseEnter);
-            this.AboutProgram.MouseLeave += new System.EventHandler(this.AboutProgram_MouseLeave);
+            this.AboutProgramButton.AutoSize = true;
+            this.AboutProgramButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AboutProgramButton.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AboutProgramButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.AboutProgramButton.Location = new System.Drawing.Point(12, 11);
+            this.AboutProgramButton.Name = "AboutProgramButton";
+            this.AboutProgramButton.Size = new System.Drawing.Size(133, 24);
+            this.AboutProgramButton.TabIndex = 5;
+            this.AboutProgramButton.Text = "О программе";
+            this.AboutProgramButton.Click += new System.EventHandler(this.AboutProgramButton_Click);
+            this.AboutProgramButton.MouseEnter += new System.EventHandler(this.AboutProgram_MouseEnter);
+            this.AboutProgramButton.MouseLeave += new System.EventHandler(this.AboutProgram_MouseLeave);
             // 
             // AuthorizationForm
             // 
@@ -107,7 +107,7 @@ namespace TFCS__FirstWork
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(412, 548);
-            this.Controls.Add(this.AboutProgram);
+            this.Controls.Add(this.AboutProgramButton);
             this.Controls.Add(this.UserPassword);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.AuthorizationButton);
@@ -115,6 +115,7 @@ namespace TFCS__FirstWork
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AuthorizationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Authorization";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AuthorizationForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AuthorizationForm_MouseMove);
@@ -129,6 +130,6 @@ namespace TFCS__FirstWork
         private System.Windows.Forms.Button AuthorizationButton;
         private System.Windows.Forms.Label CloseButton;
         private System.Windows.Forms.TextBox UserPassword;
-        private System.Windows.Forms.Label AboutProgram;
+        private System.Windows.Forms.Label AboutProgramButton;
     }
 }

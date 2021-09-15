@@ -18,7 +18,7 @@ namespace TFCS__FirstWork
             InitializeComponent();
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             CloseButton.BackColor = Color.Transparent;
-            AboutProgram.BackColor = Color.Transparent;
+            AboutProgramButton.BackColor = Color.Transparent;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -53,12 +53,12 @@ namespace TFCS__FirstWork
 
         private void AboutProgram_MouseEnter(object sender, EventArgs e)
         {
-            AboutProgram.ForeColor = Color.Black;
+            AboutProgramButton.ForeColor = Color.Black;
         }
 
         private void AboutProgram_MouseLeave(object sender, EventArgs e)
         {
-            AboutProgram.ForeColor = Color.White;
+            AboutProgramButton.ForeColor = Color.White;
         }
 
         private void AuthorizationButton_Click(object sender, EventArgs e)
@@ -99,9 +99,10 @@ namespace TFCS__FirstWork
             }
         }
 
-        private void AboutProgram_Click(object sender, EventArgs e)
+        private void AboutProgramButton_Click(object sender, EventArgs e)
         {
-
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.Show();
         }
     }
 }
