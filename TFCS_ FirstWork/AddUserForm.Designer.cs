@@ -138,6 +138,8 @@ namespace TFCS__FirstWork
             this.Name = "AddUserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddUserForm";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddUserForm_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AddUserForm_MouseMove);
             this.ResumeLayout(false);
             this.PerformLayout();
 

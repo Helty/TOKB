@@ -51,5 +51,21 @@ namespace TFCS__FirstWork
         {
             AboutProgramButton.ForeColor = Color.White;
         }
+
+        Point lastPoint;
+
+        private void AddUserForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void AddUserForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
     }
 }
