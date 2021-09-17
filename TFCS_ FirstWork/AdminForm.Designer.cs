@@ -47,6 +47,7 @@ namespace TFCS__FirstWork
             this.AddUserButton.TabIndex = 0;
             this.AddUserButton.Text = "Добавить пользователя";
             this.AddUserButton.UseVisualStyleBackColor = true;
+            this.AddUserButton.Click += new System.EventHandler(this.AddUserButton_Click);
             // 
             // ChangePasswordAdmin
             // 

@@ -82,6 +82,11 @@ namespace TFCS__FirstWork
             lastPoint = new Point(e.X, e.Y);
         }
 
-        
+        private void AddUserButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AddUserForm AddUserForm = new AddUserForm();
+            AddUserForm.Show();
+        }
     }
 }
