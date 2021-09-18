@@ -90,7 +90,9 @@ namespace TFCS__FirstWork
                 }
                 else
                 {
-                    MessageBox.Show("Не верные данные!");
+                    this.Hide();
+                    UserForm UserForm = new UserForm();
+                    UserForm.Show();
                 }
             }
             else
