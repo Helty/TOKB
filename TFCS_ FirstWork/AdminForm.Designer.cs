@@ -67,8 +67,9 @@ namespace TFCS__FirstWork
             this.CheckListUsers.Name = "CheckListUsers";
             this.CheckListUsers.Size = new System.Drawing.Size(150, 54);
             this.CheckListUsers.TabIndex = 2;
-            this.CheckListUsers.Text = "Найти пользователя";
+            this.CheckListUsers.Text = "Изменить пользователя";
             this.CheckListUsers.UseVisualStyleBackColor = true;
+            this.CheckListUsers.Click += new System.EventHandler(this.CheckListUsers_Click);
             // 
             // CloseButton
             // 

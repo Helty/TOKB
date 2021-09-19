@@ -97,5 +97,12 @@ namespace TFCS__FirstWork
             ChangePasswordForm ChangePasswordForm = new ChangePasswordForm(login);
             ChangePasswordForm.Show();
         }
+
+        private void CheckListUsers_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ChangeUserForm ChangeUserForm = new ChangeUserForm();
+            ChangeUserForm.Show();
+        }
     }
 }
