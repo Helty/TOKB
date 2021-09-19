@@ -15,14 +15,54 @@ namespace TFCS__FirstWork
         public ChoiceRestrictionsForm()
         {
             InitializeComponent();
+            CloseButton.BackColor = Color.Transparent;
+            AboutProgramButton.BackColor = Color.Transparent;
+            MinimalPasswordLable.BackColor = Color.Transparent;
+            DifferentСharactersPasswordCheckBox.BackColor = Color.Transparent;
+            TimeLifePasswordLable.BackColor = Color.Transparent;
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        private void AboutProgramButton_MouseEnter(object sender, EventArgs e)
+        {
+            AboutProgramButton.ForeColor = Color.White;
+        }
+
+        private void AboutProgramButton_MouseLeave(object sender, EventArgs e)
+        {
+            AboutProgramButton.ForeColor = Color.Black;
+        }
+
+        private void CloseButton_MouseEnter(object sender, EventArgs e)
+        {
+            CloseButton.ForeColor = Color.White;
+        }
+
+        private void CloseButton_MouseLeave(object sender, EventArgs e)
+        {
+            CloseButton.ForeColor = Color.Black;
+        }
+
+        Point lastPoint;
+        private void ChoiceRestrictionsForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void ChoiceRestrictionsForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void AboutProgramButton_Click(object sender, EventArgs e)
         {
             return;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void NumericUpDownPassword_ValueChanged(object sender, EventArgs e)
         {
             return;
         }
