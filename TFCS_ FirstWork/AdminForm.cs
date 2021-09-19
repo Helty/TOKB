@@ -12,12 +12,14 @@ namespace TFCS__FirstWork
 {
     public partial class AdminForm : Form
     {
-        public AdminForm()
+        string login;
+        public AdminForm(string Login)
         {
             InitializeComponent();
             CloseButton.BackColor = Color.Transparent;
             AboutProgramButton.BackColor = Color.Transparent;
             BackToAuthorizationButton.BackColor = Color.Transparent;
+            login = Login;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -87,6 +89,13 @@ namespace TFCS__FirstWork
             this.Hide();
             AddUserForm AddUserForm = new AddUserForm();
             AddUserForm.Show();
+        }
+
+        private void ChangePasswordAdmin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ChangePasswordForm ChangePasswordForm = new ChangePasswordForm(login);
+            ChangePasswordForm.Show();
         }
     }
 }

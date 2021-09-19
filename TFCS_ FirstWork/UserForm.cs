@@ -12,12 +12,14 @@ namespace TFCS__FirstWork
 {
     public partial class UserForm : Form
     {
-        public UserForm()
+        string login;
+        public UserForm(string Login)
         {
             InitializeComponent();
             CloseButton.BackColor = Color.Transparent;
             AboutProgramButton.BackColor = Color.Transparent;
             BackToAuthorizationButton.BackColor = Color.Transparent;
+            login = Login;
         }
 
         private void AboutProgramButton_Click(object sender, EventArgs e)
@@ -81,6 +83,13 @@ namespace TFCS__FirstWork
         private void BackToAuthorizationButton_MouseLeave(object sender, EventArgs e)
         {
             BackToAuthorizationButton.ForeColor = Color.White;
+        }
+
+        private void ChangePasswordUser_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ChangePasswordForm changePasswordForm = new ChangePasswordForm(login);
+            changePasswordForm.Show();
         }
     }
 }

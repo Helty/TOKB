@@ -33,7 +33,7 @@ namespace TFCS__FirstWork
             this.CloseButton = new System.Windows.Forms.Label();
             this.AboutProgramButton = new System.Windows.Forms.Label();
             this.BackToAuthorizationButton = new System.Windows.Forms.Label();
-            this.ChangePasswordAdmin = new System.Windows.Forms.Button();
+            this.ChangePasswordUser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CloseButton
@@ -82,15 +82,16 @@ namespace TFCS__FirstWork
             this.BackToAuthorizationButton.MouseEnter += new System.EventHandler(this.BackToAuthorizationButton_MouseEnter);
             this.BackToAuthorizationButton.MouseLeave += new System.EventHandler(this.BackToAuthorizationButton_MouseLeave);
             // 
-            // ChangePasswordAdmin
+            // ChangePasswordUser
             // 
-            this.ChangePasswordAdmin.Font = new System.Drawing.Font("Montserrat Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ChangePasswordAdmin.Location = new System.Drawing.Point(12, 204);
-            this.ChangePasswordAdmin.Name = "ChangePasswordAdmin";
-            this.ChangePasswordAdmin.Size = new System.Drawing.Size(185, 34);
-            this.ChangePasswordAdmin.TabIndex = 9;
-            this.ChangePasswordAdmin.Text = "Сменить пароль";
-            this.ChangePasswordAdmin.UseVisualStyleBackColor = true;
+            this.ChangePasswordUser.Font = new System.Drawing.Font("Montserrat Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChangePasswordUser.Location = new System.Drawing.Point(12, 204);
+            this.ChangePasswordUser.Name = "ChangePasswordUser";
+            this.ChangePasswordUser.Size = new System.Drawing.Size(185, 34);
+            this.ChangePasswordUser.TabIndex = 9;
+            this.ChangePasswordUser.Text = "Сменить пароль";
+            this.ChangePasswordUser.UseVisualStyleBackColor = true;
+            this.ChangePasswordUser.Click += new System.EventHandler(this.ChangePasswordUser_Click);
             // 
             // UserForm
             // 
@@ -99,7 +100,7 @@ namespace TFCS__FirstWork
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(464, 250);
-            this.Controls.Add(this.ChangePasswordAdmin);
+            this.Controls.Add(this.ChangePasswordUser);
             this.Controls.Add(this.BackToAuthorizationButton);
             this.Controls.Add(this.AboutProgramButton);
             this.Controls.Add(this.CloseButton);
@@ -119,6 +120,6 @@ namespace TFCS__FirstWork
         private System.Windows.Forms.Label CloseButton;
         private System.Windows.Forms.Label AboutProgramButton;
         private System.Windows.Forms.Label BackToAuthorizationButton;
-        private System.Windows.Forms.Button ChangePasswordAdmin;
+        private System.Windows.Forms.Button ChangePasswordUser;
     }
 }

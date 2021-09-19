@@ -72,7 +72,7 @@ namespace TFCS__FirstWork
 
             SqlDataAdapter Adapter = new SqlDataAdapter();
 
-            SqlCommand Command= new SqlCommand("SELECT * FROM UsersData WHERE UserLogin = @uL AND UserPassword = @uP", DataBase.GetConnection());
+            SqlCommand Command = new SqlCommand("SELECT * FROM UsersData WHERE UserLogin = @uL AND UserPassword = @uP", DataBase.GetConnection());
 
             Command.Parameters.Add("@uL", SqlDbType.VarChar).Value = LoginUser;
             Command.Parameters.Add("@uP", SqlDbType.VarChar).Value = PasswordUser;
@@ -85,13 +85,13 @@ namespace TFCS__FirstWork
                 if (LoginUser.ToLower() == "admin")
                 {
                     this.Hide();
-                    AdminForm AdminForm = new AdminForm();
+                    AdminForm AdminForm = new AdminForm(LoginUser);
                     AdminForm.Show();
                 }
                 else
                 {
                     this.Hide();
-                    UserForm UserForm = new UserForm();
+                    UserForm UserForm = new UserForm(LoginUser);
                     UserForm.Show();
                 }
             }

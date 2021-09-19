@@ -58,6 +58,7 @@ namespace TFCS__FirstWork
             this.ChangePasswordAdmin.TabIndex = 1;
             this.ChangePasswordAdmin.Text = "Сменить пароль";
             this.ChangePasswordAdmin.UseVisualStyleBackColor = true;
+            this.ChangePasswordAdmin.Click += new System.EventHandler(this.ChangePasswordAdmin_Click);
             // 
             // CheckListUsers
             // 

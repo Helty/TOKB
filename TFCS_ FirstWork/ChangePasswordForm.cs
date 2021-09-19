@@ -10,20 +10,36 @@ using System.Windows.Forms;
 
 namespace TFCS__FirstWork
 {
-    public partial class AddUserForm : Form
+    public partial class ChangePasswordForm : Form
     {
-        public AddUserForm()
+        string login;
+        public ChangePasswordForm(string Login)
         {
             InitializeComponent();
             CloseButton.BackColor = Color.Transparent;
             AboutProgramButton.BackColor = Color.Transparent;
+            login = Login;   
         }
-
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            AdminForm adminForm = new AdminForm("admin");
-            adminForm.Show();
+            if (login.ToLower() == "admin")
+            {
+                this.Hide();
+                AdminForm adminForm = new AdminForm(login);
+                adminForm.Show();
+            }
+            else
+            {
+                this.Hide();
+                UserForm UserForm = new UserForm(login);
+                UserForm.Show();
+            }
+        }
+
+        private void AboutProgramButton_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.Show();
         }
 
         private void CloseButton_MouseEnter(object sender, EventArgs e)
@@ -34,12 +50,6 @@ namespace TFCS__FirstWork
         private void CloseButton_MouseLeave(object sender, EventArgs e)
         {
             CloseButton.ForeColor = Color.White;
-        }
-
-        private void AboutProgramButton_Click(object sender, EventArgs e)
-        {
-            AboutForm aboutForm = new AboutForm();
-            aboutForm.Show();
         }
 
         private void AboutProgramButton_MouseEnter(object sender, EventArgs e)
@@ -53,20 +63,18 @@ namespace TFCS__FirstWork
         }
 
         Point lastPoint;
-
-        private void AddUserForm_MouseDown(object sender, MouseEventArgs e)
+        private void ChangePasswordForm_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = new Point(e.X, e.Y);
         }
 
-        private void AddUserForm_MouseMove(object sender, MouseEventArgs e)
+        private void ChangePasswordForm_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 this.Left += e.X - lastPoint.X;
                 this.Top += e.Y - lastPoint.Y;
             }
-
         }
     }
 }

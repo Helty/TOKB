@@ -30,33 +30,33 @@ namespace TFCS__FirstWork
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUserForm));
-            this.UserLogin = new System.Windows.Forms.TextBox();
-            this.UserPassword = new System.Windows.Forms.TextBox();
+            this.NewUserLogin = new System.Windows.Forms.TextBox();
+            this.NewUserPassword = new System.Windows.Forms.TextBox();
             this.CloseButton = new System.Windows.Forms.Label();
             this.AboutProgramButton = new System.Windows.Forms.Label();
-            this.AuthorizationButton = new System.Windows.Forms.Button();
+            this.AddNewUserButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.EstablishingRestrictions = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // UserLogin
+            // NewUserLogin
             // 
-            this.UserLogin.BackColor = System.Drawing.Color.Linen;
-            this.UserLogin.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.UserLogin.Location = new System.Drawing.Point(106, 236);
-            this.UserLogin.Name = "UserLogin";
-            this.UserLogin.Size = new System.Drawing.Size(208, 53);
-            this.UserLogin.TabIndex = 1;
+            this.NewUserLogin.BackColor = System.Drawing.Color.Linen;
+            this.NewUserLogin.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NewUserLogin.Location = new System.Drawing.Point(106, 236);
+            this.NewUserLogin.Name = "NewUserLogin";
+            this.NewUserLogin.Size = new System.Drawing.Size(208, 53);
+            this.NewUserLogin.TabIndex = 1;
             // 
-            // UserPassword
+            // NewUserPassword
             // 
-            this.UserPassword.BackColor = System.Drawing.Color.Linen;
-            this.UserPassword.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.UserPassword.Location = new System.Drawing.Point(106, 295);
-            this.UserPassword.Name = "UserPassword";
-            this.UserPassword.Size = new System.Drawing.Size(208, 53);
-            this.UserPassword.TabIndex = 5;
-            this.UserPassword.UseSystemPasswordChar = true;
+            this.NewUserPassword.BackColor = System.Drawing.Color.Linen;
+            this.NewUserPassword.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NewUserPassword.Location = new System.Drawing.Point(106, 295);
+            this.NewUserPassword.Name = "NewUserPassword";
+            this.NewUserPassword.Size = new System.Drawing.Size(208, 53);
+            this.NewUserPassword.TabIndex = 5;
+            this.NewUserPassword.UseSystemPasswordChar = true;
             // 
             // CloseButton
             // 
@@ -65,11 +65,11 @@ namespace TFCS__FirstWork
             this.CloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CloseButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.CloseButton.Location = new System.Drawing.Point(373, 9);
+            this.CloseButton.Location = new System.Drawing.Point(310, 11);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(27, 25);
+            this.CloseButton.Size = new System.Drawing.Size(73, 25);
             this.CloseButton.TabIndex = 6;
-            this.CloseButton.Text = "X";
+            this.CloseButton.Text = "Назад";
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             this.CloseButton.MouseEnter += new System.EventHandler(this.CloseButton_MouseEnter);
             this.CloseButton.MouseLeave += new System.EventHandler(this.CloseButton_MouseLeave);
@@ -89,16 +89,16 @@ namespace TFCS__FirstWork
             this.AboutProgramButton.MouseEnter += new System.EventHandler(this.AboutProgramButton_MouseEnter);
             this.AboutProgramButton.MouseLeave += new System.EventHandler(this.AboutProgramButton_MouseLeave);
             // 
-            // AuthorizationButton
+            // AddNewUserButton
             // 
-            this.AuthorizationButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AuthorizationButton.Font = new System.Drawing.Font("Bauhaus 93", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AuthorizationButton.Location = new System.Drawing.Point(160, 417);
-            this.AuthorizationButton.Name = "AuthorizationButton";
-            this.AuthorizationButton.Size = new System.Drawing.Size(105, 36);
-            this.AuthorizationButton.TabIndex = 8;
-            this.AuthorizationButton.Text = "Добавить";
-            this.AuthorizationButton.UseVisualStyleBackColor = true;
+            this.AddNewUserButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AddNewUserButton.Font = new System.Drawing.Font("Bauhaus 93", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddNewUserButton.Location = new System.Drawing.Point(160, 417);
+            this.AddNewUserButton.Name = "AddNewUserButton";
+            this.AddNewUserButton.Size = new System.Drawing.Size(105, 36);
+            this.AddNewUserButton.TabIndex = 8;
+            this.AddNewUserButton.Text = "Добавить";
+            this.AddNewUserButton.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -109,16 +109,16 @@ namespace TFCS__FirstWork
             this.label1.Size = new System.Drawing.Size(0, 25);
             this.label1.TabIndex = 12;
             // 
-            // button1
+            // EstablishingRestrictions
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(106, 354);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(208, 57);
-            this.button1.TabIndex = 13;
-            this.button1.TabStop = false;
-            this.button1.Text = "Установление ограничений";
-            this.button1.UseVisualStyleBackColor = true;
+            this.EstablishingRestrictions.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EstablishingRestrictions.Location = new System.Drawing.Point(106, 354);
+            this.EstablishingRestrictions.Name = "EstablishingRestrictions";
+            this.EstablishingRestrictions.Size = new System.Drawing.Size(208, 57);
+            this.EstablishingRestrictions.TabIndex = 13;
+            this.EstablishingRestrictions.TabStop = false;
+            this.EstablishingRestrictions.Text = "Установление ограничений";
+            this.EstablishingRestrictions.UseVisualStyleBackColor = true;
             // 
             // AddUserForm
             // 
@@ -127,13 +127,13 @@ namespace TFCS__FirstWork
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(412, 548);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.EstablishingRestrictions);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.AuthorizationButton);
+            this.Controls.Add(this.AddNewUserButton);
             this.Controls.Add(this.AboutProgramButton);
             this.Controls.Add(this.CloseButton);
-            this.Controls.Add(this.UserPassword);
-            this.Controls.Add(this.UserLogin);
+            this.Controls.Add(this.NewUserPassword);
+            this.Controls.Add(this.NewUserLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddUserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -147,12 +147,12 @@ namespace TFCS__FirstWork
 
         #endregion
 
-        private System.Windows.Forms.TextBox UserLogin;
-        private System.Windows.Forms.TextBox UserPassword;
+        private System.Windows.Forms.TextBox NewUserLogin;
+        private System.Windows.Forms.TextBox NewUserPassword;
         private System.Windows.Forms.Label CloseButton;
         private System.Windows.Forms.Label AboutProgramButton;
-        private System.Windows.Forms.Button AuthorizationButton;
+        private System.Windows.Forms.Button AddNewUserButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button EstablishingRestrictions;
     }
 }

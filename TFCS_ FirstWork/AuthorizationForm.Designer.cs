@@ -121,7 +121,6 @@ namespace TFCS__FirstWork
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AuthorizationForm_MouseMove);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

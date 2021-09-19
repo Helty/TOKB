@@ -32,7 +32,7 @@ namespace TFCS__FirstWork
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             this.NameSurnameText = new System.Windows.Forms.Label();
             this.CloseButton = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.InformationTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // NameSurnameText
@@ -61,17 +61,17 @@ namespace TFCS__FirstWork
             this.CloseButton.MouseEnter += new System.EventHandler(this.CloseButton_MouseEnter);
             this.CloseButton.MouseLeave += new System.EventHandler(this.CloseButton_MouseLeave);
             // 
-            // textBox1
+            // InformationTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(54, 64);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(238, 233);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.TabStop = false;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
+            this.InformationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.InformationTextBox.Location = new System.Drawing.Point(54, 64);
+            this.InformationTextBox.Multiline = true;
+            this.InformationTextBox.Name = "InformationTextBox";
+            this.InformationTextBox.ReadOnly = true;
+            this.InformationTextBox.Size = new System.Drawing.Size(238, 233);
+            this.InformationTextBox.TabIndex = 6;
+            this.InformationTextBox.TabStop = false;
+            this.InformationTextBox.Text = resources.GetString("InformationTextBox.Text");
             // 
             // AboutForm
             // 
@@ -80,7 +80,7 @@ namespace TFCS__FirstWork
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(666, 376);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.InformationTextBox);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.NameSurnameText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -98,6 +98,6 @@ namespace TFCS__FirstWork
 
         private System.Windows.Forms.Label NameSurnameText;
         private System.Windows.Forms.Label CloseButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox InformationTextBox;
     }
 }
