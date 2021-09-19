@@ -101,7 +101,7 @@ namespace TFCS__FirstWork
         private void CheckListUsers_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ChangeUserForm ChangeUserForm = new ChangeUserForm();
+            SelectUserForm ChangeUserForm = new SelectUserForm();
             ChangeUserForm.Show();
         }
     }

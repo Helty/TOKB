@@ -65,7 +65,7 @@ namespace TFCS__FirstWork
             this.CloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CloseButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.CloseButton.Location = new System.Drawing.Point(310, 11);
+            this.CloseButton.Location = new System.Drawing.Point(311, 11);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(73, 25);
             this.CloseButton.TabIndex = 6;
@@ -99,6 +99,7 @@ namespace TFCS__FirstWork
             this.AddNewUserButton.TabIndex = 8;
             this.AddNewUserButton.Text = "Добавить";
             this.AddNewUserButton.UseVisualStyleBackColor = true;
+            this.AddNewUserButton.Click += new System.EventHandler(this.AddNewUserButton_Click);
             // 
             // label1
             // 
@@ -119,6 +120,7 @@ namespace TFCS__FirstWork
             this.EstablishingRestrictions.TabStop = false;
             this.EstablishingRestrictions.Text = "Установление ограничений";
             this.EstablishingRestrictions.UseVisualStyleBackColor = true;
+            this.EstablishingRestrictions.Click += new System.EventHandler(this.EstablishingRestrictions_Click);
             // 
             // AddUserForm
             // 

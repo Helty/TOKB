@@ -76,5 +76,10 @@ namespace TFCS__FirstWork
                 this.Top += e.Y - lastPoint.Y;
             }
         }
+
+        private void SaveNewPasswordAndContinueButton_Click(object sender, EventArgs e)
+        {
+            return;
+        }
     }
 }

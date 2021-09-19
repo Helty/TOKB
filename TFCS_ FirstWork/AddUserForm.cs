@@ -68,5 +68,15 @@ namespace TFCS__FirstWork
             }
 
         }
+
+        private void EstablishingRestrictions_Click(object sender, EventArgs e)
+        {
+            return; 
+        }
+
+        private void AddNewUserButton_Click(object sender, EventArgs e)
+        {
+            return;
+        }
     }
 }

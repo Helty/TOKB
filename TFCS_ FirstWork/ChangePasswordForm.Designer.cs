@@ -108,6 +108,7 @@ namespace TFCS__FirstWork
             this.SaveNewPasswordAndContinueButton.TabIndex = 10;
             this.SaveNewPasswordAndContinueButton.Text = "Вохранить и продолжить";
             this.SaveNewPasswordAndContinueButton.UseVisualStyleBackColor = true;
+            this.SaveNewPasswordAndContinueButton.Click += new System.EventHandler(this.SaveNewPasswordAndContinueButton_Click);
             // 
             // ChangePasswordForm
             // 

@@ -123,6 +123,18 @@
     <Compile Include="ChangeUserForm.Designer.cs">
       <DependentUpon>ChangeUserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChoiceRestrictionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChoiceRestrictionsForm.Designer.cs">
+      <DependentUpon>ChoiceRestrictionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectUserForm.Designer.cs">
+      <DependentUpon>SelectUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -149,6 +161,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeUserForm.resx">
       <DependentUpon>ChangeUserForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChoiceRestrictionsForm.resx">
+      <DependentUpon>ChoiceRestrictionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectUserForm.resx">
+      <DependentUpon>SelectUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
