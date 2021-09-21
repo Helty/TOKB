@@ -45,7 +45,7 @@ namespace TFCS__FirstWork
             this.TableUserLoginFromDB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TableUserLoginFromDB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UserLoginFromDB});
-            this.TableUserLoginFromDB.Location = new System.Drawing.Point(71, 77);
+            this.TableUserLoginFromDB.Location = new System.Drawing.Point(67, 64);
             this.TableUserLoginFromDB.Name = "TableUserLoginFromDB";
             this.TableUserLoginFromDB.ReadOnly = true;
             this.TableUserLoginFromDB.RowHeadersWidth = 51;
@@ -95,7 +95,7 @@ namespace TFCS__FirstWork
             // SelectUserButton
             // 
             this.SelectUserButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SelectUserButton.Location = new System.Drawing.Point(134, 226);
+            this.SelectUserButton.Location = new System.Drawing.Point(127, 213);
             this.SelectUserButton.Name = "SelectUserButton";
             this.SelectUserButton.Size = new System.Drawing.Size(106, 37);
             this.SelectUserButton.TabIndex = 8;
@@ -108,7 +108,7 @@ namespace TFCS__FirstWork
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(361, 288);
             this.Controls.Add(this.SelectUserButton);
             this.Controls.Add(this.AboutProgramButton);

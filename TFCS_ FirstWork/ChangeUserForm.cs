@@ -12,12 +12,14 @@ namespace TFCS__FirstWork
 {
     public partial class ChangeUserForm : Form
     {
-        public ChangeUserForm()
+        string login;
+        public ChangeUserForm(string UserLogIn)
         {
             InitializeComponent();
             CloseButton.BackColor = Color.Transparent;
             AboutProgramButton.BackColor = Color.Transparent;
             FreezAccountCheckBox.BackColor = Color.Transparent;
+            login = UserLogIn;
         }
 
         private void CloseButton_MouseEnter(object sender, EventArgs e)
@@ -32,12 +34,12 @@ namespace TFCS__FirstWork
 
         private void AboutProgramButton_MouseEnter(object sender, EventArgs e)
         {
-            CloseButton.ForeColor = Color.Black;
+            AboutProgramButton.ForeColor = Color.Black;
         }
 
         private void AboutProgramButton_MouseLeave(object sender, EventArgs e)
         {
-            CloseButton.ForeColor = Color.White;
+            AboutProgramButton.ForeColor = Color.White;
         }
 
         Point lastPoint;
@@ -69,11 +71,14 @@ namespace TFCS__FirstWork
         }
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            return;
+            this.Hide();
+            SelectUserForm selectUserForm = new SelectUserForm();
+            selectUserForm.Show();
         }
         private void AboutProgramButton_Click(object sender, EventArgs e)
         {
-            return;
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.Show();
         }
     }
 }

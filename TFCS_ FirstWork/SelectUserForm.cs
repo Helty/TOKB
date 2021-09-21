@@ -102,7 +102,27 @@ namespace TFCS__FirstWork
 
         private void SelectUserButton_Click(object sender, EventArgs e)
         {
-            return;
+            string login;
+            
+            Int32 selectedCellCount = TableUserLoginFromDB.GetCellCount(DataGridViewElementStates.Selected);
+            
+            if (selectedCellCount == 1)
+            {
+                login = TableUserLoginFromDB.SelectedCells[0].Value.ToString();
+                this.Hide();
+                ChangeUserForm changeUserForm = new ChangeUserForm(login);
+                changeUserForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Ошибка выбора, попробуйте заново", 
+                                "Сообщение", 
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information,
+                                MessageBoxDefaultButton.Button1,
+                                MessageBoxOptions.DefaultDesktopOnly
+                                );
+            }
         }
     }
 }

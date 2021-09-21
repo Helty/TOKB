@@ -91,11 +91,11 @@ namespace TFCS__FirstWork
             this.CloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CloseButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.CloseButton.Location = new System.Drawing.Point(426, 11);
+            this.CloseButton.Location = new System.Drawing.Point(379, 11);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(27, 25);
+            this.CloseButton.Size = new System.Drawing.Size(73, 25);
             this.CloseButton.TabIndex = 5;
-            this.CloseButton.Text = "X";
+            this.CloseButton.Text = "Назад";
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             this.CloseButton.MouseEnter += new System.EventHandler(this.CloseButton_MouseEnter);
             this.CloseButton.MouseLeave += new System.EventHandler(this.CloseButton_MouseLeave);
