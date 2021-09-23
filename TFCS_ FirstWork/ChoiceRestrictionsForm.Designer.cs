@@ -33,12 +33,14 @@ namespace TFCS__FirstWork
             this.NumericUpDownPassword = new System.Windows.Forms.NumericUpDown();
             this.MinimalPasswordLable = new System.Windows.Forms.Label();
             this.DifferentСharactersPasswordCheckBox = new System.Windows.Forms.CheckBox();
-            this.TimePickerPasswordLife = new System.Windows.Forms.DateTimePicker();
             this.TimeLifePasswordLable = new System.Windows.Forms.Label();
             this.SaveAndCloseButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Label();
             this.AboutProgramButton = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // NumericUpDownPassword
@@ -71,27 +73,20 @@ namespace TFCS__FirstWork
             this.DifferentСharactersPasswordCheckBox.Text = "Использовать в пароле различные группы символов";
             this.DifferentСharactersPasswordCheckBox.UseVisualStyleBackColor = true;
             // 
-            // TimePickerPasswordLife
-            // 
-            this.TimePickerPasswordLife.Location = new System.Drawing.Point(348, 106);
-            this.TimePickerPasswordLife.Name = "TimePickerPasswordLife";
-            this.TimePickerPasswordLife.Size = new System.Drawing.Size(166, 22);
-            this.TimePickerPasswordLife.TabIndex = 3;
-            // 
             // TimeLifePasswordLable
             // 
             this.TimeLifePasswordLable.AutoSize = true;
             this.TimeLifePasswordLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TimeLifePasswordLable.Location = new System.Drawing.Point(24, 106);
             this.TimeLifePasswordLable.Name = "TimeLifePasswordLable";
-            this.TimeLifePasswordLable.Size = new System.Drawing.Size(325, 20);
+            this.TimeLifePasswordLable.Size = new System.Drawing.Size(323, 20);
             this.TimeLifePasswordLable.TabIndex = 4;
-            this.TimeLifePasswordLable.Text = "Срок истечения действия пароля";
+            this.TimeLifePasswordLable.Text = "Действие пароля истекает через";
             // 
             // SaveAndCloseButton
             // 
             this.SaveAndCloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SaveAndCloseButton.Location = new System.Drawing.Point(171, 191);
+            this.SaveAndCloseButton.Location = new System.Drawing.Point(146, 191);
             this.SaveAndCloseButton.Name = "SaveAndCloseButton";
             this.SaveAndCloseButton.Size = new System.Drawing.Size(213, 33);
             this.SaveAndCloseButton.TabIndex = 5;
@@ -105,11 +100,12 @@ namespace TFCS__FirstWork
             this.CloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CloseButton.ForeColor = System.Drawing.Color.Black;
-            this.CloseButton.Location = new System.Drawing.Point(498, 9);
+            this.CloseButton.Location = new System.Drawing.Point(464, 9);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(27, 25);
             this.CloseButton.TabIndex = 6;
             this.CloseButton.Text = "X";
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             this.CloseButton.MouseEnter += new System.EventHandler(this.CloseButton_MouseEnter);
             this.CloseButton.MouseLeave += new System.EventHandler(this.CloseButton_MouseLeave);
             // 
@@ -117,16 +113,33 @@ namespace TFCS__FirstWork
             // 
             this.AboutProgramButton.AutoSize = true;
             this.AboutProgramButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AboutProgramButton.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AboutProgramButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AboutProgramButton.ForeColor = System.Drawing.SystemColors.Control;
             this.AboutProgramButton.Location = new System.Drawing.Point(24, 9);
             this.AboutProgramButton.Name = "AboutProgramButton";
-            this.AboutProgramButton.Size = new System.Drawing.Size(133, 24);
+            this.AboutProgramButton.Size = new System.Drawing.Size(150, 25);
             this.AboutProgramButton.TabIndex = 8;
             this.AboutProgramButton.Text = "О программе";
             this.AboutProgramButton.Click += new System.EventHandler(this.AboutProgramButton_Click);
             this.AboutProgramButton.MouseEnter += new System.EventHandler(this.AboutProgramButton_MouseEnter);
             this.AboutProgramButton.MouseLeave += new System.EventHandler(this.AboutProgramButton_MouseLeave);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(353, 104);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(58, 22);
+            this.numericUpDown1.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(423, 106);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 20);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "дней";
             // 
             // ChoiceRestrictionsForm
             // 
@@ -134,12 +147,13 @@ namespace TFCS__FirstWork
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(537, 236);
+            this.ClientSize = new System.Drawing.Size(503, 236);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.AboutProgramButton);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.SaveAndCloseButton);
             this.Controls.Add(this.TimeLifePasswordLable);
-            this.Controls.Add(this.TimePickerPasswordLife);
             this.Controls.Add(this.DifferentСharactersPasswordCheckBox);
             this.Controls.Add(this.MinimalPasswordLable);
             this.Controls.Add(this.NumericUpDownPassword);
@@ -150,6 +164,7 @@ namespace TFCS__FirstWork
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ChoiceRestrictionsForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChoiceRestrictionsForm_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,10 +175,11 @@ namespace TFCS__FirstWork
         private System.Windows.Forms.NumericUpDown NumericUpDownPassword;
         private System.Windows.Forms.Label MinimalPasswordLable;
         private System.Windows.Forms.CheckBox DifferentСharactersPasswordCheckBox;
-        private System.Windows.Forms.DateTimePicker TimePickerPasswordLife;
         private System.Windows.Forms.Label TimeLifePasswordLable;
         private System.Windows.Forms.Button SaveAndCloseButton;
         private System.Windows.Forms.Label CloseButton;
         private System.Windows.Forms.Label AboutProgramButton;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label1;
     }
 }

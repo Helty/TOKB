@@ -56,7 +56,17 @@ namespace TFCS__FirstWork
                 this.Top += e.Y - lastPoint.Y;
             }
         }
-
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SelectUserForm selectUserForm = new SelectUserForm();
+            selectUserForm.Show();
+        }
+        private void AboutProgramButton_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.Show();
+        }
         private void SetRestrictionsButton_Click(object sender, EventArgs e)
         {
             return;
@@ -68,17 +78,6 @@ namespace TFCS__FirstWork
         private void DeleteUserAndCansleButton_Click(object sender, EventArgs e)
         {
             return;
-        }
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            SelectUserForm selectUserForm = new SelectUserForm();
-            selectUserForm.Show();
-        }
-        private void AboutProgramButton_Click(object sender, EventArgs e)
-        {
-            AboutForm aboutForm = new AboutForm();
-            aboutForm.Show();
         }
     }
 }

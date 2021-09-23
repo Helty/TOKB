@@ -9,7 +9,7 @@ namespace TFCS__FirstWork
 {
     class DataBase
     {
-        SqlConnection connection = new SqlConnection("Data Source=ANDREY;Initial Catalog=TOKB-DB;Integrated Security=True");
+        SqlConnection connection = new SqlConnection("Data Source=ANDREY-SHESTAKOV;Initial Catalog=TOKB-DB;Integrated Security=True");
 
         public void OpenConnection()
         {

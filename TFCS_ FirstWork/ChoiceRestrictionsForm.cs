@@ -59,10 +59,16 @@ namespace TFCS__FirstWork
 
         private void AboutProgramButton_Click(object sender, EventArgs e)
         {
-            return;
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.Show();
         }
 
         private void NumericUpDownPassword_ValueChanged(object sender, EventArgs e)
+        {
+            return;
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             return;
         }
