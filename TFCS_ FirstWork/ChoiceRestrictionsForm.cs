@@ -12,7 +12,8 @@ namespace TFCS__FirstWork
 {
     public partial class ChoiceRestrictionsForm : Form
     {
-        public ChoiceRestrictionsForm()
+        string loginGglobal;
+        public ChoiceRestrictionsForm(string login)
         {
             InitializeComponent();
             CloseButton.BackColor = Color.Transparent;
@@ -20,6 +21,7 @@ namespace TFCS__FirstWork
             MinimalPasswordLable.BackColor = Color.Transparent;
             DifferentСharactersPasswordCheckBox.BackColor = Color.Transparent;
             TimeLifePasswordLable.BackColor = Color.Transparent;
+            loginGglobal = login;
         }
 
         private void AboutProgramButton_MouseEnter(object sender, EventArgs e)

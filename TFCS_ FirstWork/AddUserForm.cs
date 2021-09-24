@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -68,10 +69,28 @@ namespace TFCS__FirstWork
             }
 
         }
-
         private void EstablishingRestrictions_Click(object sender, EventArgs e)
-        {
-            return; 
+        {   
+            if (NewUserLogin.Text.Length == 0 || NewUserPassword.Text.Length == 0)
+            {
+                MessageBox.Show("Введите логин и пароль", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
+
+            DataBase dataBase = new DataBase();
+
+            SqlCommand command = new SqlCommand("SELECT * FROM TOKB.dbo.Users WHERE Login = @username", dataBase.GetConnection());
+            command.Parameters.AddWithValue("@username", NewUserLogin.Text);
+            dataBase.OpenConnection();
+            if (command.ExecuteScalar() == null)
+            {
+                ChoiceRestrictionsForm choiceRestrictionsForm = new ChoiceRestrictionsForm(NewUserLogin.Text);
+                choiceRestrictionsForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Такой пользователь уже существует", "Ошибка", MessageBoxButtons.OK);
+            }
         }
 
         private void AddNewUserButton_Click(object sender, EventArgs e)

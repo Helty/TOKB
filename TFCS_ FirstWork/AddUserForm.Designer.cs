@@ -78,11 +78,11 @@ namespace TFCS__FirstWork
             // 
             this.AboutProgramButton.AutoSize = true;
             this.AboutProgramButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AboutProgramButton.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AboutProgramButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AboutProgramButton.ForeColor = System.Drawing.SystemColors.Control;
             this.AboutProgramButton.Location = new System.Drawing.Point(12, 11);
             this.AboutProgramButton.Name = "AboutProgramButton";
-            this.AboutProgramButton.Size = new System.Drawing.Size(133, 24);
+            this.AboutProgramButton.Size = new System.Drawing.Size(150, 25);
             this.AboutProgramButton.TabIndex = 7;
             this.AboutProgramButton.Text = "О программе";
             this.AboutProgramButton.Click += new System.EventHandler(this.AboutProgramButton_Click);
@@ -92,10 +92,10 @@ namespace TFCS__FirstWork
             // AddNewUserButton
             // 
             this.AddNewUserButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AddNewUserButton.Font = new System.Drawing.Font("Bauhaus 93", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddNewUserButton.Location = new System.Drawing.Point(160, 417);
+            this.AddNewUserButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddNewUserButton.Location = new System.Drawing.Point(143, 417);
             this.AddNewUserButton.Name = "AddNewUserButton";
-            this.AddNewUserButton.Size = new System.Drawing.Size(105, 36);
+            this.AddNewUserButton.Size = new System.Drawing.Size(122, 36);
             this.AddNewUserButton.TabIndex = 8;
             this.AddNewUserButton.Text = "Добавить";
             this.AddNewUserButton.UseVisualStyleBackColor = true;
