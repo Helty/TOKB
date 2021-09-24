@@ -44,7 +44,7 @@ namespace TFCS__FirstWork
             this.FreezAccountCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FreezAccountCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FreezAccountCheckBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.FreezAccountCheckBox.Location = new System.Drawing.Point(158, 53);
+            this.FreezAccountCheckBox.Location = new System.Drawing.Point(162, 130);
             this.FreezAccountCheckBox.Name = "FreezAccountCheckBox";
             this.FreezAccountCheckBox.Size = new System.Drawing.Size(157, 21);
             this.FreezAccountCheckBox.TabIndex = 0;
@@ -56,7 +56,7 @@ namespace TFCS__FirstWork
             this.SetRestrictionsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SetRestrictionsButton.Location = new System.Drawing.Point(127, 80);
             this.SetRestrictionsButton.Name = "SetRestrictionsButton";
-            this.SetRestrictionsButton.Size = new System.Drawing.Size(215, 39);
+            this.SetRestrictionsButton.Size = new System.Drawing.Size(222, 44);
             this.SetRestrictionsButton.TabIndex = 1;
             this.SetRestrictionsButton.Text = "Установить ограничения";
             this.SetRestrictionsButton.UseVisualStyleBackColor = true;
@@ -104,11 +104,11 @@ namespace TFCS__FirstWork
             // 
             this.AboutProgramButton.AutoSize = true;
             this.AboutProgramButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AboutProgramButton.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AboutProgramButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AboutProgramButton.ForeColor = System.Drawing.SystemColors.Control;
             this.AboutProgramButton.Location = new System.Drawing.Point(12, 11);
             this.AboutProgramButton.Name = "AboutProgramButton";
-            this.AboutProgramButton.Size = new System.Drawing.Size(133, 24);
+            this.AboutProgramButton.Size = new System.Drawing.Size(150, 25);
             this.AboutProgramButton.TabIndex = 7;
             this.AboutProgramButton.Text = "О программе";
             this.AboutProgramButton.Click += new System.EventHandler(this.AboutProgramButton_Click);

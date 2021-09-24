@@ -69,11 +69,11 @@ namespace TFCS__FirstWork
             }
 
         }
-        private void EstablishingRestrictions_Click(object sender, EventArgs e)
-        {   
+        private void AddNewUserButton_Click(object sender, EventArgs e)
+        {
             if (NewUserLogin.Text.Length == 0 || NewUserPassword.Text.Length == 0)
             {
-                MessageBox.Show("Введите логин и пароль", "Ошибка", MessageBoxButtons.OK);
+                MessageBox.Show("Введите логин/пароль", "Ошибка", MessageBoxButtons.OK);
                 return;
             }
 
@@ -84,18 +84,25 @@ namespace TFCS__FirstWork
             dataBase.OpenConnection();
             if (command.ExecuteScalar() == null)
             {
-                ChoiceRestrictionsForm choiceRestrictionsForm = new ChoiceRestrictionsForm(NewUserLogin.Text);
-                choiceRestrictionsForm.Show();
+                SqlCommand commandTwo = new SqlCommand("INSERT INTO TOKB.dbo.Users (Login, Password, is_frozen) VALUES (@UserLogin, @UserPassword, @is_frozen)", dataBase.GetConnection());
+                
+                commandTwo.Parameters.AddWithValue("UserLogin", NewUserLogin.Text);
+                commandTwo.Parameters.AddWithValue("UserPassword", NewUserPassword.Text);
+                commandTwo.Parameters.AddWithValue("is_frozen", 0);
+
+                if (commandTwo.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Пользователь успешно добавлен в базу данных", "Уведомление", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось добавить пользователя", "Ошибка", MessageBoxButtons.OK);
+                }
             }
             else
             {
                 MessageBox.Show("Такой пользователь уже существует", "Ошибка", MessageBoxButtons.OK);
             }
-        }
-
-        private void AddNewUserButton_Click(object sender, EventArgs e)
-        {
-            return;
         }
     }
 }

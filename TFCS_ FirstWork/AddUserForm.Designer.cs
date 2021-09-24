@@ -36,7 +36,6 @@ namespace TFCS__FirstWork
             this.AboutProgramButton = new System.Windows.Forms.Label();
             this.AddNewUserButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.EstablishingRestrictions = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NewUserLogin
@@ -93,9 +92,9 @@ namespace TFCS__FirstWork
             // 
             this.AddNewUserButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddNewUserButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddNewUserButton.Location = new System.Drawing.Point(143, 417);
+            this.AddNewUserButton.Location = new System.Drawing.Point(143, 351);
             this.AddNewUserButton.Name = "AddNewUserButton";
-            this.AddNewUserButton.Size = new System.Drawing.Size(122, 36);
+            this.AddNewUserButton.Size = new System.Drawing.Size(137, 36);
             this.AddNewUserButton.TabIndex = 8;
             this.AddNewUserButton.Text = "Добавить";
             this.AddNewUserButton.UseVisualStyleBackColor = true;
@@ -110,18 +109,6 @@ namespace TFCS__FirstWork
             this.label1.Size = new System.Drawing.Size(0, 25);
             this.label1.TabIndex = 12;
             // 
-            // EstablishingRestrictions
-            // 
-            this.EstablishingRestrictions.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.EstablishingRestrictions.Location = new System.Drawing.Point(106, 354);
-            this.EstablishingRestrictions.Name = "EstablishingRestrictions";
-            this.EstablishingRestrictions.Size = new System.Drawing.Size(208, 57);
-            this.EstablishingRestrictions.TabIndex = 13;
-            this.EstablishingRestrictions.TabStop = false;
-            this.EstablishingRestrictions.Text = "Установление ограничений";
-            this.EstablishingRestrictions.UseVisualStyleBackColor = true;
-            this.EstablishingRestrictions.Click += new System.EventHandler(this.EstablishingRestrictions_Click);
-            // 
             // AddUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -129,7 +116,6 @@ namespace TFCS__FirstWork
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(412, 548);
-            this.Controls.Add(this.EstablishingRestrictions);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.AddNewUserButton);
             this.Controls.Add(this.AboutProgramButton);
@@ -155,6 +141,5 @@ namespace TFCS__FirstWork
         private System.Windows.Forms.Label AboutProgramButton;
         private System.Windows.Forms.Button AddNewUserButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button EstablishingRestrictions;
     }
 }
