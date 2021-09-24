@@ -72,7 +72,7 @@ namespace TFCS__FirstWork
 
             SqlDataAdapter Adapter = new SqlDataAdapter();
 
-            SqlCommand Command = new SqlCommand("SELECT * FROM UsersData WHERE UserLogin = @uL AND UserPassword = @uP", DataBase.GetConnection());
+            SqlCommand Command = new SqlCommand("SELECT * FROM TOKB.dbo.Users WHERE Login = @uL AND Password = @uP", DataBase.GetConnection());
 
             Command.Parameters.Add("@uL", SqlDbType.VarChar).Value = LoginUser;
             Command.Parameters.Add("@uP", SqlDbType.VarChar).Value = PasswordUser;

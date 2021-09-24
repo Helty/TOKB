@@ -27,7 +27,7 @@ namespace TFCS__FirstWork
 
             DataBase.OpenConnection();
 
-            SqlCommand Command = new SqlCommand("SELECT UserLogin FROM UsersData ORDER BY ID", DataBase.GetConnection());
+            SqlCommand Command = new SqlCommand("SELECT Login FROM TOKB.dbo.Users ORDER BY ID", DataBase.GetConnection());
 
             SqlDataReader Reader = Command.ExecuteReader();
 
