@@ -30,34 +30,40 @@ namespace TFCS__FirstWork
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChoiceRestrictionsForm));
-            this.NumericUpDownPassword = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownPassword = new System.Windows.Forms.NumericUpDown();
             this.MinimalPasswordLable = new System.Windows.Forms.Label();
             this.DifferentСharactersPasswordCheckBox = new System.Windows.Forms.CheckBox();
-            this.TimeLifePasswordLable = new System.Windows.Forms.Label();
             this.SaveAndCloseButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Label();
             this.AboutProgramButton = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownPassword)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.daysToExpired = new System.Windows.Forms.NumericUpDown();
+            this.daysLabel = new System.Windows.Forms.Label();
+            this.passwordExpired = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.daysToExpired)).BeginInit();
             this.SuspendLayout();
             // 
-            // NumericUpDownPassword
+            // numericUpDownPassword
             // 
-            this.NumericUpDownPassword.Location = new System.Drawing.Point(348, 65);
-            this.NumericUpDownPassword.Name = "NumericUpDownPassword";
-            this.NumericUpDownPassword.Size = new System.Drawing.Size(58, 22);
-            this.NumericUpDownPassword.TabIndex = 0;
-            this.NumericUpDownPassword.ValueChanged += new System.EventHandler(this.NumericUpDownPassword_ValueChanged);
+            this.numericUpDownPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numericUpDownPassword.Location = new System.Drawing.Point(335, 63);
+            this.numericUpDownPassword.Name = "numericUpDownPassword";
+            this.numericUpDownPassword.Size = new System.Drawing.Size(58, 24);
+            this.numericUpDownPassword.TabIndex = 0;
+            this.numericUpDownPassword.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.numericUpDownPassword.ValueChanged += new System.EventHandler(this.NumericUpDownPassword_ValueChanged);
             // 
             // MinimalPasswordLable
             // 
             this.MinimalPasswordLable.AutoSize = true;
-            this.MinimalPasswordLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MinimalPasswordLable.Location = new System.Drawing.Point(24, 64);
+            this.MinimalPasswordLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MinimalPasswordLable.Location = new System.Drawing.Point(28, 69);
             this.MinimalPasswordLable.Name = "MinimalPasswordLable";
-            this.MinimalPasswordLable.Size = new System.Drawing.Size(312, 20);
+            this.MinimalPasswordLable.Size = new System.Drawing.Size(263, 18);
             this.MinimalPasswordLable.TabIndex = 1;
             this.MinimalPasswordLable.Text = "Минимальная длина для пароля";
             // 
@@ -73,25 +79,16 @@ namespace TFCS__FirstWork
             this.DifferentСharactersPasswordCheckBox.Text = "Использовать в пароле различные группы символов";
             this.DifferentСharactersPasswordCheckBox.UseVisualStyleBackColor = true;
             // 
-            // TimeLifePasswordLable
-            // 
-            this.TimeLifePasswordLable.AutoSize = true;
-            this.TimeLifePasswordLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TimeLifePasswordLable.Location = new System.Drawing.Point(24, 106);
-            this.TimeLifePasswordLable.Name = "TimeLifePasswordLable";
-            this.TimeLifePasswordLable.Size = new System.Drawing.Size(323, 20);
-            this.TimeLifePasswordLable.TabIndex = 4;
-            this.TimeLifePasswordLable.Text = "Действие пароля истекает через";
-            // 
             // SaveAndCloseButton
             // 
             this.SaveAndCloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SaveAndCloseButton.Location = new System.Drawing.Point(146, 191);
+            this.SaveAndCloseButton.Location = new System.Drawing.Point(180, 199);
             this.SaveAndCloseButton.Name = "SaveAndCloseButton";
             this.SaveAndCloseButton.Size = new System.Drawing.Size(213, 33);
             this.SaveAndCloseButton.TabIndex = 5;
             this.SaveAndCloseButton.Text = "Сохранить и выйти";
             this.SaveAndCloseButton.UseVisualStyleBackColor = true;
+            this.SaveAndCloseButton.Click += new System.EventHandler(this.SaveAndCloseButton_Click);
             // 
             // CloseButton
             // 
@@ -100,11 +97,11 @@ namespace TFCS__FirstWork
             this.CloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CloseButton.ForeColor = System.Drawing.Color.Black;
-            this.CloseButton.Location = new System.Drawing.Point(464, 9);
+            this.CloseButton.Location = new System.Drawing.Point(490, 9);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(27, 25);
+            this.CloseButton.Size = new System.Drawing.Size(73, 25);
             this.CloseButton.TabIndex = 6;
-            this.CloseButton.Text = "X";
+            this.CloseButton.Text = "Назад";
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             this.CloseButton.MouseEnter += new System.EventHandler(this.CloseButton_MouseEnter);
             this.CloseButton.MouseLeave += new System.EventHandler(this.CloseButton_MouseLeave);
@@ -114,7 +111,7 @@ namespace TFCS__FirstWork
             this.AboutProgramButton.AutoSize = true;
             this.AboutProgramButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AboutProgramButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AboutProgramButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.AboutProgramButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.AboutProgramButton.Location = new System.Drawing.Point(24, 9);
             this.AboutProgramButton.Name = "AboutProgramButton";
             this.AboutProgramButton.Size = new System.Drawing.Size(150, 25);
@@ -124,22 +121,39 @@ namespace TFCS__FirstWork
             this.AboutProgramButton.MouseEnter += new System.EventHandler(this.AboutProgramButton_MouseEnter);
             this.AboutProgramButton.MouseLeave += new System.EventHandler(this.AboutProgramButton_MouseLeave);
             // 
-            // numericUpDown1
+            // daysToExpired
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(353, 104);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(58, 22);
-            this.numericUpDown1.TabIndex = 9;
+            this.daysToExpired.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.daysToExpired.Location = new System.Drawing.Point(335, 106);
+            this.daysToExpired.Name = "daysToExpired";
+            this.daysToExpired.Size = new System.Drawing.Size(58, 24);
+            this.daysToExpired.TabIndex = 9;
+            this.daysToExpired.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.daysToExpired.ValueChanged += new System.EventHandler(this.daysToExpired_ValueChanged);
             // 
-            // label1
+            // daysLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(423, 106);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 20);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "дней";
+            this.daysLabel.AutoSize = true;
+            this.daysLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.daysLabel.Location = new System.Drawing.Point(423, 106);
+            this.daysLabel.Name = "daysLabel";
+            this.daysLabel.Size = new System.Drawing.Size(55, 20);
+            this.daysLabel.TabIndex = 10;
+            this.daysLabel.Text = "дней";
+            // 
+            // passwordExpired
+            // 
+            this.passwordExpired.AutoSize = true;
+            this.passwordExpired.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordExpired.Location = new System.Drawing.Point(28, 111);
+            this.passwordExpired.Name = "passwordExpired";
+            this.passwordExpired.Size = new System.Drawing.Size(269, 18);
+            this.passwordExpired.TabIndex = 11;
+            this.passwordExpired.Text = "Действие пароля истекает через";
             // 
             // ChoiceRestrictionsForm
             // 
@@ -147,24 +161,24 @@ namespace TFCS__FirstWork
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(503, 236);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown1);
+            this.ClientSize = new System.Drawing.Size(575, 269);
+            this.Controls.Add(this.passwordExpired);
+            this.Controls.Add(this.daysLabel);
+            this.Controls.Add(this.daysToExpired);
             this.Controls.Add(this.AboutProgramButton);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.SaveAndCloseButton);
-            this.Controls.Add(this.TimeLifePasswordLable);
             this.Controls.Add(this.DifferentСharactersPasswordCheckBox);
             this.Controls.Add(this.MinimalPasswordLable);
-            this.Controls.Add(this.NumericUpDownPassword);
+            this.Controls.Add(this.numericUpDownPassword);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ChoiceRestrictionsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChoiceRestrictions";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ChoiceRestrictionsForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChoiceRestrictionsForm_MouseMove);
-            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownPassword)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.daysToExpired)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,14 +186,14 @@ namespace TFCS__FirstWork
 
         #endregion
 
-        private System.Windows.Forms.NumericUpDown NumericUpDownPassword;
+        private System.Windows.Forms.NumericUpDown numericUpDownPassword;
         private System.Windows.Forms.Label MinimalPasswordLable;
         private System.Windows.Forms.CheckBox DifferentСharactersPasswordCheckBox;
-        private System.Windows.Forms.Label TimeLifePasswordLable;
         private System.Windows.Forms.Button SaveAndCloseButton;
         private System.Windows.Forms.Label CloseButton;
         private System.Windows.Forms.Label AboutProgramButton;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown daysToExpired;
+        private System.Windows.Forms.Label daysLabel;
+        private System.Windows.Forms.Label passwordExpired;
     }
 }

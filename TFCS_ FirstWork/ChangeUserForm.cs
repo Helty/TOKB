@@ -76,10 +76,18 @@ namespace TFCS__FirstWork
         private void SaveChangesAndCloseButton_Click(object sender, EventArgs e)
         {
             return;
+
+
         }
         private void DeleteUserAndCansleButton_Click(object sender, EventArgs e)
         {
             return;
+        }
+
+        private void FreezAccountCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            return;
+
         }
     }
 }

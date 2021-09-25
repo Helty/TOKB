@@ -50,6 +50,7 @@ namespace TFCS__FirstWork
             this.FreezAccountCheckBox.TabIndex = 0;
             this.FreezAccountCheckBox.Text = "Заморозить вход";
             this.FreezAccountCheckBox.UseVisualStyleBackColor = true;
+            this.FreezAccountCheckBox.CheckedChanged += new System.EventHandler(this.FreezAccountCheckBox_CheckedChanged);
             // 
             // SetRestrictionsButton
             // 

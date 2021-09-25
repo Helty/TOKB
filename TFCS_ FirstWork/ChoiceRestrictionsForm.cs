@@ -12,7 +12,9 @@ namespace TFCS__FirstWork
 {
     public partial class ChoiceRestrictionsForm : Form
     {
-        string loginGglobal;
+        static string loginGglobal;
+        static int sizePassword;
+        static int dataToExpired;
         public ChoiceRestrictionsForm(string login)
         {
             InitializeComponent();
@@ -20,7 +22,8 @@ namespace TFCS__FirstWork
             AboutProgramButton.BackColor = Color.Transparent;
             MinimalPasswordLable.BackColor = Color.Transparent;
             DifferentСharactersPasswordCheckBox.BackColor = Color.Transparent;
-            TimeLifePasswordLable.BackColor = Color.Transparent;
+            passwordExpired.BackColor = Color.Transparent;
+            daysLabel.BackColor = Color.Transparent;
             loginGglobal = login;
         }
 
@@ -65,12 +68,31 @@ namespace TFCS__FirstWork
             aboutForm.Show();
         }
 
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+        
         private void NumericUpDownPassword_ValueChanged(object sender, EventArgs e)
         {
-            return;
+            while (numericUpDownPassword.Value < 6)
+            {
+                numericUpDownPassword.Value = 6;
+            }
+
+            sizePassword = (int)numericUpDownPassword.Value;
         }
 
-        private void CloseButton_Click(object sender, EventArgs e)
+        private void daysToExpired_ValueChanged(object sender, EventArgs e)
+        {
+            while (daysToExpired.Value < 1)
+            {
+                daysToExpired.Value = 1;
+            }
+            dataToExpired = (int)daysToExpired.Value;
+        }
+
+        private void SaveAndCloseButton_Click(object sender, EventArgs e)
         {
             return;
         }
