@@ -13,14 +13,14 @@ namespace TFCS__FirstWork
 {
     public partial class ChangeUserForm : Form
     {
-        string login;
+        string loginGlobal;
         public ChangeUserForm(string UserLogIn)
         {
             InitializeComponent();
             CloseButton.BackColor = Color.Transparent;
             AboutProgramButton.BackColor = Color.Transparent;
             FreezAccountCheckBox.BackColor = Color.Transparent;
-            login = UserLogIn;
+            loginGlobal = UserLogIn;
         }
 
         private void CloseButton_MouseEnter(object sender, EventArgs e)
@@ -70,24 +70,30 @@ namespace TFCS__FirstWork
         }
         private void SetRestrictionsButton_Click(object sender, EventArgs e)
         {
-            ChoiceRestrictionsForm choiceRestrictionsForm = new ChoiceRestrictionsForm(login);
+            ChoiceRestrictionsForm choiceRestrictionsForm = new ChoiceRestrictionsForm(loginGlobal);
             choiceRestrictionsForm.Show();
         }
         private void SaveChangesAndCloseButton_Click(object sender, EventArgs e)
         {
-            return;
-
-
+            
         }
         private void DeleteUserAndCansleButton_Click(object sender, EventArgs e)
         {
-            return;
-        }
+            DataBase dataBase = new DataBase();
+            SqlCommand commandDelete = new SqlCommand("DELETE TOKB.dbo.Users WHERE Login = @userLogin", dataBase.GetConnection());
+            commandDelete.Parameters.AddWithValue("@userLogin", loginGlobal);
 
-        private void FreezAccountCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            return;
+            dataBase.OpenConnection();
 
+            if(commandDelete.ExecuteNonQuery() == 1)
+            {
+                MessageBox.Show("Все данные о пользователе успешно удалены", "Уведомление", MessageBoxButtons.OK);
+            }
+            dataBase.CloseConnection();
+
+            this.Hide();
+            SelectUserForm selectUserForm = new SelectUserForm();
+            selectUserForm.Show();
         }
     }
 }
