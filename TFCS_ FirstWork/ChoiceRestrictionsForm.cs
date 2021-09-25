@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -94,7 +95,44 @@ namespace TFCS__FirstWork
 
         private void SaveAndCloseButton_Click(object sender, EventArgs e)
         {
-            return;
+            string sqlFormattedDateToExpired = DateTime.Now.AddDays(dataToExpired).ToString("yyyy-MM-dd HH:mm:ss.fff");
+
+            DataBase dataBase = new DataBase();
+
+            SqlCommand commandData = new SqlCommand("UPDATE TOKB.dbo.Users SET password_expires = @sqlFormattedDateToExpired WHERE Login = @userLogin", dataBase.GetConnection());
+            commandData.Parameters.AddWithValue("@sqlFormattedDateToExpired", sqlFormattedDateToExpired);
+            commandData.Parameters.AddWithValue("@userLogin", loginGglobal);
+
+            SqlCommand commandSizePassword = new SqlCommand("UPDATE TOKB.dbo.Users SET size_password = @sizePassword WHERE Login = @userLogin", dataBase.GetConnection());
+            commandSizePassword.Parameters.AddWithValue("@sizePassword", sizePassword);
+            commandSizePassword.Parameters.AddWithValue("@userLogin", loginGglobal);
+            
+            dataBase.OpenConnection();
+            if (DifferentСharactersPasswordCheckBox.Checked)
+            {
+                SqlCommand commandUpgradePassword = new SqlCommand("UPDATE TOKB.dbo.Users SET hard_password = 1 WHERE Login = @userLogin", dataBase.GetConnection());
+                commandUpgradePassword.Parameters.AddWithValue("@userLogin", loginGglobal);
+                if ((commandData.ExecuteNonQuery() == 1) && (commandSizePassword.ExecuteNonQuery() == 1) && (commandUpgradePassword.ExecuteNonQuery() == 1))
+                {
+                    MessageBox.Show("Все данные успешно изменены", "Уведомление", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Произошла ошибка обновления данных", "Ошибка", MessageBoxButtons.OK);
+                }
+            }
+            else
+            {
+                if ((commandData.ExecuteNonQuery() == 1) && (commandSizePassword.ExecuteNonQuery() == 1))
+                {
+                    MessageBox.Show("Все данные успешно изменены", "Уведомление", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Произошла ошибка обновления данных", "Ошибка", MessageBoxButtons.OK);
+                }
+            }
+            dataBase.CloseConnection();
         }
     }
 }
