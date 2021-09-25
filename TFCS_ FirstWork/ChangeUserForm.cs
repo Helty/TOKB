@@ -75,7 +75,24 @@ namespace TFCS__FirstWork
         }
         private void SaveChangesAndCloseButton_Click(object sender, EventArgs e)
         {
-            
+            DataBase dataBase = new DataBase();
+            SqlCommand commandFrozen = new SqlCommand("UPDATE TOKB.dbo.Users SET is_frozen = 1 WHERE Login = @userLogin", dataBase.GetConnection());
+            commandFrozen.Parameters.AddWithValue("@userLogin", loginGlobal);
+
+            dataBase.OpenConnection();
+
+            if (FreezAccountCheckBox.Checked)
+            {
+                if (commandFrozen.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Пользователь успешно заморожен", "Уведомление", MessageBoxButtons.OK);
+                }
+            }
+            dataBase.CloseConnection();
+
+            this.Hide();
+            SelectUserForm selectUserForm = new SelectUserForm();
+            selectUserForm.Show();
         }
         private void DeleteUserAndCansleButton_Click(object sender, EventArgs e)
         {
