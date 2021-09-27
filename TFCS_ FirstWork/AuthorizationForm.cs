@@ -90,13 +90,39 @@ namespace TFCS__FirstWork
                 }
                 else
                 {
-                    this.Hide();
-                    UserForm UserForm = new UserForm(LoginUser);
-                    UserForm.Show();
+                    SqlCommand commandFrozen = new SqlCommand("SELECT * FROM TOKB.dbo.Users WHERE Login = @uL AND is_frozen = 1", DataBase.GetConnection());
+                    commandFrozen.Parameters.Add("@uL", SqlDbType.VarChar).Value = LoginUser;
+
+                    DataBase.OpenConnection();
+
+                    if (commandFrozen.ExecuteScalar() != null)
+                    {
+                        DataBase.CloseConnection();
+                        MessageBox.Show("Ваш аккаунт заморожен", "Уведомление", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        SqlCommand commandIsFirstLogin = new SqlCommand("SELECT * FROM TOKB.dbo.Users WHERE Login = @uL AND is_first_login = 1", DataBase.GetConnection());
+                        commandIsFirstLogin.Parameters.Add("@uL", SqlDbType.VarChar).Value = LoginUser;
+
+                        if (commandIsFirstLogin.ExecuteScalar() != null)
+                        {
+                            this.Hide();
+                            ChangePasswordForm changePasswordForm = new ChangePasswordForm(LoginUser);
+                            changePasswordForm.Show();                           
+                        }
+                        else
+                        {
+                            this.Hide();
+                            UserForm UserForm = new UserForm(LoginUser);
+                            UserForm.Show();
+                        }
+                    }                   
                 }
             }
             else
             {
+                DataBase.CloseConnection();
                 MessageBox.Show("Не верные данные!");
             }
         }
