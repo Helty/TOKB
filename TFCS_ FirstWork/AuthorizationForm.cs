@@ -102,20 +102,35 @@ namespace TFCS__FirstWork
                     }
                     else
                     {
-                        SqlCommand commandIsFirstLogin = new SqlCommand("SELECT * FROM TOKB.dbo.Users WHERE Login = @uL AND is_first_login = 1", DataBase.GetConnection());
-                        commandIsFirstLogin.Parameters.Add("@uL", SqlDbType.VarChar).Value = LoginUser;
+                        SqlCommand commandPasswordExpired = new SqlCommand("SELECT password_expires FROM TOKB.dbo.Users WHERE Login = @uL", DataBase.GetConnection());
+                        commandPasswordExpired.Parameters.Add("@uL", SqlDbType.VarChar).Value = LoginUser;
 
-                        if (commandIsFirstLogin.ExecuteScalar() != null)
+                        DateTime localDate = DateTime.Now;
+
+                        if (localDate >= (DateTime)commandPasswordExpired.ExecuteScalar())
                         {
+                            MessageBox.Show("Пароль больше не действительный, смените его", "Уведомление", MessageBoxButtons.OK);
                             this.Hide();
                             ChangePasswordForm changePasswordForm = new ChangePasswordForm(LoginUser);
-                            changePasswordForm.Show();                           
+                            changePasswordForm.Show();
                         }
                         else
                         {
-                            this.Hide();
-                            UserForm UserForm = new UserForm(LoginUser);
-                            UserForm.Show();
+                            SqlCommand commandIsFirstLogin = new SqlCommand("SELECT * FROM TOKB.dbo.Users WHERE Login = @uL AND is_first_login = 1", DataBase.GetConnection());
+                            commandIsFirstLogin.Parameters.Add("@uL", SqlDbType.VarChar).Value = LoginUser;
+
+                            if (commandIsFirstLogin.ExecuteScalar() != null)
+                            {
+                                this.Hide();
+                                ChangePasswordForm changePasswordForm = new ChangePasswordForm(LoginUser);
+                                changePasswordForm.Show();
+                            }
+                            else
+                            {
+                                this.Hide();
+                                UserForm UserForm = new UserForm(LoginUser);
+                                UserForm.Show();
+                            }
                         }
                     }                   
                 }

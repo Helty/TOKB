@@ -5,7 +5,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -85,24 +87,54 @@ namespace TFCS__FirstWork
             command.Parameters.AddWithValue("@userLogin", login);
 
             dataBase.OpenConnection();
+
             SqlDataReader reader = command.ExecuteReader();
             if (reader.HasRows)
             {
                 reader.Read();
             }
+
             if ((reader.GetString(0) == UserPasswordOld.Text) && (NewUserPassword.Text != UserPasswordOld.Text) && (NewUserPassword.Text == NewUserPasswordAgain.Text))
             {
                 reader.Close();
+
+                SqlCommand commandHardPassword = new SqlCommand("SELECT * FROM TOKB.dbo.Users WHERE Login = @userLogin AND is_hard_password = 1", dataBase.GetConnection());
+                commandHardPassword.Parameters.AddWithValue("@userLogin", login);
+
+                SqlCommand commandLongPassword = new SqlCommand("SELECT size_password FROM TOKB.dbo.Users WHERE Login = @userLogin", dataBase.GetConnection());
+                commandLongPassword.Parameters.AddWithValue("@userLogin", login);
+
+                string pattern = "(?=[!@#$%])";
+                Match m = Regex.Match(NewUserPassword.Text, pattern, RegexOptions.IgnoreCase);
+
+                if ((commandHardPassword.ExecuteScalar() != null) && !(m.Success))
+                {
+                    MessageBox.Show("Не удалось обновить пароль, убедитесь что в вашем пароле присутствуют символы: @, !, #, $, %", "Ошибка", MessageBoxButtons.OK);
+                    return;
+                }
+
+                SqlDataReader readerSizePassword = commandLongPassword.ExecuteReader();
+
+                if (readerSizePassword.HasRows)
+                {
+                    readerSizePassword.Read();
+                    object sizePassword = readerSizePassword.GetValue(0);
+                    if(NewUserPassword.Text.Length < (int)sizePassword)
+                    {
+                        readerSizePassword.Close();
+                        MessageBox.Show("Не удалось обновить пароль, убедитесь что вы ввели пароль длинной " + sizePassword.ToString(), "Ошибка", MessageBoxButtons.OK);
+                        return;
+                    }
+                }
+                readerSizePassword.Close();
 
                 SqlCommand commandTwo = new SqlCommand("UPDATE TOKB.dbo.Users SET Password = @newUserPassword WHERE Login = @userLogin", dataBase.GetConnection());
                 commandTwo.Parameters.AddWithValue("@newUserPassword", NewUserPassword.Text);
                 commandTwo.Parameters.AddWithValue("@userLogin", login);
 
                 if (commandTwo.ExecuteNonQuery() == 1)
-                {
-                    MessageBox.Show("Успешное обновление пароля", "Уведомление", MessageBoxButtons.OK);
-                    dataBase.CloseConnection();
-                    if(is_admin_account)
+                {                    
+                    if (is_admin_account)
                     {
                         this.Hide();
                         AdminForm adminForm = new AdminForm(login);
@@ -110,15 +142,33 @@ namespace TFCS__FirstWork
                     }
                     else
                     {
-                        this.Hide();
-                        UserForm UserForm = new UserForm(login);
-                        UserForm.Show();
+                        SqlCommand commandThree = new SqlCommand("UPDATE TOKB.dbo.Users SET is_first_login = 0 WHERE Login = @userLogin", dataBase.GetConnection());
+                        commandThree.Parameters.AddWithValue("@userLogin", login);
+
+                        if (commandThree.ExecuteNonQuery() == 1)
+                        {
+                            dataBase.CloseConnection();
+                            this.Hide();
+                            UserForm UserForm = new UserForm(login);
+                            UserForm.Show();
+                        }
+                        else
+                        {
+                            dataBase.CloseConnection();
+                            MessageBox.Show("Ошибка обновления переменной is_first_login", "Ошибка", MessageBoxButtons.OK);
+                        }
                     }
                 }
                 else
                 {
+                    dataBase.CloseConnection();
                     MessageBox.Show("Ошибка обновления пароля", "Ошибка", MessageBoxButtons.OK);
                 }
+            }
+            else
+            {
+                dataBase.CloseConnection();
+                MessageBox.Show("Ошибка обновления пароля", "Ошибка", MessageBoxButtons.OK);
             }
         }
 
