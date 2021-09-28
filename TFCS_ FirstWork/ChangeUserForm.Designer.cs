@@ -36,6 +36,7 @@ namespace TFCS__FirstWork
             this.SaveChangesAndCloseButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Label();
             this.AboutProgramButton = new System.Windows.Forms.Label();
+            this.UnFreezAccountCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // FreezAccountCheckBox
@@ -44,7 +45,7 @@ namespace TFCS__FirstWork
             this.FreezAccountCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FreezAccountCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FreezAccountCheckBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.FreezAccountCheckBox.Location = new System.Drawing.Point(162, 130);
+            this.FreezAccountCheckBox.Location = new System.Drawing.Point(161, 140);
             this.FreezAccountCheckBox.Name = "FreezAccountCheckBox";
             this.FreezAccountCheckBox.Size = new System.Drawing.Size(157, 21);
             this.FreezAccountCheckBox.TabIndex = 0;
@@ -54,7 +55,7 @@ namespace TFCS__FirstWork
             // SetRestrictionsButton
             // 
             this.SetRestrictionsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SetRestrictionsButton.Location = new System.Drawing.Point(127, 80);
+            this.SetRestrictionsButton.Location = new System.Drawing.Point(127, 63);
             this.SetRestrictionsButton.Name = "SetRestrictionsButton";
             this.SetRestrictionsButton.Size = new System.Drawing.Size(222, 44);
             this.SetRestrictionsButton.TabIndex = 1;
@@ -115,6 +116,19 @@ namespace TFCS__FirstWork
             this.AboutProgramButton.MouseEnter += new System.EventHandler(this.AboutProgramButton_MouseEnter);
             this.AboutProgramButton.MouseLeave += new System.EventHandler(this.AboutProgramButton_MouseLeave);
             // 
+            // UnFreezAccountCheckBox
+            // 
+            this.UnFreezAccountCheckBox.AutoSize = true;
+            this.UnFreezAccountCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.UnFreezAccountCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.UnFreezAccountCheckBox.ForeColor = System.Drawing.SystemColors.Control;
+            this.UnFreezAccountCheckBox.Location = new System.Drawing.Point(141, 113);
+            this.UnFreezAccountCheckBox.Name = "UnFreezAccountCheckBox";
+            this.UnFreezAccountCheckBox.Size = new System.Drawing.Size(191, 21);
+            this.UnFreezAccountCheckBox.TabIndex = 8;
+            this.UnFreezAccountCheckBox.Text = "Разморозить аккаунт";
+            this.UnFreezAccountCheckBox.UseVisualStyleBackColor = true;
+            // 
             // ChangeUserForm
             // 
             this.AccessibleName = " ";
@@ -122,6 +136,7 @@ namespace TFCS__FirstWork
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(465, 236);
+            this.Controls.Add(this.UnFreezAccountCheckBox);
             this.Controls.Add(this.AboutProgramButton);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.SaveChangesAndCloseButton);
@@ -148,5 +163,6 @@ namespace TFCS__FirstWork
         private System.Windows.Forms.Button SaveChangesAndCloseButton;
         private System.Windows.Forms.Label CloseButton;
         private System.Windows.Forms.Label AboutProgramButton;
+        private System.Windows.Forms.CheckBox UnFreezAccountCheckBox;
     }
 }

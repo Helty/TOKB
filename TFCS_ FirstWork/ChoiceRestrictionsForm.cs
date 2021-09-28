@@ -14,7 +14,7 @@ namespace TFCS__FirstWork
     public partial class ChoiceRestrictionsForm : Form
     {
         static string loginGglobal;
-        static int sizePassword;
+        static int sizePassword = 6;
         static int dataToExpired;
         public ChoiceRestrictionsForm(string login)
         {
@@ -95,7 +95,7 @@ namespace TFCS__FirstWork
 
         private void SaveAndCloseButton_Click(object sender, EventArgs e)
         {
-            string sqlFormattedDateToExpired = DateTime.Now.AddDays(dataToExpired).ToString("yyyy-MM-dd HH:mm:ss.fff");
+            DateTime sqlFormattedDateToExpired = DateTime.Now.AddDays(dataToExpired);
 
             DataBase dataBase = new DataBase();
 
@@ -108,9 +108,10 @@ namespace TFCS__FirstWork
             commandSizePassword.Parameters.AddWithValue("@userLogin", loginGglobal);
             
             dataBase.OpenConnection();
+
             if (DifferentСharactersPasswordCheckBox.Checked)
             {
-                SqlCommand commandUpgradePassword = new SqlCommand("UPDATE TOKB.dbo.Users SET hard_password = 1 WHERE Login = @userLogin", dataBase.GetConnection());
+                SqlCommand commandUpgradePassword = new SqlCommand("UPDATE TOKB.dbo.Users SET is_hard_password = 1 WHERE Login = @userLogin", dataBase.GetConnection());
                 commandUpgradePassword.Parameters.AddWithValue("@userLogin", loginGglobal);
                 if ((commandData.ExecuteNonQuery() == 1) && (commandSizePassword.ExecuteNonQuery() == 1) && (commandUpgradePassword.ExecuteNonQuery() == 1))
                 {

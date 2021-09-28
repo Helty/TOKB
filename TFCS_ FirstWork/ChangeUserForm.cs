@@ -19,6 +19,7 @@ namespace TFCS__FirstWork
             InitializeComponent();
             CloseButton.BackColor = Color.Transparent;
             AboutProgramButton.BackColor = Color.Transparent;
+            UnFreezAccountCheckBox.BackColor = Color.Transparent;
             FreezAccountCheckBox.BackColor = Color.Transparent;
             loginGlobal = UserLogIn;
         }
@@ -79,15 +80,40 @@ namespace TFCS__FirstWork
             SqlCommand commandFrozen = new SqlCommand("UPDATE TOKB.dbo.Users SET is_frozen = 1 WHERE Login = @userLogin", dataBase.GetConnection());
             commandFrozen.Parameters.AddWithValue("@userLogin", loginGlobal);
 
+            SqlCommand commandUnFrozen = new SqlCommand("UPDATE TOKB.dbo.Users SET is_frozen = 0 WHERE Login = @userLogin", dataBase.GetConnection());
+            commandUnFrozen.Parameters.AddWithValue("@userLogin", loginGlobal);
+
             dataBase.OpenConnection();
 
-            if (FreezAccountCheckBox.Checked)
+            if (FreezAccountCheckBox.Checked && !UnFreezAccountCheckBox.Checked)
             {
-                if (commandFrozen.ExecuteNonQuery() == 1)
+                try
                 {
+                    commandFrozen.ExecuteNonQuery();
                     MessageBox.Show("Пользователь успешно заморожен", "Уведомление", MessageBoxButtons.OK);
                 }
+                catch
+                {
+                    MessageBox.Show("Пользователя не удалось заморозить", "Ошибка", MessageBoxButtons.OK);
+                }   
             }
+            else if (!FreezAccountCheckBox.Checked && UnFreezAccountCheckBox.Checked)
+            {
+                try
+                {
+                    commandUnFrozen.ExecuteNonQuery();
+                    MessageBox.Show("Пользователь успешно разблокирован", "Уведомление", MessageBoxButtons.OK);
+                }
+                catch
+                {
+                    MessageBox.Show("Пользователя не удалось разморозить", "Ошибка", MessageBoxButtons.OK);
+                }
+            }
+            else if (FreezAccountCheckBox.Checked && UnFreezAccountCheckBox.Checked)
+            {
+                MessageBox.Show("Нельзя пользователя заблокировать и разблокировать одновременно", "Ошибка", MessageBoxButtons.OK);
+            }
+
             dataBase.CloseConnection();
 
             this.Hide();

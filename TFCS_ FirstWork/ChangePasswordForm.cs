@@ -25,18 +25,41 @@ namespace TFCS__FirstWork
         }
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            if (login.ToLower() == "admin")
+            DataBase dataBase = new DataBase();
+            SqlCommand commandIsFirstLogin = new SqlCommand("SELECT is_first_login FROM TOKB.dbo.Users WHERE Login = @userLogin", dataBase.GetConnection());
+            commandIsFirstLogin.Parameters.AddWithValue("@userLogin", login);
+
+            dataBase.OpenConnection();
+
+            SqlDataReader reader = commandIsFirstLogin.ExecuteReader();
+            reader.Read();
+
+            if ((bool)reader.GetValue(0) == true)
             {
                 this.Hide();
-                AdminForm adminForm = new AdminForm(login);
-                adminForm.Show();
+                AuthorizationForm authorizationForm = new AuthorizationForm();
+                dataBase.CloseConnection();
+                authorizationForm.Show();
             }
             else
             {
-                this.Hide();
-                UserForm UserForm = new UserForm(login);
-                UserForm.Show();
+                if (login.ToLower() == "admin")
+                {
+                    this.Hide();
+                    AdminForm adminForm = new AdminForm(login);
+                    dataBase.CloseConnection();
+                    adminForm.Show();
+                }
+                else
+                {
+                    this.Hide();
+                    UserForm UserForm = new UserForm(login);
+                    dataBase.CloseConnection();
+                    UserForm.Show();
+                }
+
             }
+            
         }
 
         private void AboutProgramButton_Click(object sender, EventArgs e)

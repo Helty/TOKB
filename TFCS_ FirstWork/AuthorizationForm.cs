@@ -105,31 +105,70 @@ namespace TFCS__FirstWork
                         SqlCommand commandPasswordExpired = new SqlCommand("SELECT password_expires FROM TOKB.dbo.Users WHERE Login = @uL", DataBase.GetConnection());
                         commandPasswordExpired.Parameters.Add("@uL", SqlDbType.VarChar).Value = LoginUser;
 
-                        DateTime localDate = DateTime.Now;
+                        SqlCommand commandIsFirstLogin = new SqlCommand("SELECT is_first_login FROM TOKB.dbo.Users WHERE Login = @uL", DataBase.GetConnection());
+                        commandIsFirstLogin.Parameters.Add("@uL", SqlDbType.VarChar).Value = LoginUser;
 
-                        if (localDate >= (DateTime)commandPasswordExpired.ExecuteScalar())
+                        SqlDataReader readerPasswordExpired = commandPasswordExpired.ExecuteReader();
+                        
+                        readerPasswordExpired.Read();
+                        if (readerPasswordExpired.IsDBNull(0))
                         {
-                            MessageBox.Show("Пароль больше не действительный, смените его", "Уведомление", MessageBoxButtons.OK);
-                            this.Hide();
-                            ChangePasswordForm changePasswordForm = new ChangePasswordForm(LoginUser);
-                            changePasswordForm.Show();
-                        }
-                        else
-                        {
-                            SqlCommand commandIsFirstLogin = new SqlCommand("SELECT * FROM TOKB.dbo.Users WHERE Login = @uL AND is_first_login = 1", DataBase.GetConnection());
-                            commandIsFirstLogin.Parameters.Add("@uL", SqlDbType.VarChar).Value = LoginUser;
+                            readerPasswordExpired.Close();
+                            SqlDataReader readerIsFirstLogin = commandIsFirstLogin.ExecuteReader();
+                            readerIsFirstLogin.Read();
 
-                            if (commandIsFirstLogin.ExecuteScalar() != null)
+                            var is_first_login = (bool)readerIsFirstLogin.GetValue(0);
+                            readerIsFirstLogin.Close();
+
+
+                            if (is_first_login)
                             {
+                                MessageBox.Show("Вы зашли впервые, смените пароль", "Уведомление", MessageBoxButtons.OK);
                                 this.Hide();
                                 ChangePasswordForm changePasswordForm = new ChangePasswordForm(LoginUser);
+                                readerIsFirstLogin.Close();
                                 changePasswordForm.Show();
                             }
                             else
                             {
                                 this.Hide();
                                 UserForm UserForm = new UserForm(LoginUser);
+                                readerIsFirstLogin.Close();
                                 UserForm.Show();
+                            }
+                        }
+                        else
+                        {
+                            DateTime localDate = DateTime.Now;
+                            DateTime dbTime = (DateTime)readerPasswordExpired.GetValue(0);
+                            readerPasswordExpired.Close();
+
+                            if (localDate < dbTime)
+                            {
+                                SqlDataReader readerIsFirstLogin = commandIsFirstLogin.ExecuteReader();
+                                readerIsFirstLogin.Read();
+                                if (commandIsFirstLogin.ExecuteScalar() != null)
+                                {
+                                    MessageBox.Show("Вы впервые зашли, смените пароль", "Уведомление", MessageBoxButtons.OK);
+                                    this.Hide();
+                                    ChangePasswordForm changePasswordForm = new ChangePasswordForm(LoginUser);
+                                    readerIsFirstLogin.Close();
+                                    changePasswordForm.Show();
+                                }
+                                else
+                                {
+                                    this.Hide();
+                                    UserForm UserForm = new UserForm(LoginUser);
+                                    readerIsFirstLogin.Close();
+                                    UserForm.Show();
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Пароль больше не действительный, смените его", "Уведомление", MessageBoxButtons.OK);
+                                this.Hide();
+                                ChangePasswordForm changePasswordForm = new ChangePasswordForm(LoginUser);
+                                changePasswordForm.Show();
                             }
                         }
                     }                   
