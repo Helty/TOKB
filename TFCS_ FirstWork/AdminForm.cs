@@ -12,7 +12,7 @@ namespace TFCS__FirstWork
 {
     public partial class AdminForm : Form
     {
-        string login;
+        private string login;
         public AdminForm(string Login)
         {
             InitializeComponent();

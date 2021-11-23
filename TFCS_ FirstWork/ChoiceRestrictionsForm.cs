@@ -98,12 +98,13 @@ namespace TFCS__FirstWork
             DateTime sqlFormattedDateToExpired = DateTime.Now.AddDays(dataToExpired);
 
             DataBase dataBase = new DataBase();
+            Logging logging = new Logging();   
 
-            SqlCommand commandData = new SqlCommand("UPDATE TOKB.dbo.Users SET password_expires = @sqlFormattedDateToExpired WHERE Login = @userLogin", dataBase.GetConnection());
+            SqlCommand commandData = new SqlCommand("UPDATE TOKB.dbo.Users SET password_expires = @sqlFormattedDateToExpired WHERE login = @userLogin", dataBase.GetConnection());
             commandData.Parameters.AddWithValue("@sqlFormattedDateToExpired", sqlFormattedDateToExpired);
             commandData.Parameters.AddWithValue("@userLogin", loginGglobal);
 
-            SqlCommand commandSizePassword = new SqlCommand("UPDATE TOKB.dbo.Users SET size_password = @sizePassword WHERE Login = @userLogin", dataBase.GetConnection());
+            SqlCommand commandSizePassword = new SqlCommand("UPDATE TOKB.dbo.Users SET size_password = @sizePassword WHERE login = @userLogin", dataBase.GetConnection());
             commandSizePassword.Parameters.AddWithValue("@sizePassword", sizePassword);
             commandSizePassword.Parameters.AddWithValue("@userLogin", loginGglobal);
             
@@ -111,10 +112,11 @@ namespace TFCS__FirstWork
 
             if (DifferentСharactersPasswordCheckBox.Checked)
             {
-                SqlCommand commandUpgradePassword = new SqlCommand("UPDATE TOKB.dbo.Users SET is_hard_password = 1 WHERE Login = @userLogin", dataBase.GetConnection());
+                SqlCommand commandUpgradePassword = new SqlCommand("UPDATE TOKB.dbo.Users SET is_hard_password = 1 WHERE login = @userLogin", dataBase.GetConnection());
                 commandUpgradePassword.Parameters.AddWithValue("@userLogin", loginGglobal);
                 if ((commandData.ExecuteNonQuery() == 1) && (commandSizePassword.ExecuteNonQuery() == 1) && (commandUpgradePassword.ExecuteNonQuery() == 1))
                 {
+                    logging.AdminUpdateDateTimeExpiredAndSizePasswordAndHardestPassword(loginGglobal);
                     MessageBox.Show("Все данные успешно изменены", "Уведомление", MessageBoxButtons.OK);
                 }
                 else
@@ -126,6 +128,7 @@ namespace TFCS__FirstWork
             {
                 if ((commandData.ExecuteNonQuery() == 1) && (commandSizePassword.ExecuteNonQuery() == 1))
                 {
+                    logging.AdminUpdateDateTimeExpiredAndSizePassword(loginGglobal);
                     MessageBox.Show("Все данные успешно изменены", "Уведомление", MessageBoxButtons.OK);
                 }
                 else

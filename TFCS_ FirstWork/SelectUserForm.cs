@@ -27,7 +27,7 @@ namespace TFCS__FirstWork
 
             DataBase.OpenConnection();
 
-            SqlCommand Command = new SqlCommand("SELECT Login FROM TOKB.dbo.Users ORDER BY ID", DataBase.GetConnection());
+            SqlCommand Command = new SqlCommand("SELECT login FROM TOKB.dbo.Users ORDER BY id_user", DataBase.GetConnection());
 
             SqlDataReader Reader = Command.ExecuteReader();
 
@@ -36,7 +36,6 @@ namespace TFCS__FirstWork
             while(Reader.Read())
             {
                 Data.Add(new string[1]);
-
                 Data[Data.Count-1][0] = Reader[0].ToString();
             }
             Reader.Close();
@@ -123,6 +122,6 @@ namespace TFCS__FirstWork
                                 MessageBoxOptions.DefaultDesktopOnly
                                 );
             }
-        }
+        } 
     }
 }

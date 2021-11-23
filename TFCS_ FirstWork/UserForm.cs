@@ -52,6 +52,8 @@ namespace TFCS__FirstWork
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
+            Logging logging = new Logging();
+            logging.UserLogoutFromAccount(login);
             Application.Exit();
         }
 

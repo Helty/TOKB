@@ -81,7 +81,7 @@ namespace TFCS__FirstWork
             // 
             this.AboutProgramButton.AutoSize = true;
             this.AboutProgramButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AboutProgramButton.Font = new System.Drawing.Font("Stencil", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AboutProgramButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AboutProgramButton.ForeColor = System.Drawing.SystemColors.Control;
             this.AboutProgramButton.Location = new System.Drawing.Point(12, 10);
             this.AboutProgramButton.Name = "AboutProgramButton";

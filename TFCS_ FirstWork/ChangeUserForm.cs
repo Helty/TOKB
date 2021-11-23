@@ -74,13 +74,19 @@ namespace TFCS__FirstWork
             ChoiceRestrictionsForm choiceRestrictionsForm = new ChoiceRestrictionsForm(loginGlobal);
             choiceRestrictionsForm.Show();
         }
+        private void UserActionButton_Click(object sender, EventArgs e)
+        {
+            UserActionsForm userActionsForm = new UserActionsForm(loginGlobal);
+            userActionsForm.Show();
+        }
         private void SaveChangesAndCloseButton_Click(object sender, EventArgs e)
         {
             DataBase dataBase = new DataBase();
-            SqlCommand commandFrozen = new SqlCommand("UPDATE TOKB.dbo.Users SET is_frozen = 1 WHERE Login = @userLogin", dataBase.GetConnection());
+            Logging logging = new Logging();
+            SqlCommand commandFrozen = new SqlCommand("UPDATE TOKB.dbo.Users SET is_frozen = 1 WHERE login = @userLogin", dataBase.GetConnection());
             commandFrozen.Parameters.AddWithValue("@userLogin", loginGlobal);
 
-            SqlCommand commandUnFrozen = new SqlCommand("UPDATE TOKB.dbo.Users SET is_frozen = 0 WHERE Login = @userLogin", dataBase.GetConnection());
+            SqlCommand commandUnFrozen = new SqlCommand("UPDATE TOKB.dbo.Users SET is_frozen = 0 WHERE login = @userLogin", dataBase.GetConnection());
             commandUnFrozen.Parameters.AddWithValue("@userLogin", loginGlobal);
 
             dataBase.OpenConnection();
@@ -90,6 +96,7 @@ namespace TFCS__FirstWork
                 try
                 {
                     commandFrozen.ExecuteNonQuery();
+                    logging.AdminFrozenUser(loginGlobal);
                     MessageBox.Show("Пользователь успешно заморожен", "Уведомление", MessageBoxButtons.OK);
                 }
                 catch
@@ -102,7 +109,8 @@ namespace TFCS__FirstWork
                 try
                 {
                     commandUnFrozen.ExecuteNonQuery();
-                    MessageBox.Show("Пользователь успешно разблокирован", "Уведомление", MessageBoxButtons.OK);
+                    logging.AdminUnFrozenUser(loginGlobal);
+                    MessageBox.Show("Пользователь успешно разморожен", "Уведомление", MessageBoxButtons.OK);
                 }
                 catch
                 {
@@ -123,7 +131,7 @@ namespace TFCS__FirstWork
         private void DeleteUserAndCansleButton_Click(object sender, EventArgs e)
         {
             DataBase dataBase = new DataBase();
-            SqlCommand commandDelete = new SqlCommand("DELETE TOKB.dbo.Users WHERE Login = @userLogin", dataBase.GetConnection());
+            SqlCommand commandDelete = new SqlCommand("DELETE TOKB.dbo.Users WHERE login = @userLogin", dataBase.GetConnection());
             commandDelete.Parameters.AddWithValue("@userLogin", loginGlobal);
 
             dataBase.OpenConnection();

@@ -78,20 +78,26 @@ namespace TFCS__FirstWork
             }
 
             DataBase dataBase = new DataBase();
+            Logging logging = new Logging();
 
-            SqlCommand command = new SqlCommand("SELECT * FROM TOKB.dbo.Users WHERE Login = @username", dataBase.GetConnection());
+            SqlCommand command = new SqlCommand("SELECT * FROM TOKB.dbo.Users WHERE login = @username", dataBase.GetConnection());
             command.Parameters.AddWithValue("@username", NewUserLogin.Text);
             dataBase.OpenConnection();
             if (command.ExecuteScalar() == null)
             {
-                SqlCommand commandTwo = new SqlCommand("INSERT INTO TOKB.dbo.Users (Login, Password, is_frozen) VALUES (@UserLogin, @UserPassword, @is_frozen)", dataBase.GetConnection());
+                SqlCommand commandTwo = new SqlCommand("INSERT INTO TOKB.dbo.Users (login, password, is_frozen, size_password, is_first_login, is_hard_password) VALUES (@UserLogin, @UserPassword, @is_frozen, @size_password, @is_first_login, @is_hard_password)", dataBase.GetConnection());
                 
                 commandTwo.Parameters.AddWithValue("UserLogin", NewUserLogin.Text);
                 commandTwo.Parameters.AddWithValue("UserPassword", NewUserPassword.Text);
                 commandTwo.Parameters.AddWithValue("is_frozen", 0);
+                commandTwo.Parameters.AddWithValue("size_password", 6);
+                commandTwo.Parameters.AddWithValue("is_first_login", 1);
+                commandTwo.Parameters.AddWithValue("is_hard_password", 0);
 
                 if (commandTwo.ExecuteNonQuery() == 1)
                 {
+                    logging.UserAddFromAdmin(NewUserLogin.Text);
+
                     MessageBox.Show("Пользователь успешно добавлен в базу данных", "Уведомление", MessageBoxButtons.OK);
                 }
                 else

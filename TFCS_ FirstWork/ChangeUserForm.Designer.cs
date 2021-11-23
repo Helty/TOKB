@@ -37,6 +37,7 @@ namespace TFCS__FirstWork
             this.CloseButton = new System.Windows.Forms.Label();
             this.AboutProgramButton = new System.Windows.Forms.Label();
             this.UnFreezAccountCheckBox = new System.Windows.Forms.CheckBox();
+            this.UserActionButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // FreezAccountCheckBox
@@ -45,9 +46,9 @@ namespace TFCS__FirstWork
             this.FreezAccountCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FreezAccountCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FreezAccountCheckBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.FreezAccountCheckBox.Location = new System.Drawing.Point(161, 140);
+            this.FreezAccountCheckBox.Location = new System.Drawing.Point(150, 139);
             this.FreezAccountCheckBox.Name = "FreezAccountCheckBox";
-            this.FreezAccountCheckBox.Size = new System.Drawing.Size(157, 21);
+            this.FreezAccountCheckBox.Size = new System.Drawing.Size(157, 20);
             this.FreezAccountCheckBox.TabIndex = 0;
             this.FreezAccountCheckBox.Text = "Заморозить вход";
             this.FreezAccountCheckBox.UseVisualStyleBackColor = true;
@@ -55,9 +56,9 @@ namespace TFCS__FirstWork
             // SetRestrictionsButton
             // 
             this.SetRestrictionsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SetRestrictionsButton.Location = new System.Drawing.Point(127, 63);
+            this.SetRestrictionsButton.Location = new System.Drawing.Point(12, 63);
             this.SetRestrictionsButton.Name = "SetRestrictionsButton";
-            this.SetRestrictionsButton.Size = new System.Drawing.Size(222, 44);
+            this.SetRestrictionsButton.Size = new System.Drawing.Size(205, 44);
             this.SetRestrictionsButton.TabIndex = 1;
             this.SetRestrictionsButton.Text = "Установить ограничения";
             this.SetRestrictionsButton.UseVisualStyleBackColor = true;
@@ -122,12 +123,23 @@ namespace TFCS__FirstWork
             this.UnFreezAccountCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UnFreezAccountCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UnFreezAccountCheckBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.UnFreezAccountCheckBox.Location = new System.Drawing.Point(141, 113);
+            this.UnFreezAccountCheckBox.Location = new System.Drawing.Point(133, 113);
             this.UnFreezAccountCheckBox.Name = "UnFreezAccountCheckBox";
-            this.UnFreezAccountCheckBox.Size = new System.Drawing.Size(191, 21);
+            this.UnFreezAccountCheckBox.Size = new System.Drawing.Size(192, 20);
             this.UnFreezAccountCheckBox.TabIndex = 8;
             this.UnFreezAccountCheckBox.Text = "Разморозить аккаунт";
             this.UnFreezAccountCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // UserActionButton
+            // 
+            this.UserActionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.UserActionButton.Location = new System.Drawing.Point(237, 63);
+            this.UserActionButton.Name = "UserActionButton";
+            this.UserActionButton.Size = new System.Drawing.Size(205, 44);
+            this.UserActionButton.TabIndex = 9;
+            this.UserActionButton.Text = "Посмотреть действия пользователя";
+            this.UserActionButton.UseVisualStyleBackColor = true;
+            this.UserActionButton.Click += new System.EventHandler(this.UserActionButton_Click);
             // 
             // ChangeUserForm
             // 
@@ -136,6 +148,7 @@ namespace TFCS__FirstWork
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(465, 236);
+            this.Controls.Add(this.UserActionButton);
             this.Controls.Add(this.UnFreezAccountCheckBox);
             this.Controls.Add(this.AboutProgramButton);
             this.Controls.Add(this.CloseButton);
@@ -164,5 +177,6 @@ namespace TFCS__FirstWork
         private System.Windows.Forms.Label CloseButton;
         private System.Windows.Forms.Label AboutProgramButton;
         private System.Windows.Forms.CheckBox UnFreezAccountCheckBox;
+        private System.Windows.Forms.Button UserActionButton;
     }
 }

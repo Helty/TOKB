@@ -26,7 +26,7 @@ namespace TFCS__FirstWork
         private void CloseButton_Click(object sender, EventArgs e)
         {
             DataBase dataBase = new DataBase();
-            SqlCommand commandIsFirstLogin = new SqlCommand("SELECT is_first_login FROM TOKB.dbo.Users WHERE Login = @userLogin", dataBase.GetConnection());
+            SqlCommand commandIsFirstLogin = new SqlCommand("SELECT is_first_login FROM TOKB.dbo.Users WHERE login = @userLogin", dataBase.GetConnection());
             commandIsFirstLogin.Parameters.AddWithValue("@userLogin", login);
 
             dataBase.OpenConnection();
@@ -57,9 +57,7 @@ namespace TFCS__FirstWork
                     dataBase.CloseConnection();
                     UserForm.Show();
                 }
-
             }
-            
         }
 
         private void AboutProgramButton_Click(object sender, EventArgs e)
@@ -105,8 +103,9 @@ namespace TFCS__FirstWork
 
         private void ChangePassword(bool is_admin_account)
         {
+            Logging logging = new Logging();
             DataBase dataBase = new DataBase();
-            SqlCommand command = new SqlCommand("SELECT Password FROM TOKB.dbo.Users WHERE Login = @userLogin", dataBase.GetConnection());
+            SqlCommand command = new SqlCommand("SELECT password FROM TOKB.dbo.Users WHERE login = @userLogin", dataBase.GetConnection());
             command.Parameters.AddWithValue("@userLogin", login);
 
             dataBase.OpenConnection();
@@ -121,10 +120,10 @@ namespace TFCS__FirstWork
             {
                 reader.Close();
 
-                SqlCommand commandHardPassword = new SqlCommand("SELECT * FROM TOKB.dbo.Users WHERE Login = @userLogin AND is_hard_password = 1", dataBase.GetConnection());
+                SqlCommand commandHardPassword = new SqlCommand("SELECT * FROM TOKB.dbo.Users WHERE login = @userLogin AND is_hard_password = 1", dataBase.GetConnection());
                 commandHardPassword.Parameters.AddWithValue("@userLogin", login);
 
-                SqlCommand commandLongPassword = new SqlCommand("SELECT size_password FROM TOKB.dbo.Users WHERE Login = @userLogin", dataBase.GetConnection());
+                SqlCommand commandLongPassword = new SqlCommand("SELECT size_password FROM TOKB.dbo.Users WHERE login = @userLogin", dataBase.GetConnection());
                 commandLongPassword.Parameters.AddWithValue("@userLogin", login);
 
                 string pattern = "(?=[!@#$%])";
@@ -151,7 +150,7 @@ namespace TFCS__FirstWork
                 }
                 readerSizePassword.Close();
 
-                SqlCommand commandTwo = new SqlCommand("UPDATE TOKB.dbo.Users SET Password = @newUserPassword WHERE Login = @userLogin", dataBase.GetConnection());
+                SqlCommand commandTwo = new SqlCommand("UPDATE TOKB.dbo.Users SET password = @newUserPassword WHERE login = @userLogin", dataBase.GetConnection());
                 commandTwo.Parameters.AddWithValue("@newUserPassword", NewUserPassword.Text);
                 commandTwo.Parameters.AddWithValue("@userLogin", login);
 
@@ -165,11 +164,12 @@ namespace TFCS__FirstWork
                     }
                     else
                     {
-                        SqlCommand commandThree = new SqlCommand("UPDATE TOKB.dbo.Users SET is_first_login = 0 WHERE Login = @userLogin", dataBase.GetConnection());
+                        SqlCommand commandThree = new SqlCommand("UPDATE TOKB.dbo.Users SET is_first_login = 0 WHERE login = @userLogin", dataBase.GetConnection());
                         commandThree.Parameters.AddWithValue("@userLogin", login);
 
                         if (commandThree.ExecuteNonQuery() == 1)
                         {
+                            logging.UserChangePasswordInAccount(login);
                             dataBase.CloseConnection();
                             this.Hide();
                             UserForm UserForm = new UserForm(login);
