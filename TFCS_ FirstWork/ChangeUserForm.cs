@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TFCS__FirstWork
@@ -102,7 +96,7 @@ namespace TFCS__FirstWork
                 catch
                 {
                     MessageBox.Show("Пользователя не удалось заморозить", "Ошибка", MessageBoxButtons.OK);
-                }   
+                }
             }
             else if (!FreezAccountCheckBox.Checked && UnFreezAccountCheckBox.Checked)
             {
@@ -136,7 +130,7 @@ namespace TFCS__FirstWork
 
             dataBase.OpenConnection();
 
-            if(commandDelete.ExecuteNonQuery() == 1)
+            if (commandDelete.ExecuteNonQuery() == 1)
             {
                 MessageBox.Show("Все данные о пользователе успешно удалены", "Уведомление", MessageBoxButtons.OK);
             }

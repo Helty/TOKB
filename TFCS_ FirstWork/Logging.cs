@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TFCS__FirstWork
@@ -22,7 +17,7 @@ namespace TFCS__FirstWork
             idUserCommand.Parameters.AddWithValue("UserLogin", Login);
 
             SqlDataReader idUserReader = idUserCommand.ExecuteReader();
-            
+
             if (idUserReader.Read())
             {
                 SqlCommand command = new SqlCommand("INSERT INTO TOKB.dbo.Logging (id_user, time, description) VALUES (@UserId, @LogTime, @LogDescription)", dataBase.GetConnection());
@@ -36,7 +31,9 @@ namespace TFCS__FirstWork
                 {
                     command.ExecuteNonQuery();
 
-                }catch {
+                }
+                catch
+                {
                     MessageBox.Show("Ошибка логирования", "Уведомление", MessageBoxButtons.OK);
                 }
             }

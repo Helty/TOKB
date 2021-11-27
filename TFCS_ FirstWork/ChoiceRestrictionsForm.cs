@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TFCS__FirstWork
@@ -73,7 +67,7 @@ namespace TFCS__FirstWork
         {
             this.Hide();
         }
-        
+
         private void NumericUpDownPassword_ValueChanged(object sender, EventArgs e)
         {
             while (numericUpDownPassword.Value < 6)
@@ -98,7 +92,7 @@ namespace TFCS__FirstWork
             DateTime sqlFormattedDateToExpired = DateTime.Now.AddDays(dataToExpired);
 
             DataBase dataBase = new DataBase();
-            Logging logging = new Logging();   
+            Logging logging = new Logging();
 
             SqlCommand commandData = new SqlCommand("UPDATE TOKB.dbo.Users SET password_expires = @sqlFormattedDateToExpired WHERE login = @userLogin", dataBase.GetConnection());
             commandData.Parameters.AddWithValue("@sqlFormattedDateToExpired", sqlFormattedDateToExpired);
@@ -107,7 +101,7 @@ namespace TFCS__FirstWork
             SqlCommand commandSizePassword = new SqlCommand("UPDATE TOKB.dbo.Users SET size_password = @sizePassword WHERE login = @userLogin", dataBase.GetConnection());
             commandSizePassword.Parameters.AddWithValue("@sizePassword", sizePassword);
             commandSizePassword.Parameters.AddWithValue("@userLogin", loginGglobal);
-            
+
             dataBase.OpenConnection();
 
             if (DifferentСharactersPasswordCheckBox.Checked)

@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TFCS__FirstWork
@@ -21,7 +14,7 @@ namespace TFCS__FirstWork
             InitializeComponent();
             CloseButton.BackColor = Color.Transparent;
             AboutProgramButton.BackColor = Color.Transparent;
-            login = Login;   
+            login = Login;
         }
         private void CloseButton_Click(object sender, EventArgs e)
         {
@@ -141,7 +134,7 @@ namespace TFCS__FirstWork
                 {
                     readerSizePassword.Read();
                     object sizePassword = readerSizePassword.GetValue(0);
-                    if(NewUserPassword.Text.Length < (int)sizePassword)
+                    if (NewUserPassword.Text.Length < (int)sizePassword)
                     {
                         readerSizePassword.Close();
                         MessageBox.Show("Не удалось обновить пароль, убедитесь что вы ввели пароль длинной " + sizePassword.ToString(), "Ошибка", MessageBoxButtons.OK);
@@ -155,7 +148,7 @@ namespace TFCS__FirstWork
                 commandTwo.Parameters.AddWithValue("@userLogin", login);
 
                 if (commandTwo.ExecuteNonQuery() == 1)
-                {                    
+                {
                     if (is_admin_account)
                     {
                         this.Hide();

@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TFCS__FirstWork
@@ -33,10 +28,10 @@ namespace TFCS__FirstWork
 
             List<string[]> Data = new List<string[]>();
 
-            while(Reader.Read())
+            while (Reader.Read())
             {
                 Data.Add(new string[1]);
-                Data[Data.Count-1][0] = Reader[0].ToString();
+                Data[Data.Count - 1][0] = Reader[0].ToString();
             }
             Reader.Close();
 
@@ -44,7 +39,7 @@ namespace TFCS__FirstWork
 
             foreach (string[] login in Data)
             {
-                if(login != Data[0])
+                if (login != Data[0])
                 {
                     TableUserLoginFromDB.Rows.Add(login);
                 }
@@ -102,9 +97,9 @@ namespace TFCS__FirstWork
         private void SelectUserButton_Click(object sender, EventArgs e)
         {
             string login;
-            
+
             Int32 selectedCellCount = TableUserLoginFromDB.GetCellCount(DataGridViewElementStates.Selected);
-            
+
             if (selectedCellCount == 1)
             {
                 login = TableUserLoginFromDB.SelectedCells[0].Value.ToString();
@@ -114,14 +109,14 @@ namespace TFCS__FirstWork
             }
             else
             {
-                MessageBox.Show("Ошибка выбора, попробуйте заново", 
-                                "Сообщение", 
+                MessageBox.Show("Ошибка выбора, попробуйте заново",
+                                "Сообщение",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Information,
                                 MessageBoxDefaultButton.Button1,
                                 MessageBoxOptions.DefaultDesktopOnly
                                 );
             }
-        } 
+        }
     }
 }

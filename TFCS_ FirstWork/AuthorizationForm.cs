@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Data.SqlClient;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TFCS__FirstWork
@@ -68,7 +63,7 @@ namespace TFCS__FirstWork
 
             DataBase DataBase = new DataBase();
             Logging logging = new Logging();
-                
+
             DataTable Table = new DataTable();
 
             SqlDataAdapter Adapter = new SqlDataAdapter();
@@ -111,7 +106,7 @@ namespace TFCS__FirstWork
                         commandIsFirstLogin.Parameters.Add("@uL", SqlDbType.VarChar).Value = LoginUser;
 
                         SqlDataReader readerPasswordExpired = commandPasswordExpired.ExecuteReader();
-                        
+
                         readerPasswordExpired.Read();
                         if (readerPasswordExpired.IsDBNull(0))
                         {
@@ -178,7 +173,7 @@ namespace TFCS__FirstWork
                                 changePasswordForm.Show();
                             }
                         }
-                    }                   
+                    }
                 }
             }
             else
