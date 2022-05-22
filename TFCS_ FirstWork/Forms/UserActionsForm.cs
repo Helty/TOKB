@@ -20,12 +20,12 @@ namespace TFCS__FirstWork
 
             DataBase.OpenConnection();
 
-            SqlCommand idUserCommand = new SqlCommand("SELECT TOKB.dbo.Users.id_user FROM TOKB.dbo.Users WHERE login = @UserLogin", DataBase.GetConnection());
+            SqlCommand idUserCommand = new SqlCommand("SELECT TOKB.dbo.Users.id FROM TOKB.dbo.Users WHERE login = @UserLogin", DataBase.GetConnection());
             idUserCommand.Parameters.AddWithValue("UserLogin", loginGglobal);
 
             SqlDataReader idUserReader = idUserCommand.ExecuteReader();
 
-            SqlCommand Command = new SqlCommand("SELECT TOKB.dbo.Logging.time, TOKB.dbo.Logging.description FROM TOKB.dbo.Logging JOIN TOKB.dbo.Users ON TOKB.dbo.Users.id_user = @idUser AND TOKB.dbo.Logging.id_user = @idUser", DataBase.GetConnection());
+            SqlCommand Command = new SqlCommand("SELECT TOKB.dbo.Logging.time, TOKB.dbo.Logging.description FROM TOKB.dbo.Logging JOIN TOKB.dbo.Users ON TOKB.dbo.Users.id = @idUser AND TOKB.dbo.Logging.id_user = @idUser", DataBase.GetConnection());
             idUserReader.Read();
             Command.Parameters.AddWithValue("idUser", idUserReader.GetValue(0));
             idUserReader.Close();

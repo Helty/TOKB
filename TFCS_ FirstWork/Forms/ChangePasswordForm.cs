@@ -104,12 +104,14 @@ namespace TFCS__FirstWork
             dataBase.OpenConnection();
 
             SqlDataReader reader = command.ExecuteReader();
-            if (reader.HasRows)
-            {
-                reader.Read();
-            }
 
-            if ((reader.GetString(0) == UserPasswordOld.Text) && (NewUserPassword.Text != UserPasswordOld.Text) && (NewUserPassword.Text == NewUserPasswordAgain.Text))
+            if (reader.HasRows) reader.Read();
+
+            if (
+                (reader.GetString(0).Trim(' ') == UserPasswordOld.Text) &&
+                (NewUserPassword.Text != UserPasswordOld.Text) &&
+                (NewUserPassword.Text == NewUserPasswordAgain.Text)
+               )
             {
                 reader.Close();
 
@@ -171,33 +173,26 @@ namespace TFCS__FirstWork
                         else
                         {
                             dataBase.CloseConnection();
-                            MessageBox.Show("Ошибка обновления переменной is_first_login", "Ошибка", MessageBoxButtons.OK);
+                            MessageBox.Show("Ошибка обновления поля is_first_login в базе данных", "Ошибка", MessageBoxButtons.OK);
                         }
                     }
                 }
                 else
                 {
                     dataBase.CloseConnection();
-                    MessageBox.Show("Ошибка обновления пароля", "Ошибка", MessageBoxButtons.OK);
+                    MessageBox.Show("Ошибка обновления пароля commandTwo.ExecuteNonQuery() == 1", "Ошибка", MessageBoxButtons.OK);
                 }
             }
             else
             {
                 dataBase.CloseConnection();
-                MessageBox.Show("Ошибка обновления пароля", "Ошибка", MessageBoxButtons.OK);
+                MessageBox.Show("Ошибка обновления пароля (reader.GetString(0) == UserPasswordOld.Text) && (NewUserPassword.Text != UserPasswordOld.Text) && (NewUserPassword.Text == NewUserPasswordAgain.Text)", "Ошибка", MessageBoxButtons.OK);
             }
         }
 
         private void SaveNewPasswordAndContinueButton_Click(object sender, EventArgs e)
         {
-            if (login.ToLower() == "admin")
-            {
-                ChangePassword(true);
-            }
-            else
-            {
-                ChangePassword(false);
-            }
+            ChangePassword(login.ToLower() == "admin");
         }
     }
 }

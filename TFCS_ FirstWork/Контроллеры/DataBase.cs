@@ -4,7 +4,7 @@ namespace TFCS__FirstWork
 {
     class DataBase
     {
-        SqlConnection connection = new SqlConnection("Data Source=ANDREY-SHESTAKO;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        SqlConnection connection = new SqlConnection("Data Source=ANDREW\\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
         public void OpenConnection()
         {
