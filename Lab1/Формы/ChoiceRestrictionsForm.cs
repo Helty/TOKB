@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
@@ -20,6 +21,12 @@ namespace TOKB
             passwordExpired.BackColor = Color.Transparent;
             daysLabel.BackColor = Color.Transparent;
             loginGglobal = login;
+
+            foreach (DriveInfo disk in DriveInfo.GetDrives())
+            {
+                DriverComboboxCheck.Items.Add(disk.ToString());
+            }
+
         }
 
         private void AboutProgramButton_MouseEnter(object sender, EventArgs e)
@@ -91,6 +98,9 @@ namespace TOKB
         {
             DateTime sqlFormattedDateToExpired = DateTime.Now.AddDays(dataToExpired);
 
+            string diskForUserAvalible = "";
+            foreach (string distName in DriverComboboxCheck.CheckedItems) diskForUserAvalible += (distName + " ");
+
             DataBase dataBase = new DataBase();
             Logging logging = new Logging();
 
@@ -101,6 +111,10 @@ namespace TOKB
             SqlCommand commandSizePassword = new SqlCommand("UPDATE TOKB.dbo.Users SET size_password = @sizePassword WHERE login = @userLogin", dataBase.GetConnection());
             commandSizePassword.Parameters.AddWithValue("@sizePassword", sizePassword);
             commandSizePassword.Parameters.AddWithValue("@userLogin", loginGglobal);
+
+            SqlCommand commandDriveChoises = new SqlCommand("UPDATE TOKB.dbo.Users SET available_discs = @diskForUserAvalible WHERE login = @userLogin", dataBase.GetConnection());
+            commandDriveChoises.Parameters.AddWithValue("@diskForUserAvalible", diskForUserAvalible);
+            commandDriveChoises.Parameters.AddWithValue("@userLogin", loginGglobal);
 
             dataBase.OpenConnection();
 
@@ -120,9 +134,11 @@ namespace TOKB
             }
             else
             {
-                if ((commandData.ExecuteNonQuery() == 1) && (commandSizePassword.ExecuteNonQuery() == 1))
+                if ((commandData.ExecuteNonQuery() == 1) &&
+                    (commandSizePassword.ExecuteNonQuery() == 1) &&
+                    (commandDriveChoises.ExecuteNonQuery() == 1))
                 {
-                    logging.AdminUpdateDateTimeExpiredAndSizePassword(loginGglobal);
+                    logging.AdminUpdateDateTimeExpiredAndSizePasswordAndDriveChoises(loginGglobal);
                     MessageBox.Show("Все данные успешно изменены", "Уведомление", MessageBoxButtons.OK);
                 }
                 else

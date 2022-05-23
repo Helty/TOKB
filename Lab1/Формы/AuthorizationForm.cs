@@ -58,21 +58,18 @@ namespace TOKB
 
         private void AuthorizationButton_Click(object sender, EventArgs e)
         {
+
             string LoginUser = UserLogin.Text;
             string PasswordUser = UserPassword.Text;
 
             DataBase DataBase = new DataBase();
             Logging logging = new Logging();
-
             DataTable Table = new DataTable();
-
             SqlDataAdapter Adapter = new SqlDataAdapter();
 
             SqlCommand Command = new SqlCommand("SELECT * FROM TOKB.dbo.Users WHERE login = @uL AND password = @uP", DataBase.GetConnection());
-
             Command.Parameters.Add("@uL", SqlDbType.VarChar).Value = LoginUser;
             Command.Parameters.Add("@uP", SqlDbType.VarChar).Value = PasswordUser;
-
             Adapter.SelectCommand = Command;
             Adapter.Fill(Table);
 
@@ -105,62 +102,62 @@ namespace TOKB
                         SqlCommand commandIsFirstLogin = new SqlCommand("SELECT is_first_login FROM TOKB.dbo.Users WHERE login = @uL", DataBase.GetConnection());
                         commandIsFirstLogin.Parameters.Add("@uL", SqlDbType.VarChar).Value = LoginUser;
 
-                        SqlDataReader readerPasswordExpired = commandPasswordExpired.ExecuteReader();
+                        SqlDataReader readerIsFirstLogin, readerPasswordExpired;
 
+                        readerPasswordExpired = commandPasswordExpired.ExecuteReader();
                         readerPasswordExpired.Read();
+
                         if (readerPasswordExpired.IsDBNull(0))
                         {
                             readerPasswordExpired.Close();
-                            SqlDataReader readerIsFirstLogin = commandIsFirstLogin.ExecuteReader();
+
+                            readerIsFirstLogin = commandIsFirstLogin.ExecuteReader();
                             readerIsFirstLogin.Read();
 
-                            var is_first_login = (bool)readerIsFirstLogin.GetValue(0);
+                            bool is_first_login = (bool)readerIsFirstLogin.GetValue(0);
                             readerIsFirstLogin.Close();
-
 
                             if (is_first_login)
                             {
                                 logging.UserFirstlyLoginInAccount(LoginUser);
                                 MessageBox.Show("Вы зашли впервые, смените пароль", "Уведомление", MessageBoxButtons.OK);
+
                                 this.Hide();
                                 ChangePasswordForm changePasswordForm = new ChangePasswordForm(LoginUser);
-                                readerIsFirstLogin.Close();
                                 changePasswordForm.Show();
                             }
                             else
                             {
                                 logging.UserLoginInAccount(LoginUser);
+
                                 this.Hide();
                                 UserForm UserForm = new UserForm(LoginUser);
-                                readerIsFirstLogin.Close();
                                 UserForm.Show();
                             }
                         }
                         else
                         {
                             DateTime localDate = DateTime.Now;
-                            DateTime dbTime = (DateTime)readerPasswordExpired.GetValue(0);
+                            DateTime dbDate = (DateTime)readerPasswordExpired.GetValue(0);
                             readerPasswordExpired.Close();
 
-                            if (localDate < dbTime)
+                            if (localDate < dbDate)
                             {
-                                SqlDataReader readerIsFirstLogin = commandIsFirstLogin.ExecuteReader();
-                                readerIsFirstLogin.Read();
-                                if (commandIsFirstLogin.ExecuteScalar() != null)
+                                if ((bool)commandIsFirstLogin.ExecuteScalar() == true)
                                 {
                                     logging.UserFirstlyLoginInAccount(LoginUser);
                                     MessageBox.Show("Вы впервые зашли, смените пароль", "Уведомление", MessageBoxButtons.OK);
+
                                     this.Hide();
                                     ChangePasswordForm changePasswordForm = new ChangePasswordForm(LoginUser);
-                                    readerIsFirstLogin.Close();
                                     changePasswordForm.Show();
                                 }
                                 else
                                 {
-                                    this.Hide();
                                     logging.UserLoginInAccount(LoginUser);
+
+                                    this.Hide();
                                     UserForm UserForm = new UserForm(LoginUser);
-                                    readerIsFirstLogin.Close();
                                     UserForm.Show();
                                 }
                             }
@@ -168,6 +165,7 @@ namespace TOKB
                             {
                                 logging.UserTryLoginWithOldPassword(LoginUser);
                                 MessageBox.Show("Пароль больше не действительный, смените его", "Уведомление", MessageBoxButtons.OK);
+
                                 this.Hide();
                                 ChangePasswordForm changePasswordForm = new ChangePasswordForm(LoginUser);
                                 changePasswordForm.Show();

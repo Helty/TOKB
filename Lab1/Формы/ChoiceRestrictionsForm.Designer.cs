@@ -39,6 +39,8 @@ namespace TOKB
             this.daysToExpired = new System.Windows.Forms.NumericUpDown();
             this.daysLabel = new System.Windows.Forms.Label();
             this.passwordExpired = new System.Windows.Forms.Label();
+            this.DriverComboboxCheck = new System.Windows.Forms.CheckedListBox();
+            this.ChoiseDiskLable = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.daysToExpired)).BeginInit();
             this.SuspendLayout();
@@ -82,11 +84,11 @@ namespace TOKB
             // SaveAndCloseButton
             // 
             this.SaveAndCloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SaveAndCloseButton.Location = new System.Drawing.Point(180, 199);
+            this.SaveAndCloseButton.Location = new System.Drawing.Point(180, 356);
             this.SaveAndCloseButton.Name = "SaveAndCloseButton";
             this.SaveAndCloseButton.Size = new System.Drawing.Size(213, 33);
             this.SaveAndCloseButton.TabIndex = 5;
-            this.SaveAndCloseButton.Text = "Сохранить и выйти";
+            this.SaveAndCloseButton.Text = "Сохранить настройки";
             this.SaveAndCloseButton.UseVisualStyleBackColor = true;
             this.SaveAndCloseButton.Click += new System.EventHandler(this.SaveAndCloseButton_Click);
             // 
@@ -97,7 +99,7 @@ namespace TOKB
             this.CloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CloseButton.ForeColor = System.Drawing.Color.Black;
-            this.CloseButton.Location = new System.Drawing.Point(490, 9);
+            this.CloseButton.Location = new System.Drawing.Point(471, 9);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(73, 25);
             this.CloseButton.TabIndex = 6;
@@ -155,13 +157,35 @@ namespace TOKB
             this.passwordExpired.TabIndex = 11;
             this.passwordExpired.Text = "Действие пароля истекает через";
             // 
+            // DriverComboboxCheck
+            // 
+            this.DriverComboboxCheck.FormattingEnabled = true;
+            this.DriverComboboxCheck.Location = new System.Drawing.Point(28, 227);
+            this.DriverComboboxCheck.Name = "DriverComboboxCheck";
+            this.DriverComboboxCheck.ScrollAlwaysVisible = true;
+            this.DriverComboboxCheck.Size = new System.Drawing.Size(513, 123);
+            this.DriverComboboxCheck.Sorted = true;
+            this.DriverComboboxCheck.TabIndex = 12;
+            // 
+            // ChoiseDiskLable
+            // 
+            this.ChoiseDiskLable.AutoSize = true;
+            this.ChoiseDiskLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChoiseDiskLable.Location = new System.Drawing.Point(25, 200);
+            this.ChoiseDiskLable.Name = "ChoiseDiskLable";
+            this.ChoiseDiskLable.Size = new System.Drawing.Size(464, 18);
+            this.ChoiseDiskLable.TabIndex = 13;
+            this.ChoiseDiskLable.Text = "Выберите диски, которые пользователь сможет открыть";
+            // 
             // ChoiceRestrictionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(575, 269);
+            this.ClientSize = new System.Drawing.Size(575, 401);
+            this.Controls.Add(this.ChoiseDiskLable);
+            this.Controls.Add(this.DriverComboboxCheck);
             this.Controls.Add(this.passwordExpired);
             this.Controls.Add(this.daysLabel);
             this.Controls.Add(this.daysToExpired);
@@ -195,5 +219,7 @@ namespace TOKB
         private System.Windows.Forms.NumericUpDown daysToExpired;
         private System.Windows.Forms.Label daysLabel;
         private System.Windows.Forms.Label passwordExpired;
+        private System.Windows.Forms.CheckedListBox DriverComboboxCheck;
+        private System.Windows.Forms.Label ChoiseDiskLable;
     }
 }

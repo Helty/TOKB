@@ -34,6 +34,8 @@ namespace TOKB
             this.AboutProgramButton = new System.Windows.Forms.Label();
             this.BackToAuthorizationButton = new System.Windows.Forms.Label();
             this.ChangePasswordUser = new System.Windows.Forms.Button();
+            this.DisksComboBox = new System.Windows.Forms.ComboBox();
+            this.OpenDiskButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CloseButton
@@ -56,11 +58,11 @@ namespace TOKB
             // 
             this.AboutProgramButton.AutoSize = true;
             this.AboutProgramButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AboutProgramButton.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AboutProgramButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AboutProgramButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.AboutProgramButton.Location = new System.Drawing.Point(12, 11);
             this.AboutProgramButton.Name = "AboutProgramButton";
-            this.AboutProgramButton.Size = new System.Drawing.Size(133, 24);
+            this.AboutProgramButton.Size = new System.Drawing.Size(150, 25);
             this.AboutProgramButton.TabIndex = 6;
             this.AboutProgramButton.Text = "О программе";
             this.AboutProgramButton.Click += new System.EventHandler(this.AboutProgramButton_Click);
@@ -93,6 +95,24 @@ namespace TOKB
             this.ChangePasswordUser.UseVisualStyleBackColor = true;
             this.ChangePasswordUser.Click += new System.EventHandler(this.ChangePasswordUser_Click);
             // 
+            // DisksComboBox
+            // 
+            this.DisksComboBox.FormattingEnabled = true;
+            this.DisksComboBox.Location = new System.Drawing.Point(139, 65);
+            this.DisksComboBox.Name = "DisksComboBox";
+            this.DisksComboBox.Size = new System.Drawing.Size(194, 24);
+            this.DisksComboBox.TabIndex = 10;
+            // 
+            // OpenDiskButton
+            // 
+            this.OpenDiskButton.Location = new System.Drawing.Point(177, 95);
+            this.OpenDiskButton.Name = "OpenDiskButton";
+            this.OpenDiskButton.Size = new System.Drawing.Size(121, 39);
+            this.OpenDiskButton.TabIndex = 11;
+            this.OpenDiskButton.Text = "Открыть диск";
+            this.OpenDiskButton.UseVisualStyleBackColor = true;
+            this.OpenDiskButton.Click += new System.EventHandler(this.OpenDiskButton_Click);
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -100,6 +120,8 @@ namespace TOKB
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(464, 250);
+            this.Controls.Add(this.OpenDiskButton);
+            this.Controls.Add(this.DisksComboBox);
             this.Controls.Add(this.ChangePasswordUser);
             this.Controls.Add(this.BackToAuthorizationButton);
             this.Controls.Add(this.AboutProgramButton);
@@ -121,5 +143,7 @@ namespace TOKB
         private System.Windows.Forms.Label AboutProgramButton;
         private System.Windows.Forms.Label BackToAuthorizationButton;
         private System.Windows.Forms.Button ChangePasswordUser;
+        private System.Windows.Forms.ComboBox DisksComboBox;
+        private System.Windows.Forms.Button OpenDiskButton;
     }
 }

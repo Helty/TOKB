@@ -27,17 +27,14 @@ namespace TOKB
                 command.Parameters.AddWithValue("LogDescription", message);
                 idUserReader.Close();
 
-                command.ExecuteNonQuery();
-
-                //try
-                //{
-                //    command.ExecuteNonQuery();
-
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("Ошибка логирования command.ExecuteNonQuery();", "Уведомление", MessageBoxButtons.OK);
-                //}
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка логирования command.ExecuteNonQuery();", "Уведомление", MessageBoxButtons.OK);
+                }
             }
             else
             {
@@ -86,9 +83,9 @@ namespace TOKB
         {
             InsertDescriptionDataForUser(LoginUser, "Админ обновил время истечения пароля, размер пароля и установил усложнённый пароль");
         }
-        public void AdminUpdateDateTimeExpiredAndSizePassword(string LoginUser)
+        public void AdminUpdateDateTimeExpiredAndSizePasswordAndDriveChoises(string LoginUser)
         {
-            InsertDescriptionDataForUser(LoginUser, "Админ обновил время истечения пароля и размер пароля");
+            InsertDescriptionDataForUser(LoginUser, "Админ обновил время истечения пароля, размер пароля и доступные для пользователя диски.");
         }
     }
 }
