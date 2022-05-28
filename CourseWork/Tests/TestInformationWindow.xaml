@@ -1,0 +1,39 @@
+﻿<Window x:Class="CourseWork.TestInformationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseWork"
+        mc:Ignorable="d"
+        Title="Информация по тестам" Height="495" Width="741">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="42*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110*"/>
+            <ColumnDefinition Width="146*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="ResultTitle" Content="Итог: " HorizontalAlignment="Left" Margin="23,0,0,0" VerticalAlignment="Center" Width="64" Height="30" FontSize="16" FontFamily="Arial Black" Grid.Column="1" Grid.Row="10"/>
+        <Label Content="5) Автокорреляционная функция (АКФ):" HorizontalAlignment="Center" VerticalAlignment="Center" Width="299" Height="26" Grid.Row="4" FontFamily="Segoe UI Black" HorizontalContentAlignment="Center"/>
+        <Label Content="4) Проверка на монотонность:" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="299" Height="26" FontFamily="Segoe UI Black" HorizontalContentAlignment="Center"/>
+        <Label Content="3) Проверка серий:" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="299" Height="26" FontFamily="Segoe UI Black" HorizontalContentAlignment="Center"/>
+        <Label Content="2) Распределение на плоскости:" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="299" Height="26" FontFamily="Segoe UI Black" HorizontalContentAlignment="Center"/>
+        <Label Content="1) Гистограмма распределения:" HorizontalAlignment="Center" VerticalAlignment="Center" Width="299" Height="26" FontWeight="Bold" FontFamily="Segoe UI Black" HorizontalContentAlignment="Center"/>
+        <Label Content="6) Проверка несцепленных серий:" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Width="299" Height="25" FontFamily="Segoe UI Black" HorizontalContentAlignment="Center"/>
+        <Label Content="7) Проверка интервалов:" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="299" Height="26" FontFamily="Segoe UI Black" HorizontalContentAlignment="Center"/>
+        <Label Content="8) Проверка комбинаций:" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Width="299" Height="26" FontFamily="Segoe UI Black" HorizontalContentAlignment="Center"/>
+        <Label Content="9) Тест собирателя купонов:" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Width="299" Height="26" FontFamily="Segoe UI Black" HorizontalContentAlignment="Center"/>
+        <Label Content="10) Тест перестановок:" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Center" Width="299" Height="26" FontFamily="Segoe UI Black" HorizontalContentAlignment="Center"/>
+    </Grid>
+</Window>

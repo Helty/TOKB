@@ -55,6 +55,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Tests\Statistic\CouponCollectorTest.cs" />
+    <Compile Include="Tests\Statistic\IntervalTest.cs" />
+    <Compile Include="Tests\Statistic\MonotonicityTest.cs" />
+    <Compile Include="Tests\Statistic\UnlinkedTest.cs" />
+    <Compile Include="Tests\Statistic\СombinationTest.cs" />
+    <Compile Include="Tests\TestInformationWindow.xaml.cs">
+      <DependentUpon>TestInformationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\Graphics\AutocorrelationFunctionWindow.xaml.cs">
+      <DependentUpon>AutocorrelationFunctionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\Graphics\DistributionHistogramWindow.xaml.cs">
+      <DependentUpon>DistributionHistogramWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\Graphics\FlatDistributionWindow.xaml.cs">
+      <DependentUpon>FlatDistributionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\Graphics\MonotonicityCheckWindow.xaml.cs">
+      <DependentUpon>MonotonicityCheckWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\Graphics\SeriesСheckWindow.xaml.cs">
+      <DependentUpon>SeriesСheckWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +90,30 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Tests\TestInformationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tests\Graphics\AutocorrelationFunctionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tests\Graphics\DistributionHistogramWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tests\Graphics\FlatDistributionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tests\Graphics\MonotonicityCheckWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tests\Graphics\SeriesСheckWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -93,6 +140,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tests\Tools\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
