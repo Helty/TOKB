@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,46 @@ namespace CourseWork
         public MainWindow()
         {
             InitializeComponent();
+            this.SequenceNumberTextBox.PreviewTextInput += new TextCompositionEventHandler(SequenceNumberTextBox_PreviewTextInput);
+        }
+
+        private void OpenTxtFileRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.SequenceNumberTextBox.IsEnabled = false;
+            this.OpenTxtFileButton.IsEnabled = true;
+        }
+
+        private void UserInputRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.SequenceNumberTextBox.IsEnabled = true;
+            this.OpenTxtFileButton.IsEnabled = false;
+        }
+
+        private void SequenceNumberTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0)) e.Handled = true;
+        }
+
+        private void OpenTxtFileButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                CheckFileExists = true,
+                CheckPathExists = true,
+                Multiselect = false,
+                Title = "Выберите файл"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string filename = openFileDialog.FileName;
+                MessageBox.Show(filename);
+            }
+        }
+
+        private void StartTestsButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
