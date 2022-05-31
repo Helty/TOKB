@@ -10,9 +10,8 @@
         <Button x:Name="StartTestsButton" Content="Проверить" HorizontalAlignment="Left" VerticalAlignment="Top" Height="29" Width="141" Margin="540,160,0,0" FontWeight="Bold" FontSize="14" Cursor="Hand" Background="White" Click="StartTestsButton_Click"/>
         <TextBox x:Name="SequenceNumberTextBox" HorizontalAlignment="Left" Margin="162,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="519" AutomationProperties.IsColumnHeader="False" FontWeight="Bold" FontSize="14" Height="21" PreviewTextInput="SequenceNumberTextBox_PreviewTextInput"/>
         <Label x:Name="MainLable" Content="Числовая последовательность:" Margin="0,21,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" FontStyle="Italic" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Background="White" HorizontalAlignment="Center" Width="393"/>
+        <Button x:Name="OpenTxtFileButton" Content="Выбрать файл c числовой последовательностью" HorizontalAlignment="Left" VerticalAlignment="Top" Height="27" Width="519" Margin="162,111,0,0" FontWeight="Bold" FontSize="14" Cursor="Hand" Background="White" Click="OpenTxtFileButton_Click" IsEnabled="False"/>
         <RadioButton x:Name="UserInputRadioButton" Content="Ввести" HorizontalAlignment="Left" Margin="30,74,0,0" VerticalAlignment="Top" Width="86" Height="21" Checked="UserInputRadioButton_Checked"/>
         <RadioButton x:Name="OpenTxtFileRadioButton" Content="Выбрать файл" HorizontalAlignment="Left" Margin="30,114,0,0" VerticalAlignment="Top" Width="104" Height="21" Checked="OpenTxtFileRadioButton_Checked" IsChecked="True"/>
-        <Button x:Name="OpenTxtFileButton" Content="Выбрать файл c числовой последовательностью" HorizontalAlignment="Left" VerticalAlignment="Top" Height="27" Width="519" Margin="162,111,0,0" FontWeight="Bold" FontSize="14" Cursor="Hand" Background="White" Click="OpenTxtFileButton_Click" IsEnabled="False"/>
-
     </Grid>
 </Window>

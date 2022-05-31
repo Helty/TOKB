@@ -55,11 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Tests\Statistic\CouponCollectorTest.cs" />
-    <Compile Include="Tests\Statistic\IntervalTest.cs" />
-    <Compile Include="Tests\Statistic\MonotonicityTest.cs" />
-    <Compile Include="Tests\Statistic\UnlinkedTest.cs" />
-    <Compile Include="Tests\Statistic\СombinationTest.cs" />
+    <Compile Include="Tests\Statistical\CouponCollectorTest.cs" />
+    <Compile Include="Tests\Statistical\IntervalTest.cs" />
+    <Compile Include="Tests\Statistical\IStatisticalTest.cs" />
+    <Compile Include="Tests\Statistical\PermutationalTest.cs" />
+    <Compile Include="Tests\Statistical\UnlinkedTest.cs" />
+    <Compile Include="Tests\Statistical\СombinationTest.cs" />
     <Compile Include="Tests\TestInformationWindow.xaml.cs">
       <DependentUpon>TestInformationWindow.xaml</DependentUpon>
     </Compile>
@@ -141,8 +142,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tests\Tools\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

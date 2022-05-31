@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,8 @@ namespace CourseWork
             this.SequenceNumberTextBox.PreviewTextInput += new TextCompositionEventHandler(SequenceNumberTextBox_PreviewTextInput);
         }
 
+        private string sequenceNumber = string.Empty;
+
         private void OpenTxtFileRadioButton_Checked(object sender, RoutedEventArgs e)
         {
             this.SequenceNumberTextBox.IsEnabled = false;
@@ -51,19 +54,36 @@ namespace CourseWork
                 CheckFileExists = true,
                 CheckPathExists = true,
                 Multiselect = false,
+                Filter = "txt files (*.txt)|*.txt",
                 Title = "Выберите файл"
             };
 
             if (openFileDialog.ShowDialog() == true)
             {
-                string filename = openFileDialog.FileName;
-                MessageBox.Show(filename);
+                using (StreamReader reader = new StreamReader(openFileDialog.OpenFile()))
+                {
+                    sequenceNumber = reader.ReadToEnd();
+                }
             }
         }
 
         private void StartTestsButton_Click(object sender, RoutedEventArgs e)
         {
+            if (this.SequenceNumberTextBox.IsEnabled)
+            {
+                this.sequenceNumber = this.SequenceNumberTextBox.Text;
+            }
 
+            if (this.sequenceNumber != string.Empty)
+            {
+                TestInformationWindow testInformationWindow = new TestInformationWindow(sequenceNumber);
+                testInformationWindow.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Ваша последовательность пустая. Введите новую последовательность или выберите готовую из файла .txt.", "SequenceEmpty", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
