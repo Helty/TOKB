@@ -8,21 +8,29 @@ namespace CourseWork.Tests.Statistical
 {
     internal class CouponCollectorTest : IStatisticalTest
     {
+        public CouponCollectorTest(string sequenceNumber)
+        {
+            Сomputation(sequenceNumber);
+        }
+
         private double resultTest = double.NaN;
 
         public Result GetEnumResultTest()
         {
-            throw new NotImplementedException();
+            return Result.None;
         }
 
         public double GetValueResultTest()
         {
-            return resultTest;
+            return 0.0;
         }
 
-        public void Сomputation()
+        public void Сomputation(string sequenceNumber)
         {
-            throw new NotImplementedException();
+            if (resultTest == double.NaN)
+            {
+
+            }
         }
     }
 }

@@ -8,14 +8,15 @@ namespace CourseWork.Tests.Statistical
 {
     enum Result
     {
-        Badly,
-        Good,
-        Great
+        None = 0,
+        Badly = 1,
+        Good = 2,
+        Great = 3
     }
 
     internal interface IStatisticalTest
     {
-        void Сomputation();
+        void Сomputation(string sequenceNumber);
 
         double GetValueResultTest();
 
