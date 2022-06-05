@@ -14,14 +14,15 @@ using System.Windows.Shapes;
 
 namespace CourseWork.Tests
 {
-    /// <summary>
-    /// Логика взаимодействия для AutocorrelationFunctionWindow.xaml
-    /// </summary>
     public partial class AutocorrelationFunctionWindow : Window
     {
         public AutocorrelationFunctionWindow()
         {
             InitializeComponent();
+
+
         }
+
+
     }
 }

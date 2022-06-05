@@ -8,29 +8,82 @@ namespace CourseWork.Tests.Statistical
 {
     internal class UnlinkedTest : IStatisticalTest
     {
+        private double resultTest;
+
         public UnlinkedTest(string sequenceNumber)
         {
-            Сomputation(sequenceNumber);
+            this.resultTest = Сomputation(sequenceNumber);
         }
-
-        private double resultTest = double.NaN;
 
         public Result GetEnumResultTest()
         {
+            if (resultTest <= 0.2) return Result.Badly;
+            if (resultTest > 0.2 && resultTest <= 0.7) return Result.Good;
+            if (resultTest > 0.7) return Result.Great;
             return Result.None;
         }
 
         public double GetValueResultTest()
         {
-            return 0.0;
+            return resultTest;
         }
 
-        public void Сomputation(string sequenceNumber)
+        public double Сomputation(string sequenceNumber)
         {
-            if (resultTest == double.NaN)
-            {
+            string bitSequence = TestTools.DecimalToBinary(sequenceNumber);
+            Dictionary<string, UInt64> seriesCounter = GetSeriesCounter(bitSequence);
+            return alglib.chisquarecdistribution(7, ChiSquareUnlinkedSeries(seriesCounter, bitSequence));
+        }
 
+        private Dictionary<string, UInt64> GetSeriesCounter(string bitSequence)
+        {
+            Dictionary<string, UInt64> result = SetAllСombinationsOfSerial3();
+
+            for (int i = 0; i < bitSequence.Length; i += 3)
+            {
+                try 
+                {
+                    string sub = bitSequence.Substring(i, 3);
+                    result[sub] += 1;
+                }
+                catch { break; }
             }
+
+            return result;
+        }
+
+        private Dictionary<string, UInt64> SetAllСombinationsOfSerial3()
+        {
+            Dictionary<string, UInt64> result = new Dictionary<string, UInt64>();
+
+            result["000"] = 0;
+            result["001"] = 0;
+            result["010"] = 0;
+            result["011"] = 0;
+            result["100"] = 0;
+            result["101"] = 0;
+            result["110"] = 0;
+            result["111"] = 0;
+
+            return result;
+        }
+
+        private double ChiSquareUnlinkedSeries(Dictionary<string, UInt64> seriesCounter, string bitSequence)
+        {
+            List<UInt64> valueFromMap = new List<UInt64>();
+
+            foreach (var pair in seriesCounter) valueFromMap.Add(pair.Value);
+
+            double divider = (bitSequence.Length / 3.0) * (1.0 / 8.0);
+            double b = 1 / divider;
+            double sum = 0;
+
+            for (int i = 0; i != valueFromMap.Count; i++)
+            {
+                sum += Math.Pow(valueFromMap[i] - divider, 2);
+            }
+
+            return b * sum;
         }
     }
 }

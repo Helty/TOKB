@@ -16,7 +16,7 @@ namespace CourseWork.Tests.Statistical
 
     internal interface IStatisticalTest
     {
-        void Сomputation(string sequenceNumber);
+        double Сomputation(string sequenceNumber);
 
         double GetValueResultTest();
 
