@@ -1,4 +1,5 @@
-﻿using CourseWork.Tests.Statistical;
+﻿using CourseWork.Tests;
+using CourseWork.Tests.Statistical;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,6 +84,36 @@ namespace CourseWork
             {
                 return Result.None;
             }
+        }
+
+        private void DistributionHistogramFunctionalButton_Click(object sender, RoutedEventArgs e)
+        {
+            DistributionHistogramWindow distributionHistogramWindow = new DistributionHistogramWindow();
+            distributionHistogramWindow.ShowDialog();
+        }
+
+        private void FlatDistributionFunctionalButton_Click(object sender, RoutedEventArgs e)
+        {
+            FlatDistributionWindow flatDistributionWindow = new FlatDistributionWindow();
+            flatDistributionWindow.ShowDialog();
+        }
+
+        private void SeriesCheckFunctionalButton_Click(object sender, RoutedEventArgs e)
+        {
+            SeriesСheckWindow seriesСheckWindow = new SeriesСheckWindow();
+            seriesСheckWindow.ShowDialog();
+        }
+
+        private void MonotonicityCheckFunctionalButton_Click(object sender, RoutedEventArgs e)
+        {
+            MonotonicityCheckWindow monotonicityCheckWindow = new MonotonicityCheckWindow();
+            monotonicityCheckWindow.ShowDialog();
+        }
+
+        private void AutocorrelationFunctionButton_Click(object sender, RoutedEventArgs e)
+        {
+            AutocorrelationFunctionWindow autocorrelationFunctionWindow = new AutocorrelationFunctionWindow();
+            autocorrelationFunctionWindow.ShowDialog();
         }
     }
 }
