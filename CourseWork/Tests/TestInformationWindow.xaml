@@ -52,5 +52,16 @@
         <Label x:Name="PermutationsCheckResultLabel" Grid.Column="1" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Grid.Row="9" HorizontalContentAlignment="Center" FontWeight="Bold" Height="26" Margin="10,10,0,0"/>
         <Label x:Name="PermutationsCheckEnumResultLabel" Grid.Column="1" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Grid.Row="9" HorizontalContentAlignment="Center" FontWeight="Bold" Height="26" Margin="235,10,0,0"/>
         <Label x:Name="TotalEnumResultLabel" Grid.Column="1" Content="Label" HorizontalAlignment="Center" VerticalAlignment="Top" Width="430" Grid.Row="10" HorizontalContentAlignment="Center" FontWeight="Bold" Height="26" Margin="0,7,0,0"/>
+        <Path Grid.Column="1" Data="M320,8.7745455 L320,479.04" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="471" Grid.RowSpan="11" Stroke="Black" Stretch="Fill" VerticalAlignment="Center" Width="1"/>
+        <Path Grid.ColumnSpan="2" Data="M0,43.549091 L770,43.549091" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Grid.Row="1" Stroke="Black" Stretch="Fill" VerticalAlignment="Top" Width="771"/>
+        <Path Grid.ColumnSpan="2" Data="M0,435.49091 L770,435.49091" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Grid.Row="10" Stroke="Black" Stretch="Fill" VerticalAlignment="Top" Width="771"/>
+        <Path Grid.ColumnSpan="2" Data="M0,391.94182 L770,391.94182" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Grid.Row="9" Stroke="Black" Stretch="Fill" VerticalAlignment="Top" Width="771"/>
+        <Path Grid.ColumnSpan="2" Data="M0,348.39273 L771,348.39273" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Grid.Row="8" Stroke="Black" Stretch="Fill" VerticalAlignment="Top" Width="772"/>
+        <Path Grid.ColumnSpan="2" Data="M0,304.84364 L771,304.84364" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Grid.Row="7" Stroke="Black" Stretch="Fill" VerticalAlignment="Top" Width="772"/>
+        <Path Grid.ColumnSpan="2" Data="M0,261.29455 L770,261.29455" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Grid.Row="6" Stroke="Black" Stretch="Fill" VerticalAlignment="Top" Width="771"/>
+        <Path Grid.ColumnSpan="2" Data="M0,217.74545 L771,217.74545" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Grid.Row="5" Stroke="Black" Stretch="Fill" VerticalAlignment="Top" Width="772"/>
+        <Path Grid.ColumnSpan="2" Data="M0,174.19636 L770,174.19636" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Grid.Row="4" Stroke="Black" Stretch="Fill" VerticalAlignment="Top" Width="771"/>
+        <Path Grid.ColumnSpan="2" Data="M0,130.64727 L772,130.64727" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Grid.Row="3" Stroke="Black" Stretch="Fill" VerticalAlignment="Top" Width="773"/>
+        <Path Grid.ColumnSpan="2" Data="M0,87.098182 L773,87.098182" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Grid.Row="2" Stroke="Black" Stretch="Fill" VerticalAlignment="Top" Width="774"/>
     </Grid>
 </Window>

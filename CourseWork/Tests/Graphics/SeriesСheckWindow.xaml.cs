@@ -20,6 +20,7 @@ namespace CourseWork.Tests
         public SeriesСheckWindow(string sequenceNumber)
         {
             InitializeComponent();
+            СomputeDataToDisplay(sequenceNumber);
         }
 
         public void СomputeDataToDisplay(string sequenceNumber)

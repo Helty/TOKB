@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace CourseWork
 {
-    /// <summary>
-    /// Логика взаимодействия для TestInformationWindow.xaml
-    /// </summary>
     public partial class TestInformationWindow : Window
     {
         public TestInformationWindow(string sequenceNumber)

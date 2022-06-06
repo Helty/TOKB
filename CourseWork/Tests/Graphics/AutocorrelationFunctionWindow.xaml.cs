@@ -20,8 +20,7 @@ namespace CourseWork.Tests
         public AutocorrelationFunctionWindow(string sequenceNumber)
         {
             InitializeComponent();
-
-
+            СomputeDataToDisplay(sequenceNumber);
         }
 
         public void СomputeDataToDisplay(string sequenceNumber)

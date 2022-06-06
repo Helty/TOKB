@@ -18,18 +18,20 @@ namespace CourseWork.Tests
 {
     public partial class DistributionHistogramWindow : Window, IGraphicsTest
     {
-        private Dictionary<string, int> histogramData;
+        private readonly Dictionary<char, int> distributionHistogramData;
 
         public DistributionHistogramWindow(string sequenceNumber)
         {
             InitializeComponent();
-
-            Dictionary<string, int> histogramData;
+            СomputeDataToDisplay(sequenceNumber);
         }
 
         public void СomputeDataToDisplay(string sequenceNumber)
         {
-            throw new NotImplementedException();
+            foreach (char number in sequenceNumber)
+            {
+                //distributionHistogramData[number]++;
+            }
         }
     }
 }
