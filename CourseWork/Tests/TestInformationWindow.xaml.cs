@@ -88,31 +88,31 @@ namespace CourseWork
 
         private void DistributionHistogramFunctionalButton_Click(object sender, RoutedEventArgs e)
         {
-            DistributionHistogramWindow distributionHistogramWindow = new DistributionHistogramWindow();
+            DistributionHistogramWindow distributionHistogramWindow = new DistributionHistogramWindow(sequenceNumber);
             distributionHistogramWindow.ShowDialog();
         }
 
         private void FlatDistributionFunctionalButton_Click(object sender, RoutedEventArgs e)
         {
-            FlatDistributionWindow flatDistributionWindow = new FlatDistributionWindow();
+            FlatDistributionWindow flatDistributionWindow = new FlatDistributionWindow(sequenceNumber);
             flatDistributionWindow.ShowDialog();
         }
 
         private void SeriesCheckFunctionalButton_Click(object sender, RoutedEventArgs e)
         {
-            SeriesСheckWindow seriesСheckWindow = new SeriesСheckWindow();
+            SeriesСheckWindow seriesСheckWindow = new SeriesСheckWindow(sequenceNumber);
             seriesСheckWindow.ShowDialog();
         }
 
         private void MonotonicityCheckFunctionalButton_Click(object sender, RoutedEventArgs e)
         {
-            MonotonicityCheckWindow monotonicityCheckWindow = new MonotonicityCheckWindow();
+            MonotonicityCheckWindow monotonicityCheckWindow = new MonotonicityCheckWindow(sequenceNumber);
             monotonicityCheckWindow.ShowDialog();
         }
 
         private void AutocorrelationFunctionButton_Click(object sender, RoutedEventArgs e)
         {
-            AutocorrelationFunctionWindow autocorrelationFunctionWindow = new AutocorrelationFunctionWindow();
+            AutocorrelationFunctionWindow autocorrelationFunctionWindow = new AutocorrelationFunctionWindow(sequenceNumber);
             autocorrelationFunctionWindow.ShowDialog();
         }
     }

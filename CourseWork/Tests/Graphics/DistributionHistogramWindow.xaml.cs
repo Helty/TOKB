@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseWork.Tests.Statistical;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,17 +12,24 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CourseWork.Tests.Interfaces;
 
 namespace CourseWork.Tests
 {
-    /// <summary>
-    /// Логика взаимодействия для DistributionHistogramWindow.xaml
-    /// </summary>
-    public partial class DistributionHistogramWindow : Window
+    public partial class DistributionHistogramWindow : Window, IGraphicsTest
     {
-        public DistributionHistogramWindow()
+        private Dictionary<string, int> histogramData;
+
+        public DistributionHistogramWindow(string sequenceNumber)
         {
             InitializeComponent();
+
+            Dictionary<string, int> histogramData;
+        }
+
+        public void СomputeDataToDisplay(string sequenceNumber)
+        {
+            throw new NotImplementedException();
         }
     }
 }

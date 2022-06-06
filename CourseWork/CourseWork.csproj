@@ -59,9 +59,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Tests\Interfaces\IGraphicsTest.cs" />
     <Compile Include="Tests\Statistical\CouponCollectorTest.cs" />
     <Compile Include="Tests\Statistical\IntervalTest.cs" />
-    <Compile Include="Tests\Statistical\IStatisticalTest.cs" />
+    <Compile Include="Tests\Interfaces\IStatisticalTest.cs" />
     <Compile Include="Tests\Statistical\PermutationalTest.cs" />
     <Compile Include="Tests\Statistical\UnlinkedTest.cs" />
     <Compile Include="Tests\Statistical\СombinationTest.cs" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using CourseWork.Tests.Interfaces;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -14,15 +15,18 @@ using System.Windows.Shapes;
 
 namespace CourseWork.Tests
 {
-    public partial class AutocorrelationFunctionWindow : Window
+    public partial class AutocorrelationFunctionWindow : Window, IGraphicsTest
     {
-        public AutocorrelationFunctionWindow()
+        public AutocorrelationFunctionWindow(string sequenceNumber)
         {
             InitializeComponent();
 
 
         }
 
-
+        public void СomputeDataToDisplay(string sequenceNumber)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

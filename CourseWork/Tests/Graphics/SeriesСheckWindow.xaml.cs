@@ -11,17 +11,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CourseWork.Tests.Interfaces;
 
 namespace CourseWork.Tests
 {
-    /// <summary>
-    /// Логика взаимодействия для SeriesСheckWindow.xaml
-    /// </summary>
-    public partial class SeriesСheckWindow : Window
+    public partial class SeriesСheckWindow : Window, IGraphicsTest
     {
-        public SeriesСheckWindow()
+        public SeriesСheckWindow(string sequenceNumber)
         {
             InitializeComponent();
+        }
+
+        public void СomputeDataToDisplay(string sequenceNumber)
+        {
+            throw new NotImplementedException();
         }
     }
 }
