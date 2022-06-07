@@ -36,5 +36,22 @@ namespace CourseWork.Tests
 
             return result;
         }
+
+        public static bool IsBinarySequence(string numberSequence)
+        {
+            return numberSequence.All(symbol => (symbol == '1' || symbol == '0'));
+        }
+
+        public static string DecimalToBinaryBySymbol(string numberSequence)
+        {
+            string bitSequence = string.Empty;
+
+            foreach (char symbol in numberSequence)
+            {
+                bitSequence += Convert.ToString(Convert.ToInt32(symbol), 2);
+            }
+
+            return bitSequence;
+        }
     }
 }

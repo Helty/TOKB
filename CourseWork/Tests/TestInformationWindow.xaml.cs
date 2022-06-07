@@ -18,23 +18,17 @@ namespace CourseWork
 {
     public partial class TestInformationWindow : Window
     {
+        private string sequenceNumber = string.Empty;
+        private int totalTestEnumResult = 0;
+
         public TestInformationWindow(string sequenceNumber)
         {
             InitializeComponent();
+
             this.sequenceNumber = sequenceNumber;
 
             СomputationStatisticTest();
             TotalEnumResultLabel.Content = GetTotalEnumResult().ToString();
-        }
-
-        private string sequenceNumber = string.Empty;
-        private int totalTestEnumResult = 0;
-
-        private void GoBackButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
         }
 
         private void СomputationStatisticTest()
@@ -97,7 +91,7 @@ namespace CourseWork
 
         private void SeriesCheckFunctionalButton_Click(object sender, RoutedEventArgs e)
         {
-            SeriesСheckWindow seriesСheckWindow = new SeriesСheckWindow(sequenceNumber);
+            SeriesСheckWindow seriesСheckWindow = new SeriesСheckWindow(sequenceNumber, Convert.ToInt32(SeriesCheckChangeComboBox.SelectedItem));
             seriesСheckWindow.ShowDialog();
         }
 
@@ -111,6 +105,13 @@ namespace CourseWork
         {
             AutocorrelationFunctionWindow autocorrelationFunctionWindow = new AutocorrelationFunctionWindow(sequenceNumber);
             autocorrelationFunctionWindow.ShowDialog();
+        }
+
+        private void GoBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
         }
     }
 }

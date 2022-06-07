@@ -20,17 +20,16 @@ namespace CourseWork.Tests
         public AutocorrelationFunctionWindow(string sequenceNumber)
         {
             InitializeComponent();
-            СomputeDataToDisplay();
+            Draw();
         }
 
         public void СomputeDataToDisplay()
         {
-            throw new NotImplementedException();
         }
 
         public void Draw()
         {
-            throw new NotImplementedException();
+            СomputeDataToDisplay();
         }
     }
 }

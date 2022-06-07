@@ -19,14 +19,12 @@ namespace CourseWork.Tests
     public partial class DistributionHistogramWindow : Window, IGraphicsTest
     {
         private double[] values;
-        private string sequenceNumber = String.Empty;
+        private string sequenceNumber = string.Empty;
 
         public DistributionHistogramWindow(string sequenceNumber)
         {
             InitializeComponent();
-
             this.sequenceNumber = sequenceNumber;
-
             Draw();
         }
 
@@ -43,7 +41,7 @@ namespace CourseWork.Tests
             double[] positions;
             string[] labels;
 
-            if (sequenceNumber.All(symbol => (symbol == '1' || symbol == '0')))
+            if (TestTools.IsBinarySequence(sequenceNumber))
             {
                 values = new double[2];
                 positions = new double[2] { 0, 1 };
