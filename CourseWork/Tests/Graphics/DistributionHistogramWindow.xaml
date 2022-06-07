@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Гистограмма распределения элементов" Height="450" Width="640">
     <Grid>
-        <WpfPlot Name="WpfPlot1" />
+        <WpfPlot x:Name="DistributionHistogramWpfPlot" />
 
     </Grid>
 </Window>

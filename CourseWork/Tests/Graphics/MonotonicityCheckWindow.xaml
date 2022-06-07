@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MonotonicityCheckWindow" Height="450" Width="800">
     <Grid>
-        
+        <WpfPlot x:Name="MonotonicityCheckWpfPlot"/>
     </Grid>
 </Window>

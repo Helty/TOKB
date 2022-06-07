@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="SeriesСheckWindow" Height="450" Width="800">
     <Grid>
-        
+        <WpfPlot x:Name="SeriesCheckWpfPlot"/>
+
     </Grid>
 </Window>

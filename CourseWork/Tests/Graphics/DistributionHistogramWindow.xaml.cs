@@ -57,10 +57,10 @@ namespace CourseWork.Tests
             }
 
             СomputeDataToDisplay();
-            WpfPlot1.Plot.AddBar(values, positions);
-            WpfPlot1.Plot.XTicks(positions, labels);
-            WpfPlot1.Plot.SetAxisLimits(yMin: 0);
-            WpfPlot1.Refresh();
+            DistributionHistogramWpfPlot.Plot.AddBar(values, positions);
+            DistributionHistogramWpfPlot.Plot.XTicks(positions, labels);
+            DistributionHistogramWpfPlot.Plot.SetAxisLimits(yMin: 0);
+            DistributionHistogramWpfPlot.Refresh();
         }
     }
 }
