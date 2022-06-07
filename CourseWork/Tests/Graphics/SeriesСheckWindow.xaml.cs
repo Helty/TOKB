@@ -17,20 +17,25 @@ namespace CourseWork.Tests
 {
     public partial class SeriesСheckWindow : Window, IGraphicsTest
     {
+        private string sequenceNumber = String.Empty;
+
         public SeriesСheckWindow(string sequenceNumber)
         {
             InitializeComponent();
-            СomputeDataToDisplay();
+
+            this.sequenceNumber = sequenceNumber;
+
+            Draw();
         }
 
         public void СomputeDataToDisplay()
         {
-            throw new NotImplementedException();
+
         }
 
         public void Draw()
         {
-            throw new NotImplementedException();
+            СomputeDataToDisplay();
         }
     }
 }
