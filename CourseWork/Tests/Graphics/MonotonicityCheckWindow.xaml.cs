@@ -20,10 +20,15 @@ namespace CourseWork.Tests
         public MonotonicityCheckWindow(string sequenceNumber)
         {
             InitializeComponent();
-            СomputeDataToDisplay(sequenceNumber);
+            СomputeDataToDisplay();
         }
 
-        public void СomputeDataToDisplay(string sequenceNumber)
+        public void СomputeDataToDisplay()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Draw()
         {
             throw new NotImplementedException();
         }

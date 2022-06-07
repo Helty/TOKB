@@ -8,6 +8,7 @@ namespace CourseWork.Tests.Interfaces
 {
     internal interface IGraphicsTest
     {
-        void СomputeDataToDisplay(string sequenceNumber);
+        void СomputeDataToDisplay();
+        void Draw();
     }
 }
