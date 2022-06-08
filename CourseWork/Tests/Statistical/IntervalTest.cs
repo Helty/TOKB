@@ -8,12 +8,6 @@ namespace CourseWork.Tests.Statistical
         private double resultTest;
         private int freedomDegree;
 
-        private struct Interval
-        {
-            public UInt16 alpha;
-            public UInt16 betta;
-        }
-
         public IntervalTest(string sequenceNumber)
         {
             freedomDegree = 10;
