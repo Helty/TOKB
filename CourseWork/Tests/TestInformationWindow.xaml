@@ -69,31 +69,31 @@
             <System:String>2</System:String>
             <System:String>3</System:String>
         </ComboBox>
-        <ComboBox x:Name="SeriesCheckResultComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="340,0,0,0" Grid.Row="2" VerticalAlignment="Center" Width="95" Height="26" SelectedIndex="0" FontWeight="Bold" FontSize="14">
+        <ComboBox x:Name="SeriesCheckResultComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="340,0,0,0" Grid.Row="2" VerticalAlignment="Center" Width="95" Height="26" SelectedIndex="0" FontWeight="Bold" FontSize="14" SelectionChanged="SeriesCheckResultComboBox_SelectionChanged">
             <System:String>None</System:String>
             <System:String>Badly</System:String>
             <System:String>Good</System:String>
             <System:String>Great</System:String>
         </ComboBox>
-        <ComboBox x:Name="MonotonicityCheckResultComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="239,0,0,0" Grid.Row="3" VerticalAlignment="Center" Width="196" Height="26" FontWeight="Bold" FontSize="14" SelectedIndex="0">
+        <ComboBox x:Name="MonotonicityCheckResultComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="239,0,0,0" Grid.Row="3" VerticalAlignment="Center" Width="196" Height="26" FontWeight="Bold" FontSize="14" SelectedIndex="0" SelectionChanged="MonotonicityCheckResultComboBox_SelectionChanged">
             <System:String>None</System:String>
             <System:String>Badly</System:String>
             <System:String>Good</System:String>
             <System:String>Great</System:String>
         </ComboBox>
-        <ComboBox x:Name="AutocorrelationFunctionResultComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="340,0,0,0" Grid.Row="4" VerticalAlignment="Center" Width="95" Height="26" SelectedIndex="0" FontWeight="Bold" FontSize="14">
+        <ComboBox x:Name="AutocorrelationFunctionResultComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="340,0,0,0" Grid.Row="4" VerticalAlignment="Center" Width="95" Height="26" SelectedIndex="0" FontWeight="Bold" FontSize="14" SelectionChanged="AutocorrelationFunctionResultComboBox_SelectionChanged">
             <System:String>None</System:String>
             <System:String>Badly</System:String>
             <System:String>Good</System:String>
             <System:String>Great</System:String>
         </ComboBox>
-        <ComboBox x:Name="DistributionHistogramResultComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="239,10,0,0" VerticalAlignment="Top" Width="196" Height="26" SelectedIndex="0" FontWeight="Bold" FontSize="14">
+        <ComboBox x:Name="DistributionHistogramResultComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="239,10,0,0" VerticalAlignment="Top" Width="196" Height="26" SelectedIndex="0" FontWeight="Bold" FontSize="14" SelectionChanged="DistributionHistogramResultComboBox_SelectionChanged">
             <System:String>None</System:String>
             <System:String>Badly</System:String>
             <System:String>Good</System:String>
             <System:String>Great</System:String>
         </ComboBox>
-        <ComboBox x:Name="FlatDistributionResultComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="239,7,0,0" Grid.Row="1" VerticalAlignment="Top" Width="196" Height="26" SelectedIndex="0" FontWeight="Bold" FontSize="14">
+        <ComboBox x:Name="FlatDistributionResultComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="239,7,0,0" Grid.Row="1" VerticalAlignment="Top" Width="196" Height="26" SelectedIndex="0" FontWeight="Bold" FontSize="14" SelectionChanged="FlatDistributionResultComboBox_SelectionChanged">
             <System:String>None</System:String>
             <System:String>Badly</System:String>
             <System:String>Good</System:String>

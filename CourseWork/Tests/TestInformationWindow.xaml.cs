@@ -2,6 +2,7 @@
 using CourseWork.Tests.Statistical;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,16 +20,15 @@ namespace CourseWork
     public partial class TestInformationWindow : Window
     {
         private string sequenceNumber = string.Empty;
-        private int totalTestEnumResult = 0;
+        private int assessedTests = 10;
+        private int totalTestEnumResult;
 
         public TestInformationWindow(string sequenceNumber)
         {
             InitializeComponent();
-
             this.sequenceNumber = sequenceNumber;
-
+            totalTestEnumResult = 0;
             СomputationStatisticTest();
-            TotalEnumResultLabel.Content = GetTotalEnumResult().ToString();
         }
 
         private void СomputationStatisticTest()
@@ -47,8 +47,9 @@ namespace CourseWork
 
             PermutationalTest permutationalTest = new PermutationalTest(sequenceNumber);
             SetDataTestToLabels(permutationalTest, PermutationsCheckResultLabel, PermutationsCheckEnumResultLabel);
-        }
 
+            TotalEnumResultLabel.Content = GetTotalEnumResult().ToString();
+        }
         private void SetDataTestToLabels(IStatisticalTest statisticalTest, Label result, Label resultEnum)
         {
             result.Content = statisticalTest.GetValueResultTest().ToString();
@@ -56,25 +57,9 @@ namespace CourseWork
 
             totalTestEnumResult += (int)statisticalTest.GetEnumResultTest();
         }
-
         private Result GetTotalEnumResult()
         {
-            if (totalTestEnumResult >= 5 && totalTestEnumResult < 8)
-            {
-                return Result.Badly;
-            }
-            else if (totalTestEnumResult >= 8 && totalTestEnumResult < 12)
-            {
-                return Result.Good;
-            }
-            else if (totalTestEnumResult >= 12 && totalTestEnumResult <= 15)
-            {
-                return Result.Great;
-            }
-            else
-            {
-                return Result.None;
-            }
+            return (Result)Math.Round((double)(totalTestEnumResult / assessedTests));
         }
 
         private void DistributionHistogramFunctionalButton_Click(object sender, RoutedEventArgs e)
@@ -82,13 +67,11 @@ namespace CourseWork
             DistributionHistogramWindow distributionHistogramWindow = new DistributionHistogramWindow(sequenceNumber);
             distributionHistogramWindow.ShowDialog();
         }
-
         private void FlatDistributionFunctionalButton_Click(object sender, RoutedEventArgs e)
         {
             FlatDistributionWindow flatDistributionWindow = new FlatDistributionWindow(sequenceNumber);
             flatDistributionWindow.ShowDialog();
         }
-
         private void SeriesCheckFunctionalButton_Click(object sender, RoutedEventArgs e)
         {
             SeriesСheckWindow seriesСheckWindow = new SeriesСheckWindow(
@@ -98,13 +81,11 @@ namespace CourseWork
 
             seriesСheckWindow.ShowDialog();
         }
-
         private void MonotonicityCheckFunctionalButton_Click(object sender, RoutedEventArgs e)
         {
             MonotonicityCheckWindow monotonicityCheckWindow = new MonotonicityCheckWindow(sequenceNumber);
             monotonicityCheckWindow.ShowDialog();
         }
-
         private void AutocorrelationFunctionButton_Click(object sender, RoutedEventArgs e)
         {
             AutocorrelationFunctionWindow autocorrelationFunctionWindow = new AutocorrelationFunctionWindow(
@@ -114,9 +95,42 @@ namespace CourseWork
             autocorrelationFunctionWindow.ShowDialog();
         }
 
+        private void DistributionHistogramResultComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateTotalResult((ComboBox)sender);
+        }
+        private void FlatDistributionResultComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateTotalResult((ComboBox)sender);
+        }
+        private void SeriesCheckResultComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateTotalResult((ComboBox)sender);
+        }
+        private void MonotonicityCheckResultComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateTotalResult((ComboBox)sender);
+        }
+        private void AutocorrelationFunctionResultComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateTotalResult((ComboBox)sender);
+        }
+
+        private void UpdateTotalResult(ComboBox currentComboBox)
+        {
+            Enum.TryParse(currentComboBox.SelectedValue.ToString(), out Result currentResult);
+            Enum.TryParse(currentComboBox.Text, out Result oldResult);
+
+            if (currentResult == Result.None) assessedTests--;
+            else if (oldResult == Result.None && currentResult != Result.None) assessedTests++;
+
+            totalTestEnumResult += ((int)currentResult - (int)oldResult);
+            TotalEnumResultLabel.Content = GetTotalEnumResult().ToString();
+        }
+
         private void GoBackButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
         }
