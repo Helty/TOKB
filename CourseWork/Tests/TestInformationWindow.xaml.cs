@@ -91,7 +91,11 @@ namespace CourseWork
 
         private void SeriesCheckFunctionalButton_Click(object sender, RoutedEventArgs e)
         {
-            SeriesСheckWindow seriesСheckWindow = new SeriesСheckWindow(sequenceNumber, Convert.ToInt32(SeriesCheckChangeComboBox.SelectedItem));
+            SeriesСheckWindow seriesСheckWindow = new SeriesСheckWindow(
+                sequenceNumber, 
+                Convert.ToInt32(SeriesCheckChangeComboBox.SelectedItem)
+            );
+
             seriesСheckWindow.ShowDialog();
         }
 

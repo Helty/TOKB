@@ -27,7 +27,7 @@ namespace CourseWork.Tests
                     while (num > 0)
                     {
                         rem = num % 2;
-                        num = num / 2;
+                        num /= 2;
                         result = rem.ToString() + result;
                     }
                 }

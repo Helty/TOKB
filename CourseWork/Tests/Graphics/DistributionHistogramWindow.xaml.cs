@@ -18,13 +18,14 @@ namespace CourseWork.Tests
 {
     public partial class DistributionHistogramWindow : Window, IGraphicsTest
     {
-        private double[] values;
+        private List<double> values;
         private string sequenceNumber = string.Empty;
 
         public DistributionHistogramWindow(string sequenceNumber)
         {
             InitializeComponent();
             this.sequenceNumber = sequenceNumber;
+            this.values = new List<double>();
             Draw();
         }
 
@@ -38,25 +39,21 @@ namespace CourseWork.Tests
 
         public void Draw()
         {
-            double[] positions;
-            string[] labels;
+            List<double> positions = new List<double>();
+            List<string> labels = new List<string>();
 
-            if (TestTools.IsBinarySequence(sequenceNumber))
+            int countPositions = TestTools.IsBinarySequence(sequenceNumber) ? 2 : 10;
+
+            for (int position = 0; position < countPositions; position++)
             {
-                values = new double[2];
-                positions = new double[2] { 0, 1 };
-                labels = new string[2] { "0", "1" };
-            }
-            else
-            {
-                values = new double[10];
-                positions = new double[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-                labels = new string[10] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+                values.Add(0);
+                positions.Add(position);
+                labels.Add(position.ToString());
             }
 
             СomputeDataToDisplay();
-            DistributionHistogramWpfPlot.Plot.AddBar(values, positions);
-            DistributionHistogramWpfPlot.Plot.XTicks(positions, labels);
+            DistributionHistogramWpfPlot.Plot.AddBar(values.ToArray(), positions.ToArray());
+            DistributionHistogramWpfPlot.Plot.XTicks(positions.ToArray(), labels.ToArray());
             DistributionHistogramWpfPlot.Plot.SetAxisLimits(yMin: 0);
             DistributionHistogramWpfPlot.Refresh();
         }
