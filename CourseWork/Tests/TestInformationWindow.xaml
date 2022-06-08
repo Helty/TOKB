@@ -81,7 +81,7 @@
             <System:String>Good</System:String>
             <System:String>Great</System:String>
         </ComboBox>
-        <ComboBox x:Name="AutocorrelationFunctionResultComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="239,0,0,0" Grid.Row="4" VerticalAlignment="Center" Width="196" Height="26" SelectedIndex="0" FontWeight="Bold" FontSize="14">
+        <ComboBox x:Name="AutocorrelationFunctionResultComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="340,0,0,0" Grid.Row="4" VerticalAlignment="Center" Width="95" Height="26" SelectedIndex="0" FontWeight="Bold" FontSize="14">
             <System:String>None</System:String>
             <System:String>Badly</System:String>
             <System:String>Good</System:String>
@@ -100,5 +100,9 @@
             <System:String>Great</System:String>
         </ComboBox>
         <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="670,22,0,0" Grid.RowSpan="2" Grid.Row="6" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="AutocorrelationFunctionChangeComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="239,0,0,0" Grid.Row="4" VerticalAlignment="Center" Width="96" Height="26" SelectedIndex="0" FontWeight="Bold" FontSize="14">
+            <System:String>биты</System:String>
+            <System:String>символы</System:String>
+        </ComboBox>
     </Grid>
 </Window>

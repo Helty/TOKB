@@ -48,10 +48,16 @@ namespace CourseWork.Tests
 
             foreach (char symbol in numberSequence)
             {
-                bitSequence += Convert.ToString(Convert.ToInt32(symbol), 2);
+                bitSequence += DecimalToBinary(symbol.ToString());
             }
 
             return bitSequence;
+        }
+
+        public static AutocorrelationMode AutocorrelationModeParse(string value)
+        {
+            return value == "биты" ? AutocorrelationMode.BIT
+                : AutocorrelationMode.SYMBOL;
         }
     }
 }

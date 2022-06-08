@@ -107,7 +107,10 @@ namespace CourseWork
 
         private void AutocorrelationFunctionButton_Click(object sender, RoutedEventArgs e)
         {
-            AutocorrelationFunctionWindow autocorrelationFunctionWindow = new AutocorrelationFunctionWindow(sequenceNumber);
+            AutocorrelationFunctionWindow autocorrelationFunctionWindow = new AutocorrelationFunctionWindow(
+                sequenceNumber,
+                Convert.ToString(AutocorrelationFunctionChangeComboBox.SelectedItem)
+            );
             autocorrelationFunctionWindow.ShowDialog();
         }
 
