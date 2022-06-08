@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseWork.Tests.Statistical
 {
@@ -41,7 +38,7 @@ namespace CourseWork.Tests.Statistical
 
             for (int i = 0; i < bitSequence.Length; i += 3)
             {
-                try 
+                try
                 {
                     string sub = bitSequence.Substring(i, 3);
                     result[sub] += 1;

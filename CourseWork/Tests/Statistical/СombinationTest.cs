@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseWork.Tests.Statistical
 {
@@ -36,7 +33,7 @@ namespace CourseWork.Tests.Statistical
             UInt16 t = 4;
 
             List<string> subSequences = GetSubsequencesCombinations(sequenceNumber, t);
-            Dictionary<UInt16,UInt16> mapLengOfSubsequences = GetLengOfSubsequencesCombinations(subSequences);
+            Dictionary<UInt16, UInt16> mapLengOfSubsequences = GetLengOfSubsequencesCombinations(subSequences);
 
             return alglib.chisquarecdistribution(subSequences.Count - 1.0, Math.Pow((mapLengOfSubsequences[1] - n / t), 2.0) / (n / t));
         }
@@ -59,26 +56,26 @@ namespace CourseWork.Tests.Statistical
 
         private Dictionary<UInt16, UInt16> GetLengOfSubsequencesCombinations(List<string> subSequences)
         {
-	        Dictionary<UInt16, UInt16> result = new Dictionary<UInt16, UInt16>();
+            Dictionary<UInt16, UInt16> result = new Dictionary<UInt16, UInt16>();
 
-	        for (UInt16 i = 1; i <= 2; i++) result[i] = 0;
+            for (UInt16 i = 1; i <= 2; i++) result[i] = 0;
 
             UInt16 counterOne = 0;
             UInt16 counterZero = 0;
 
-	        foreach (var v in subSequences)
-	        {
+            foreach (var v in subSequences)
+            {
                 foreach (var num in v)
-		        {
-			        if (num == '1') counterOne++;
-			        if (num == '0') counterZero++;
-		        }
-		        if ((counterOne != 0) && (counterZero != 0)) result[2]++;
-		        if ((counterOne == 0) || (counterZero == 0)) result[1]++;
+                {
+                    if (num == '1') counterOne++;
+                    if (num == '0') counterZero++;
+                }
+                if ((counterOne != 0) && (counterZero != 0)) result[2]++;
+                if ((counterOne == 0) || (counterZero == 0)) result[1]++;
                 counterOne = 0;
                 counterZero = 0;
-	        }
-	        return result;
+            }
+            return result;
         }
     }
 }

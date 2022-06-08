@@ -1,17 +1,7 @@
-﻿using System;
+﻿using CourseWork.Tests.Interfaces;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using CourseWork.Tests.Interfaces;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Color = System.Drawing.Color;
 
 namespace CourseWork.Tests
@@ -60,7 +50,7 @@ namespace CourseWork.Tests
             var bar = AutocorrelationFunctionWpfPlot.Plot.AddBar(values.ToArray(), positions.ToArray());
             bar.FillColor = Color.Green;
             bar.FillColorNegative = Color.Red;
-            
+
             AutocorrelationFunctionWpfPlot.Plot.XTicks(positions.ToArray(), labels.ToArray());
             AutocorrelationFunctionWpfPlot.Refresh();
         }

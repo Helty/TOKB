@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseWork.Tests.Statistical
 {
@@ -89,7 +86,7 @@ namespace CourseWork.Tests.Statistical
 
             foreach (var intervalLength in counterIntervals) totalNumberIntervals += intervalLength.Value;
             foreach (var intervalLength in counterIntervals)
-	        {
+            {
                 double first = 1.5;
                 double second = totalNumberIntervals * first;
                 double third = Math.Pow(1.0 - first, intervalLength.Key);
