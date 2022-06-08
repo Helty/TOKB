@@ -40,7 +40,7 @@ namespace CourseWork.Tests
         public void СomputeDataToDisplay()
         {
             List<double> normalizedSequence;
-            normalizedSequence = GetNormalizedSequenceFrom(sequenceNumber);
+            normalizedSequence = GetNormalizedSequence();
             CalculationBurstsCorrelation(normalizedSequence);
         }
 
@@ -65,12 +65,12 @@ namespace CourseWork.Tests
             AutocorrelationFunctionWpfPlot.Refresh();
         }
 
-        private List<double> GetNormalizedSequenceFrom(string sequence)
+        private List<double> GetNormalizedSequence()
         {
             List<double> normalizedSequence = new List<double>();
 
-            string bitSequence = TestTools.IsBinarySequence(sequence) ? sequence 
-                : TestTools.DecimalToBinaryBySymbol(sequence);
+            string bitSequence = TestTools.IsBinarySequence(sequenceNumber) ? sequenceNumber
+                : TestTools.DecimalToBinaryBySymbol(sequenceNumber);
 
             if (modeAutocorrelation == AutocorrelationMode.BIT)
             {

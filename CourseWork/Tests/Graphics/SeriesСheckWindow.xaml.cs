@@ -20,14 +20,14 @@ namespace CourseWork.Tests
     {
         private string sequenceNumber;
         private int countSeries;
-        private Dictionary<string, double> valuesToDraw;
+        private SortedDictionary<string, double> valuesToDraw;
 
         public SeriesСheckWindow(string sequenceNumber, int countSeries)
         {
             InitializeComponent();
             this.sequenceNumber = sequenceNumber;
             this.countSeries = countSeries;
-            valuesToDraw = new Dictionary<string, double>();
+            valuesToDraw = new SortedDictionary<string, double>();
             Draw();
         }
 
@@ -55,19 +55,9 @@ namespace CourseWork.Tests
 
         public void СomputeDataToDisplay()
         {
-            if (TestTools.IsBinarySequence(sequenceNumber)) SeriesByOneSymbols();
-            else SeriesSymbols();
-        }
+            string bitSequence = sequenceNumber;
+            if (!TestTools.IsBinarySequence(sequenceNumber)) bitSequence = TestTools.DecimalToBinaryBySymbol(sequenceNumber);
 
-        private void SeriesByOneSymbols()
-        {
-            valuesToDraw.Add("1", sequenceNumber.Count(sym => (sym == '1')));
-            valuesToDraw.Add("0", sequenceNumber.Count(sym => (sym == '0')));
-        }
-
-        private void SeriesSymbols()
-        {
-            string bitSequence = TestTools.DecimalToBinaryBySymbol(sequenceNumber);
             for (int i = 0; i < bitSequence.Length; i += countSeries)
             {
                 try

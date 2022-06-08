@@ -12,7 +12,7 @@ namespace CourseWork.Tests.Statistical
 
         public UnlinkedTest(string sequenceNumber)
         {
-            this.resultTest = Сomputation(sequenceNumber);
+            resultTest = Сomputation(sequenceNumber);
         }
 
         public Result GetEnumResultTest()
@@ -30,9 +30,9 @@ namespace CourseWork.Tests.Statistical
 
         public double Сomputation(string sequenceNumber)
         {
-            string bitSequence = TestTools.DecimalToBinary(sequenceNumber);
-            Dictionary<string, UInt64> seriesCounter = GetSeriesCounter(bitSequence);
-            return alglib.chisquarecdistribution(7, ChiSquareUnlinkedSeries(seriesCounter, bitSequence));
+            if (!TestTools.IsBinarySequence(sequenceNumber)) sequenceNumber = TestTools.DecimalToBinary(sequenceNumber);
+            Dictionary<string, UInt64> seriesCounter = GetSeriesCounter(sequenceNumber);
+            return alglib.chisquarecdistribution(7, ChiSquareUnlinkedSeries(seriesCounter, sequenceNumber));
         }
 
         private Dictionary<string, UInt64> GetSeriesCounter(string bitSequence)
@@ -54,7 +54,7 @@ namespace CourseWork.Tests.Statistical
 
         private Dictionary<string, UInt64> SetAllСombinationsOfSerial3()
         {
-            Dictionary<string, UInt64> result = new Dictionary<string, UInt64>
+            return new Dictionary<string, UInt64>
             {
                 ["000"] = 0,
                 ["001"] = 0,
@@ -65,8 +65,6 @@ namespace CourseWork.Tests.Statistical
                 ["110"] = 0,
                 ["111"] = 0
             };
-
-            return result;
         }
 
         private double ChiSquareUnlinkedSeries(Dictionary<string, UInt64> seriesCounter, string bitSequence)

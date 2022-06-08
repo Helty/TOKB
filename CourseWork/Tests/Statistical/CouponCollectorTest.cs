@@ -17,9 +17,9 @@ namespace CourseWork.Tests.Statistical
 
         public Result GetEnumResultTest()
         {
-			if (resultTest <= 0.2) return Result.Badly;
-			if (resultTest > 0.2 && resultTest <= 0.7) return Result.Good;
-			if (resultTest > 0.7) return Result.Great;
+			if (resultTest >= 0.5) return Result.Badly;
+			if (resultTest < 0.5 && resultTest >= 0.1) return Result.Good;
+			if (resultTest < 0.1) return Result.Great;
 			return Result.None;
 		}
 
@@ -31,8 +31,8 @@ namespace CourseWork.Tests.Statistical
         public double Сomputation(string sequenceNumber)
         {
             UInt16 t = 5;
-            string bitSequence = TestTools.DecimalToBinary(sequenceNumber);
-            List<string> subSequence = GetSubSequences(bitSequence);
+			if(!TestTools.IsBinarySequence(sequenceNumber)) sequenceNumber = TestTools.DecimalToBinary(sequenceNumber);
+            List<string> subSequence = GetSubSequences(sequenceNumber);
             Dictionary<UInt16, UInt16> vMap = GetLengthOfSubSequence(subSequence, t);
             double vSum = GetVSum(vMap);
             List<double> pVector = GetPVector(t);
@@ -67,7 +67,9 @@ namespace CourseWork.Tests.Statistical
 		private Dictionary<UInt16, UInt16> GetLengthOfSubSequence(List<string> subSequence, UInt16 t)
 		{
 			Dictionary<UInt16, UInt16> result = new Dictionary<UInt16, UInt16>();
+
 			for (UInt16 i = 2; i <= t; i++) result[i] = 0;
+
 			foreach (var sub in subSequence)
 			{
 				if (sub.Length > t) continue;

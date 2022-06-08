@@ -17,9 +17,9 @@ namespace CourseWork.Tests.Statistical
 
         public Result GetEnumResultTest()
         {
-			if (resultTest <= 0.2) return Result.Badly;
-			if (resultTest > 0.2 && resultTest <= 0.7) return Result.Good;
-			if (resultTest > 0.7) return Result.Great;
+			if (resultTest >= 0.5) return Result.Badly;
+			if (resultTest < 0.5 && resultTest >= 0.1) return Result.Good;
+			if (resultTest < 0.1) return Result.Great;
 			return Result.None;
 		}
 
@@ -30,8 +30,10 @@ namespace CourseWork.Tests.Statistical
 
         public double Сomputation(string sequenceNumber)
         {
-            string bitSequence = TestTools.DecimalToBinary(sequenceNumber);
-            List<string> subSequences = GetSubsequencesPermutations3(bitSequence);
+			if (!TestTools.IsBinarySequence(sequenceNumber)) sequenceNumber = TestTools.DecimalToBinary(sequenceNumber);
+
+            List<string> subSequences = GetSubsequencesPermutations3(sequenceNumber);
+
             Dictionary<string, UInt16> vMap = GetVMapPermutations(subSequences);
             return alglib.chisquarecdistribution(5, ChiSquarePermutations(vMap, subSequences));
         }
@@ -54,10 +56,9 @@ namespace CourseWork.Tests.Statistical
 		private Dictionary<string, UInt16> GetVMapPermutations(List<string> subSequences)
 		{
 			Dictionary<string, UInt16> result = new Dictionary<string, UInt16>();
-			if (subSequences.Count < 2)
-			{
-				return result;
-			}
+
+			if (subSequences.Count < 2) return result;
+
 			for (int i = 0; i < 3; i++)
 			{
 				if (i == subSequences.Count) break;
@@ -67,6 +68,7 @@ namespace CourseWork.Tests.Statistical
 					if (subSequences[i] == subSequences[j]) result[subSequences[i]]++;
 				}
 			}
+
 			return result;
 		}
 
@@ -75,12 +77,10 @@ namespace CourseWork.Tests.Statistical
 			double result = 0;
 			double length = subSequences.Count;
 			double first = ((length / 3.0) * (1.0 / 6.0));
+
 			for (int i = 0; i < 3.0; i++)
 			{
-				if (first != 0)
-				{
-					result += Math.Pow(vMap[subSequences[i]] - first, 2);
-				}
+				if (first != 0) result += Math.Pow(vMap[subSequences[i]] - first, 2);
 			}
 			return result / first;
 		}

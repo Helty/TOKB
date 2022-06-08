@@ -30,17 +30,21 @@ namespace CourseWork.Tests.Statistical
 
         public double Сomputation(string sequenceNumber)
         {
-            string bitSequence = TestTools.DecimalToBinary(sequenceNumber);
-            double n = bitSequence.Length;
+            if (!TestTools.IsBinarySequence(sequenceNumber)) sequenceNumber = TestTools.DecimalToBinary(sequenceNumber);
+
+            double n = sequenceNumber.Length;
             UInt16 t = 4;
-            List<string> subSequences = GetSubsequencesCombinations(bitSequence, t);
+
+            List<string> subSequences = GetSubsequencesCombinations(sequenceNumber, t);
             Dictionary<UInt16,UInt16> mapLengOfSubsequences = GetLengOfSubsequencesCombinations(subSequences);
+
             return alglib.chisquarecdistribution(subSequences.Count - 1.0, Math.Pow((mapLengOfSubsequences[1] - n / t), 2.0) / (n / t));
         }
 
         private List<string> GetSubsequencesCombinations(string bitSequence, UInt16 t)
         {
             List<string> result = new List<string>();
+
             for (int i = 0; i != bitSequence.Length; i += t)
             {
                 try

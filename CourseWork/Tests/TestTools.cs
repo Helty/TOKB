@@ -42,6 +42,17 @@ namespace CourseWork.Tests
             return numberSequence.All(symbol => (symbol == '1' || symbol == '0'));
         }
 
+        public static bool IsOnlyNumberSequence(string numberSequence)
+        {
+            return numberSequence.All(symbol => (
+                symbol == '0' || symbol == '1' ||
+                symbol == '2' || symbol == '3' ||
+                symbol == '4' || symbol == '5' ||
+                symbol == '6' || symbol == '7' ||
+                symbol == '8' || symbol == '9'
+            ));
+        }
+
         public static string DecimalToBinaryBySymbol(string numberSequence)
         {
             string bitSequence = string.Empty;

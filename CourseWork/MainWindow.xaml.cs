@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using CourseWork.Tests;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -74,6 +75,12 @@ namespace CourseWork
                 this.sequenceNumber = this.SequenceNumberTextBox.Text;
             }
 
+            if (!TestTools.IsOnlyNumberSequence(sequenceNumber))
+            {
+                MessageBox.Show("В вашем файле присутствуют символы отличные от 0-9.", "Ошибка чтения", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            
             if (this.sequenceNumber != string.Empty)
             {
                 TestInformationWindow testInformationWindow = new TestInformationWindow(sequenceNumber);

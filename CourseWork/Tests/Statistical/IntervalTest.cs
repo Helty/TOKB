@@ -9,6 +9,7 @@ namespace CourseWork.Tests.Statistical
     internal class IntervalTest : IStatisticalTest
     {
         private double resultTest;
+        private int freedomDegree;
 
         private struct Interval
         {
@@ -18,14 +19,15 @@ namespace CourseWork.Tests.Statistical
 
         public IntervalTest(string sequenceNumber)
         {
+            freedomDegree = 10;
             resultTest = Сomputation(sequenceNumber);
         }
 
         public Result GetEnumResultTest()
         {
-            if (resultTest <= 0.2) return Result.Badly;
-            if (resultTest > 0.2 && resultTest <= 0.7) return Result.Good;
-            if (resultTest > 0.7) return Result.Great;
+            if (resultTest >= 0.5) return Result.Badly;
+            if (resultTest < 0.5 && resultTest >= 0.1) return Result.Good;
+            if (resultTest < 0.1) return Result.Great;
             return Result.None;
         }
 
@@ -36,11 +38,10 @@ namespace CourseWork.Tests.Statistical
 
         public double Сomputation(string sequenceNumber)
         {
-            Interval interval; interval.alpha = 0; interval.betta = 1;
-            int freedomDegree = 10;
+            if (!TestTools.IsBinarySequence(sequenceNumber)) sequenceNumber = TestTools.DecimalToBinary(sequenceNumber);
 
-            List<int> sequenceIntervalLengths = GetSequenceIntervalLengths(TestTools.DecimalToBinary(sequenceNumber));
-            Dictionary<int, int> counterIntervals = GetCounterIntervals(sequenceIntervalLengths, freedomDegree);
+            List<int> sequenceIntervalLengths = GetSequenceIntervalLengths(sequenceNumber);
+            Dictionary<int, int> counterIntervals = GetCounterIntervals(sequenceIntervalLengths);
             return alglib.chisquarecdistribution(freedomDegree, ChiSquareIntervals(counterIntervals));
         }
 
@@ -48,6 +49,7 @@ namespace CourseWork.Tests.Statistical
         {
             List<int> result = new List<int>();
             int counter = 1;
+
             for (int i = 0; i != bitSequence.Length; i++)
             {
                 if (i == 0) continue;
@@ -63,7 +65,7 @@ namespace CourseWork.Tests.Statistical
             return result;
         }
 
-        private Dictionary<int, int> GetCounterIntervals(List<int> sequenceIntervalLengths, int freedomDegree)
+        private Dictionary<int, int> GetCounterIntervals(List<int> sequenceIntervalLengths)
         {
             Dictionary<int, int> result = new Dictionary<int, int>();
             for (int i = 0; i != freedomDegree; i++) result[i] = 0;
@@ -74,6 +76,7 @@ namespace CourseWork.Tests.Statistical
                     result[0]++;
                     continue;
                 }
+                if (!result.ContainsKey(num)) result.Add(num, 0);
                 result[num]++;
             }
             return result;
